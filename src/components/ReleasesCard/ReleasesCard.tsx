@@ -14,32 +14,27 @@
  * limitations under the License.
  */
 import React, { FC } from 'react';
-import { Chip } from '@material-ui/core';
+import { Link, List, ListItem, Chip } from '@material-ui/core';
+import LocalOfferOutlinedIcon from '@material-ui/icons/LocalOfferOutlined';
 import Alert from '@material-ui/lab/Alert';
 import { InfoCard, Progress } from '@backstage/core';
 import { useAsync } from 'react-use';
 
-type Language = {
-  data: {
-    [key: string]: number;
-  };
-  total: number;
+type Release = {
+  tag_name: string;
 };
 
 type LanguageCardProps = {
   projectSlug: string;
 };
 
-const LanguagesCard: FC<LanguageCardProps> = ({ projectSlug }) => {
-  const { value, loading, error } = useAsync(async (): Promise<Language> => {
+const ReleasesCard: FC<LanguageCardProps> = ({ projectSlug }) => {
+  const { value, loading, error } = useAsync(async (): Promise<Release[]> => {
     const response = await fetch(
-      `https://api.github.com/repos/${projectSlug}/languages`,
+      `https://api.github.com/repos/${'spotify/backstage' || projectSlug}/releases`,
     );
     const data = await response.json();
-    return {
-      data,
-      total: Object.values(data as number).reduce((a, b) => a + b),
-    };
+    return data.slice(0, 5);
   }, []);
 
   if (loading) {
@@ -48,20 +43,25 @@ const LanguagesCard: FC<LanguageCardProps> = ({ projectSlug }) => {
     return <Alert severity="error">{error.message}</Alert>;
   }
 
-  return value ? (
-    <InfoCard title="Languages">
-      {Object.entries(value.data).map(language => (
-        <Chip
-          label={
-            <span>
-              {language[0]} - {((language[1] / value.total) * 100).toFixed(2)}%
-            </span>
-          }
-          key={language[0]}
-        />
-      ))}
+  return value?.length ? (
+    <InfoCard
+      title="Releases"
+      deepLink={{
+        link: `https://github.com/${projectSlug}/releases`,
+        title: 'Releases',
+      }}
+    >
+      <List>
+        {value.map(release => (
+          <ListItem>
+            <Link href="#" color="inherit" onClick={ () => console.log(release.tag_name) }>
+              <LocalOfferOutlinedIcon fontSize="inherit" /> {release.tag_name}
+            </Link>
+          </ListItem>
+        ))}
+      </List>
     </InfoCard>
   ) : null;
 };
 
-export default LanguagesCard;
+export default ReleasesCard;
