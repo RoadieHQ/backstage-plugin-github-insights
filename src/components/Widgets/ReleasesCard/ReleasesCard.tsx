@@ -14,15 +14,25 @@
  * limitations under the License.
  */
 import React, { FC } from 'react';
-import { Link, List, ListItem } from '@material-ui/core';
+import { Link, List, ListItem, makeStyles } from '@material-ui/core';
 import LocalOfferOutlinedIcon from '@material-ui/icons/LocalOfferOutlined';
 import Alert from '@material-ui/lab/Alert';
 import { InfoCard, Progress } from '@backstage/core';
 import { useAsync } from 'react-use';
 
+const useStyles = makeStyles(theme => ({
+  infoCard: {
+    '& + .MuiCard-root': {
+      marginTop: theme.spacing(3),
+    }
+  }
+}));
+
 type Release = {
   id: number;
+  html_url: string;
   tag_name: string;
+  prerelease: boolean;
 };
 
 type LanguageCardProps = {
@@ -30,6 +40,7 @@ type LanguageCardProps = {
 };
 
 const ReleasesCard: FC<LanguageCardProps> = ({ projectSlug }) => {
+  const classes = useStyles();
   const { value, loading, error } = useAsync(async (): Promise<Release[]> => {
     const response = await fetch(
       `https://api.github.com/repos/${'spotify/backstage' || projectSlug}/releases`,
@@ -50,13 +61,17 @@ const ReleasesCard: FC<LanguageCardProps> = ({ projectSlug }) => {
       deepLink={{
         link: `https://github.com/${projectSlug}/releases`,
         title: 'Releases',
+        onClick: () => window.open(`https://github.com/${projectSlug}/releases`),
       }}
+      className={classes.infoCard}
     >
       <List>
         {value.map(release => (
           <ListItem key={release.id}>
-            <Link href="#" color="inherit" onClick={ () => {} }>
+            <Link href={release.html_url} color="inherit" target="_blank" rel="noopener noreferrer">
               <LocalOfferOutlinedIcon fontSize="inherit" /> {release.tag_name}
+              {/* by {release.author.login} */}
+              {/* {release.prerelease ? <Chip color="primary" size="small" label="Pre-release" /> : <Chip color="secondary" size="small" />} */}
             </Link>
           </ListItem>
         ))}

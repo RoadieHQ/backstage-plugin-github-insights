@@ -20,8 +20,18 @@ import Alert from '@material-ui/lab/Alert';
 import { InfoCard, Progress } from '@backstage/core';
 import { useAsync } from 'react-use';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
+  infoCard: {
+    '& + .MuiCard-root': {
+      marginTop: theme.spacing(3),
+    },
+    '& .MuiCardContent-root': {
+      padding: theme.spacing(2, 1, 2, 2),
+    }
+  },
   readMe: {
+    overflowY: 'auto',
+    paddingRight: theme.spacing(1),
     '& pre': {
       padding: '16px',
       overflow: 'auto',
@@ -30,6 +40,23 @@ const useStyles = makeStyles(() => ({
       backgroundColor: '#f6f8fa',
       borderRadius: '6px',
     },
+    '& img': {
+      maxWidth: '100%',
+    },
+    '&::-webkit-scrollbar-track': {
+      backgroundColor: '#F5F5F5',
+      borderRadius: '5px',
+    },
+    '&::-webkit-scrollbar': {
+      width: '5px',
+      backgroundColor: '#F5F5F5',
+      borderRadius: '5px',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      border: '1px solid #555555',
+      backgroundColor: '#555',
+      borderRadius: '4px',
+    }
   },
 }));
 
@@ -39,9 +66,10 @@ type ReadMe = {
 
 type ReadMeCardProps = {
   projectSlug: string;
+  maxHeight?: number;
 };
 
-const ReadMeCard: FC<ReadMeCardProps> = ({ projectSlug }) => {
+const ReadMeCard: FC<ReadMeCardProps> = ({ projectSlug, maxHeight }) => {
   const classes = useStyles();
   const { value, loading, error } = useAsync(async (): Promise<ReadMe> => {
     const response = await fetch(
@@ -58,11 +86,27 @@ const ReadMeCard: FC<ReadMeCardProps> = ({ projectSlug }) => {
   }
 
   return (
-    <InfoCard title="Read me">
-      <ReactMarkdown
+    <InfoCard
+      title="Read me"
+      className={classes.infoCard}
+      deepLink={{
+        link: `https://github.com/${projectSlug}/releases`,
+        title: 'Read me',
+        onClick: () => window.open(`https://github.com/${projectSlug}/releases`),
+      }}
+    >
+      <div
         className={classes.readMe}
+        style={
+          {
+            maxHeight: `${maxHeight}px`,
+          }
+        }>
+      <ReactMarkdown
         source={value && atob(value.content)}
       />
+      </div>
+
     </InfoCard>
   );
 };

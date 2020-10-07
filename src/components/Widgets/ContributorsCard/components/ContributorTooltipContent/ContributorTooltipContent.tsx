@@ -82,7 +82,7 @@ const ContributorTooltipContent: FC<ContributorTooltipContentProps> = ({
         </Grid>
         {value.bio && (
           <Grid item xs={12}>
-            <Typography>{value.bio}</Typography>
+            <Typography variant="subtitle2">{value.bio}</Typography>
           </Grid>
         )}
         {value.location && (

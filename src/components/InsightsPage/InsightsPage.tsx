@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import React, { FC } from 'react';
-import { Grid, Box } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import {
   Page,
   pageTheme,
@@ -41,13 +41,11 @@ const InsightsPage: FC<InsightsPageProps> = ({ entity }) => {
         <Grid container spacing={3} direction="row" alignItems="stretch">
           <Grid item sm={12} md={6} lg={4}>
             <ContributorsCard projectSlug={projectSlug} />
-            <Box my={3}>
               <LanguagesCard projectSlug={projectSlug} />
-            </Box>
             <ReleasesCard projectSlug={projectSlug} />
           </Grid>
           <Grid item sm={12} md={6} lg={8}>
-            <ReadMeCard projectSlug={projectSlug} />
+            <ReadMeCard projectSlug={projectSlug} maxHeight={450} />
           </Grid>
         </Grid>
       </Content>

@@ -14,17 +14,27 @@
  * limitations under the License.
  */
 import React, { FC } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import Alert from '@material-ui/lab/Alert';
 import { InfoCard, Progress } from '@backstage/core';
 import { useAsync } from 'react-use';
 import { ContributorData } from './types';
 import ContributorsList from './components/ContributorsList';
 
+const useStyles = makeStyles(theme => ({
+  infoCard: {
+    '& + .MuiCard-root': {
+      marginTop: theme.spacing(3),
+    }
+  }
+}));
+
 type ContributorsCardProps = {
   projectSlug: string;
 };
 
 const ContributorsCard: FC<ContributorsCardProps> = ({ projectSlug }) => {
+  const classes = useStyles();
   const { value, loading, error } = useAsync(async (): Promise<
     ContributorData[]
   > => {
@@ -45,9 +55,11 @@ const ContributorsCard: FC<ContributorsCardProps> = ({ projectSlug }) => {
     <InfoCard
       title="Contributors"
       deepLink={{
-        link: `https://github.com/orgs/${projectSlug.split('/')[0]}/people`,
+        link: `https://github.com/${projectSlug}/graphs/contributors`,
         title: 'People',
+        onClick: () => window.open(`https://github.com/${projectSlug}/graphs/contributors`),
       }}
+      className={classes.infoCard}
     >
       <ContributorsList contributors={value || []} />
     </InfoCard>

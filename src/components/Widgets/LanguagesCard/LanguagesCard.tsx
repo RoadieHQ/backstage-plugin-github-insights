@@ -14,10 +14,37 @@
  * limitations under the License.
  */
 import React, { FC } from 'react';
-import { Chip } from '@material-ui/core';
+import { Chip, makeStyles, Tooltip } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 import { InfoCard, Progress } from '@backstage/core';
 import { useAsync } from 'react-use';
+import { colors } from './colors';
+
+const useStyles = makeStyles(theme => ({
+  infoCard: {
+    '& + .MuiCard-root': {
+      marginTop: theme.spacing(3),
+    },
+  },
+  barContainer: {
+    height: theme.spacing(2),
+    marginBottom: theme.spacing(3),
+    borderRadius: '4px',
+    backgroundColor: 'transparent',
+    overflow: 'hidden',
+  },
+  bar: {
+    height: '100%',
+    position: 'relative',
+  },
+  languageDot: {
+    width: '10px',
+    height: '10px',
+    borderRadius: '50%',
+    marginRight: theme.spacing(1),
+    display: 'inline-block',
+  }
+}));
 
 type Language = {
   data: {
@@ -31,6 +58,8 @@ type LanguageCardProps = {
 };
 
 const LanguagesCard: FC<LanguageCardProps> = ({ projectSlug }) => {
+  let barWidth = 0;
+  const classes = useStyles();
   const { value, loading, error } = useAsync(async (): Promise<Language> => {
     const response = await fetch(
       `https://api.github.com/repos/${projectSlug}/languages`,
@@ -47,16 +76,44 @@ const LanguagesCard: FC<LanguageCardProps> = ({ projectSlug }) => {
   } else if (error) {
     return <Alert severity="error">{error.message}</Alert>;
   }
-
   return value ? (
-    <InfoCard title="Languages">
+    <InfoCard title="Languages" className={classes.infoCard}>
+      <div className={classes.barContainer}>
+        {
+          Object.entries(value.data).map((language, index: number) => {
+            barWidth = barWidth + ((language[1] / value.total) * 100);
+            return (
+              <Tooltip title={ language[0] } placement="bottom-end">
+                <div
+                  className={classes.bar}
+                  key={ language[0] }
+                  style={
+                    {
+                      marginTop: index === 0 ? '0' : `-16px`,
+                      zIndex: Object.keys(value.data).length - index,
+                      backgroundColor: colors[(language[0])].color,
+                      width: `${barWidth}%`,
+                    }
+                  }
+                />
+              </Tooltip>
+            );
+          })
+        }
+      </div>
       {Object.entries(value.data).map(language => (
         <Chip
           label={
-            <span>
-              {language[0]} - {((language[1] / value.total) * 100).toFixed(2)}%
-            </span>
+            <>
+              <span
+                className={classes.languageDot}
+                style={ {
+                  backgroundColor: colors[(language[0])].color,
+                }} /> 
+                {language[0]} - {((language[1] / value.total) * 100).toFixed(2)}%
+            </>
           }
+          variant="outlined"
           key={language[0]}
         />
       ))}
