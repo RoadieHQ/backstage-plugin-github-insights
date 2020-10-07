@@ -23,10 +23,7 @@ import {
   SupportButton,
 } from '@backstage/core';
 import { Entity } from '@backstage/catalog-model';
-import ContributorsCard from '../ContributorsCard';
-import ReadMeCard from '../ReadMeCard';
-import LanguagesCard from '../LanguagesCard';
-import ReleasesCard from '../ReleasesCard';
+import { ContributorsCard, ReadMeCard, LanguagesCard, ReleasesCard } from '../Widgets';
 
 type InsightsPageProps = {
   entity: Entity;

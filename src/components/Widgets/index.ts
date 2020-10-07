@@ -14,17 +14,7 @@
  * limitations under the License.
  */
 
-import { createPlugin, createRouteRef } from '@backstage/core';
-import InsightsPage from './components/InsightsPage';
-
-export const rootRouteRef = createRouteRef({
-  path: '',
-  title: 'github-insights',
-});
-
-export const plugin = createPlugin({
-  id: 'github-insights',
-  register({ router }) {
-    router.addRoute(rootRouteRef, InsightsPage);
-  },
-});
+export { default as ContributorsCard } from './ContributorsCard';
+export { default as LanguagesCard } from './LanguagesCard';
+export { default as ReadMeCard } from './ReadMeCard';
+export { default as ReleasesCard } from './ReleasesCard';

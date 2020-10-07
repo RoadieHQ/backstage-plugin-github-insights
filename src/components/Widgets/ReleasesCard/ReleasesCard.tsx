@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 import React, { FC } from 'react';
-import { Link, List, ListItem, Chip } from '@material-ui/core';
+import { Link, List, ListItem } from '@material-ui/core';
 import LocalOfferOutlinedIcon from '@material-ui/icons/LocalOfferOutlined';
 import Alert from '@material-ui/lab/Alert';
 import { InfoCard, Progress } from '@backstage/core';
 import { useAsync } from 'react-use';
 
 type Release = {
+  id: number;
   tag_name: string;
 };
 
@@ -53,8 +54,8 @@ const ReleasesCard: FC<LanguageCardProps> = ({ projectSlug }) => {
     >
       <List>
         {value.map(release => (
-          <ListItem>
-            <Link href="#" color="inherit" onClick={ () => console.log(release.tag_name) }>
+          <ListItem key={release.id}>
+            <Link href="#" color="inherit" onClick={ () => {} }>
               <LocalOfferOutlinedIcon fontSize="inherit" /> {release.tag_name}
             </Link>
           </ListItem>
