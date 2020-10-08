@@ -19,11 +19,11 @@ import InsightsPage from './components/InsightsPage';
 
 export const rootRouteRef = createRouteRef({
   path: '',
-  title: 'github-insights',
+  title: 'code-insights',
 });
 
 export const plugin = createPlugin({
-  id: 'github-insights',
+  id: 'code-insights',
   register({ router }) {
     router.addRoute(rootRouteRef, InsightsPage);
   },

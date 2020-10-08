@@ -17,6 +17,7 @@ import React, { FC } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Alert from '@material-ui/lab/Alert';
 import { InfoCard, Progress } from '@backstage/core';
+import { Entity } from '@backstage/catalog-model';
 import { useAsync } from 'react-use';
 import { ContributorData } from './types';
 import ContributorsList from './components/ContributorsList';
@@ -30,10 +31,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 type ContributorsCardProps = {
-  projectSlug: string;
+  entity: Entity;
 };
 
-const ContributorsCard: FC<ContributorsCardProps> = ({ projectSlug }) => {
+const ContributorsCard: FC<ContributorsCardProps> = ({ entity }) => {
+  const projectSlug = entity.metadata?.annotations?.['github.com/project-slug'];
   const classes = useStyles();
   const { value, loading, error } = useAsync(async (): Promise<
     ContributorData[]
@@ -51,7 +53,7 @@ const ContributorsCard: FC<ContributorsCardProps> = ({ projectSlug }) => {
     return <Alert severity="error">{error.message}</Alert>;
   }
 
-  return (
+  return projectSlug ? (
     <InfoCard
       title="Contributors"
       deepLink={{
@@ -63,7 +65,7 @@ const ContributorsCard: FC<ContributorsCardProps> = ({ projectSlug }) => {
     >
       <ContributorsList contributors={value || []} />
     </InfoCard>
-  );
+  ) : null;
 };
 
 export default ContributorsCard;

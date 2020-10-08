@@ -35,17 +35,17 @@ const InsightsPage: FC<InsightsPageProps> = ({ entity }) => {
   return projectSlug ? (
     <Page theme={pageTheme.tool}>
       <Content>
-        <ContentHeader title="GitHub Insights">
-          <SupportButton>Plugin to show Insights from GitHub</SupportButton>
+        <ContentHeader title="Code Insights">
+          <SupportButton>Plugin to show Code Insights</SupportButton>
         </ContentHeader>
         <Grid container spacing={3} direction="row" alignItems="stretch">
           <Grid item sm={12} md={6} lg={4}>
-            <ContributorsCard projectSlug={projectSlug} />
-              <LanguagesCard projectSlug={projectSlug} />
-            <ReleasesCard projectSlug={projectSlug} />
+            <ContributorsCard entity={entity} />
+              <LanguagesCard entity={entity} />
+            <ReleasesCard entity={entity} />
           </Grid>
           <Grid item sm={12} md={6} lg={8}>
-            <ReadMeCard projectSlug={projectSlug} maxHeight={450} />
+            <ReadMeCard entity={entity} maxHeight={450} />
           </Grid>
         </Grid>
       </Content>

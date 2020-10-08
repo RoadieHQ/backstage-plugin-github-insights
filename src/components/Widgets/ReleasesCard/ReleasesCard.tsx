@@ -18,6 +18,7 @@ import { Link, List, ListItem, makeStyles } from '@material-ui/core';
 import LocalOfferOutlinedIcon from '@material-ui/icons/LocalOfferOutlined';
 import Alert from '@material-ui/lab/Alert';
 import { InfoCard, Progress } from '@backstage/core';
+import { Entity } from '@backstage/catalog-model';
 import { useAsync } from 'react-use';
 
 const useStyles = makeStyles(theme => ({
@@ -36,14 +37,15 @@ type Release = {
 };
 
 type LanguageCardProps = {
-  projectSlug: string;
+  entity: Entity;
 };
 
-const ReleasesCard: FC<LanguageCardProps> = ({ projectSlug }) => {
+const ReleasesCard: FC<LanguageCardProps> = ({ entity }) => {
+  const projectSlug = entity.metadata?.annotations?.['github.com/project-slug'];
   const classes = useStyles();
   const { value, loading, error } = useAsync(async (): Promise<Release[]> => {
     const response = await fetch(
-      `https://api.github.com/repos/${'spotify/backstage' || projectSlug}/releases`,
+      `https://api.github.com/repos/${projectSlug}/releases`,
     );
     const data = await response.json();
     return data.slice(0, 5);
@@ -55,7 +57,7 @@ const ReleasesCard: FC<LanguageCardProps> = ({ projectSlug }) => {
     return <Alert severity="error">{error.message}</Alert>;
   }
 
-  return value?.length ? (
+  return value?.length && projectSlug ? (
     <InfoCard
       title="Releases"
       deepLink={{

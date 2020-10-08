@@ -17,6 +17,7 @@ import React, { FC } from 'react';
 import { Chip, makeStyles, Tooltip } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 import { InfoCard, Progress } from '@backstage/core';
+import { Entity } from '@backstage/catalog-model';
 import { useAsync } from 'react-use';
 import { colors } from './colors';
 
@@ -54,11 +55,12 @@ type Language = {
 };
 
 type LanguageCardProps = {
-  projectSlug: string;
+  entity: Entity;
 };
 
-const LanguagesCard: FC<LanguageCardProps> = ({ projectSlug }) => {
+const LanguagesCard: FC<LanguageCardProps> = ({ entity }) => {
   let barWidth = 0;
+  const projectSlug = entity.metadata?.annotations?.['github.com/project-slug'];
   const classes = useStyles();
   const { value, loading, error } = useAsync(async (): Promise<Language> => {
     const response = await fetch(
@@ -76,14 +78,14 @@ const LanguagesCard: FC<LanguageCardProps> = ({ projectSlug }) => {
   } else if (error) {
     return <Alert severity="error">{error.message}</Alert>;
   }
-  return value ? (
+  return value && projectSlug ? (
     <InfoCard title="Languages" className={classes.infoCard}>
       <div className={classes.barContainer}>
         {
           Object.entries(value.data).map((language, index: number) => {
             barWidth = barWidth + ((language[1] / value.total) * 100);
             return (
-              <Tooltip title={ language[0] } placement="bottom-end">
+              <Tooltip title={ language[0] } placement="bottom-end" key={language[0]}>
                 <div
                   className={classes.bar}
                   key={ language[0] }

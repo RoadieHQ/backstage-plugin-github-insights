@@ -18,6 +18,7 @@ import { makeStyles } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
 import Alert from '@material-ui/lab/Alert';
 import { InfoCard, Progress } from '@backstage/core';
+import { Entity } from '@backstage/catalog-model';
 import { useAsync } from 'react-use';
 
 const useStyles = makeStyles(theme => ({
@@ -65,11 +66,12 @@ type ReadMe = {
 };
 
 type ReadMeCardProps = {
-  projectSlug: string;
+  entity: Entity;
   maxHeight?: number;
 };
 
-const ReadMeCard: FC<ReadMeCardProps> = ({ projectSlug, maxHeight }) => {
+const ReadMeCard: FC<ReadMeCardProps> = ({ entity, maxHeight }) => {
+  const projectSlug = entity.metadata?.annotations?.['github.com/project-slug'];
   const classes = useStyles();
   const { value, loading, error } = useAsync(async (): Promise<ReadMe> => {
     const response = await fetch(
@@ -85,7 +87,7 @@ const ReadMeCard: FC<ReadMeCardProps> = ({ projectSlug, maxHeight }) => {
     return <Alert severity="error">{error.message}</Alert>;
   }
 
-  return (
+  return projectSlug ? (
     <InfoCard
       title="Read me"
       className={classes.infoCard}
@@ -102,13 +104,11 @@ const ReadMeCard: FC<ReadMeCardProps> = ({ projectSlug, maxHeight }) => {
             maxHeight: `${maxHeight}px`,
           }
         }>
-      <ReactMarkdown
-        source={value && atob(value.content)}
-      />
+        <ReactMarkdown source={value && atob(value.content)} />
       </div>
 
     </InfoCard>
-  );
+  ) : null;
 };
 
 export default ReadMeCard;
