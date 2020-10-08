@@ -1,6 +1,6 @@
 # Code Inights Plugin for Backstage
 
-![a preview of the code insights plugin](https://raw.githubusercontent.com/RoadieHQ/backstage-plugin-code-insights/master/docs/code-insights-plugin.png)
+![a preview of the code insights plugin](https://raw.githubusercontent.com/RoadieHQ/backstage-plugin-code-insights/main/docs/code-insights-plugin.png)
 
 ## Plugin Setup
 
