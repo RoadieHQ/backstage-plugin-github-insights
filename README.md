@@ -1,6 +1,6 @@
 # Code Inights Plugin for Backstage
 
-![a preview of the code insights plugin](https://raw.githubusercontent.com/RoadieHQ/backstage-plugin-code-insights/master/docs/code-insights-plugin.png)
+![a preview of the code insights plugin](https://raw.githubusercontent.com/RoadieHQ/backstage-plugin-code-insights/main/docs/code-insights-plugin.png)
 
 ## Plugin Setup
 
@@ -10,14 +10,14 @@
 yarn add @roadiehq/backstage-plugin-code-insights
 ```
 
-3. Add plugin to the list of plugins:
+2. Add plugin to the list of plugins:
 
 ```ts
 // packages/app/src/plugins.ts
 export { plugin as CodeInsights } from '@roadiehq/backstage-plugin-code-insights';
 ```
 
-4. Add plugin API to your Backstage instance:
+3. Add plugin API to your Backstage instance:
 
 ```ts
 // packages/app/src/components/catalog/EntityPage.tsx
@@ -29,14 +29,14 @@ const ServiceEntityPage = ({ entity }: { entity: Entity }) => (
   <EntityPageLayout>
     ...
     <EntityPageLayout.Content
-          path="/code-insights"
-          title="Code Insights"
-          element={<CodeInsightsRouter entity={entity} />}
-        />
+      path="/code-insights"
+      title="Code Insights"
+      element={<CodeInsightsRouter entity={entity} />}
+    />
   </EntityPageLayout>
 ```
 
-5. Run backstage app with `yarn start` and navigate to services tabs.
+4. Run backstage app with `yarn start` and navigate to services tabs.
 
 ## Widgets setup
 
@@ -68,7 +68,7 @@ const OverviewContent = ({ entity }: { entity: Entity }) => (
 
 ## Features
 
-- Add Code Insights tab to.
+- Add Code Insights plugin tab.
 - Show widgets about repository contributors, languages, readme and release at overview page.
 
 ## Links
