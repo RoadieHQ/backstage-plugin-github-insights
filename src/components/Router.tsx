@@ -20,17 +20,14 @@ import { Route, Routes } from 'react-router';
 import { rootRouteRef } from '../plugin';
 import InsightsPage from './InsightsPage';
 import { GITHUB_INSIGHTS_ANNOTATION } from './useProjectName';
-import { WarningPanel } from '@backstage/core';
+import { MissingAnnotationEmptyState } from '@backstage/core';
 
 export const isPluginApplicableToEntity = (entity: Entity) =>
   entity?.metadata.annotations?.[GITHUB_INSIGHTS_ANNOTATION];
 
 export const Router = ({ entity }: { entity: Entity }) =>
   !isPluginApplicableToEntity(entity) ? (
-    <WarningPanel title="CodeInsights plugin:">
-      <pre>{GITHUB_INSIGHTS_ANNOTATION}</pre> annotation is missing on the
-      entity.
-    </WarningPanel>
+    <MissingAnnotationEmptyState annotation={GITHUB_INSIGHTS_ANNOTATION} />
   ) : (
     <Routes>
       <Route

@@ -958,7 +958,7 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@backstage/catalog-model@^0.1.1-alpha.23":
+"@backstage/catalog-model@^0.1.1-alpha.24":
   version "0.1.1-alpha.24"
   resolved "https://registry.yarnpkg.com/@backstage/catalog-model/-/catalog-model-0.1.1-alpha.24.tgz#d8295bad40b6b4ad1d7c4a6503bbd5aa7bce4e1e"
   integrity sha512-hJp3QD/rmrljNE3uU2q8sxUQSh7IIt3EwM7H7KTownWeKvkoz+DPGnu+eOqPkp6lL25uNZrHmwNxpBmQ32GkNA==
@@ -976,7 +976,7 @@
   resolved "https://registry.yarnpkg.com/@backstage/cli-common/-/cli-common-0.1.1-alpha.24.tgz#33af545e7386a8ce81b44ad50ecf771dc4a22acb"
   integrity sha512-a6i598v577Qs24cGnPmXQPp2j1vStutoThanflOh8lsZj+qStyjZGM1MfBPDbjzs/Kiv5hyFxLuRdXF2xIn+Xw==
 
-"@backstage/cli@^0.1.1-alpha.23", "@backstage/cli@^0.1.1-alpha.24":
+"@backstage/cli@^0.1.1-alpha.24":
   version "0.1.1-alpha.24"
   resolved "https://registry.yarnpkg.com/@backstage/cli/-/cli-0.1.1-alpha.24.tgz#55672e82b68eb22e9909c6d8793258985d85b3ba"
   integrity sha512-sGYOW8aCm3e8NMBOLZn6V85MTki6lmJ84xy9pxyWPXezv+QSYsNA7pCesYF9JJvHYv/5Nf9kkhr8oaQRDn8Bmg==
@@ -1083,7 +1083,7 @@
     react-use "^15.3.3"
     zen-observable "^0.8.15"
 
-"@backstage/core@^0.1.1-alpha.23", "@backstage/core@^0.1.1-alpha.24":
+"@backstage/core@^0.1.1-alpha.24":
   version "0.1.1-alpha.24"
   resolved "https://registry.yarnpkg.com/@backstage/core/-/core-0.1.1-alpha.24.tgz#e162a062eb89678d3dad3b728a97030516228be6"
   integrity sha512-/3HuhQCwFOyqpwop4rhs8WJnnddjChppHNS8+Mi5OiyG/ohMPGFiOlUHal4uXblsZu6YhXor53u3zNGF9bJzpQ==
@@ -1112,7 +1112,7 @@
     react-syntax-highlighter "^13.5.1"
     react-use "^15.3.3"
 
-"@backstage/dev-utils@^0.1.1-alpha.23":
+"@backstage/dev-utils@^0.1.1-alpha.24":
   version "0.1.1-alpha.24"
   resolved "https://registry.yarnpkg.com/@backstage/dev-utils/-/dev-utils-0.1.1-alpha.24.tgz#3ffe60873810cc03406dbff52e057ee35d98699c"
   integrity sha512-wHkJtCtu9xvZnDST2qRwexUrEYVMr3Dyv/7ytUc4y9Za4vyPFWv8Oj1djxLjreXHvzAhaD0w7gTHKOFIxLv1NA==
@@ -1164,7 +1164,7 @@
     react-router-dom "6.0.0-beta.0"
     zen-observable "^0.8.15"
 
-"@backstage/theme@^0.1.1-alpha.23", "@backstage/theme@^0.1.1-alpha.24":
+"@backstage/theme@^0.1.1-alpha.24":
   version "0.1.1-alpha.24"
   resolved "https://registry.yarnpkg.com/@backstage/theme/-/theme-0.1.1-alpha.24.tgz#d830b02283276dcf768da397de805b72117c4135"
   integrity sha512-Y4MaROZdruVoUYS7i/Z9StXddZwcj0jXirsIIyc3mvIb77BZIwSc6OjVfVpXzh/Fq+vOgvvbBO4EnvQhoaVItw==
@@ -1601,6 +1601,19 @@
     magic-string "^0.25.2"
     resolve "^1.11.0"
 
+"@rollup/plugin-commonjs@^14.0.0":
+  version "14.0.0"
+  resolved "https://registry.yarnpkg.com/@rollup/plugin-commonjs/-/plugin-commonjs-14.0.0.tgz#4285f9ec2db686a31129e5a2b415c94aa1f836f0"
+  integrity sha512-+PSmD9ePwTAeU106i9FRdc+Zb3XUWyW26mo5Atr2mk82hor8+nPwkztEjFo8/B1fJKfaQDg9aM2bzQkjhi7zOw==
+  dependencies:
+    "@rollup/pluginutils" "^3.0.8"
+    commondir "^1.0.1"
+    estree-walker "^1.0.1"
+    glob "^7.1.2"
+    is-reference "^1.1.2"
+    magic-string "^0.25.2"
+    resolve "^1.11.0"
+
 "@rollup/plugin-json@^4.0.2":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-json/-/plugin-json-4.1.0.tgz#54e09867ae6963c593844d8bd7a9c718294496f3"
@@ -1608,7 +1621,7 @@
   dependencies:
     "@rollup/pluginutils" "^3.0.8"
 
-"@rollup/plugin-node-resolve@^8.1.0":
+"@rollup/plugin-node-resolve@^8.1.0", "@rollup/plugin-node-resolve@^8.4.0":
   version "8.4.0"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-node-resolve/-/plugin-node-resolve-8.4.0.tgz#261d79a680e9dc3d86761c14462f24126ba83575"
   integrity sha512-LFqKdRLn0ShtQyf6SBYO69bGE1upV6wUhBX0vFOUnLAyzx5cwp8svA0eHUnu8+YU57XOkrMtfG63QOpQx25pHQ==
@@ -5235,7 +5248,7 @@ file-entry-cache@^5.0.1:
   dependencies:
     flat-cache "^2.0.1"
 
-"file-saver@github:eligrey/FileSaver.js#1.3.8":
+file-saver@eligrey/FileSaver.js#1.3.8:
   version "1.3.8"
   resolved "https://codeload.github.com/eligrey/FileSaver.js/tar.gz/e865e37af9f9947ddcced76b549e27dc45c1cb2e"
 
