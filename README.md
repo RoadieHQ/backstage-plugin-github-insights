@@ -46,21 +46,31 @@ const ServiceEntityPage = ({ entity }: { entity: Entity }) => (
 
 ```ts
 // packages/app/src/components/catalog/EntityPage.tsx
-import { ContributorsCard, LanguagesCard, ReadMeCard, ReleasesCard } from '@roadiehq/backstage-plugin-github-insights';
+import {
+  ContributorsCard,
+  LanguagesCard,
+  ReadMeCard,
+  ReleasesCard,
+  isPluginApplicableToEntity as isGitHubAvailable,
+} from '@roadiehq/backstage-plugin-github-insights';
 
 ...
 
 const OverviewContent = ({ entity }: { entity: Entity }) => (
   <Grid container spacing={3}>
     ...
-    <Grid item md={6}>
-      <ContributorsCard entity={entity} />
-      <LanguagesCard entity={entity} />
-      <ReleasesCard entity={entity} />
-    </Grid>
-    <Grid item md={6}>
-      <ReadMeCard entity={entity} />
-    </Grid>
+    {isGitHubAvailable(entity) && (
+      <>
+        <Grid item md={6}>
+          <ContributorsCard entity={entity} />
+          <LanguagesCard entity={entity} />
+          <ReleasesCard entity={entity} />
+        </Grid>
+        <Grid item md={6}>
+          <ReadMeCard entity={entity} />
+        </Grid>
+      </>
+    )}
   </Grid>
 );
 
