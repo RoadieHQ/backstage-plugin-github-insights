@@ -15,5 +15,5 @@
  */
 
 export { plugin } from './plugin';
-export { Router } from './components/Router';
+export { Router, isPluginApplicableToEntity } from './components/Router';
 export * from './components/Widgets';

@@ -1,4 +1,4 @@
-# Code Inights Plugin for Backstage
+# GitHub Inights Plugin for Backstage
 
 ![a preview of the code insights plugin](https://raw.githubusercontent.com/RoadieHQ/backstage-plugin-code-insights/main/docs/code-insights-plugin.png)
 
@@ -7,21 +7,21 @@
 1. If you have standalone app (you didn't clone this repo), then do
 
 ```bash
-yarn add @roadiehq/backstage-plugin-code-insights
+yarn add @roadiehq/backstage-plugin-github-insights
 ```
 
 2. Add plugin to the list of plugins:
 
 ```ts
 // packages/app/src/plugins.ts
-export { plugin as CodeInsights } from '@roadiehq/backstage-plugin-code-insights';
+export { plugin as GitHubInsights } from '@roadiehq/backstage-plugin-github-insights';
 ```
 
 3. Add plugin API to your Backstage instance:
 
 ```ts
 // packages/app/src/components/catalog/EntityPage.tsx
-import { Router as CodeInsightsRouter } from '@roadiehq/backstage-plugin-code-insights';
+import { Router as GitHubInsightsRouter } from '@roadiehq/backstage-plugin-github-insights';
 
 ...
 
@@ -31,7 +31,7 @@ const ServiceEntityPage = ({ entity }: { entity: Entity }) => (
     <EntityPageLayout.Content
       path="/code-insights"
       title="Code Insights"
-      element={<CodeInsightsRouter entity={entity} />}
+      element={<GitHubInsightsRouter entity={entity} />}
     />
   </EntityPageLayout>
 ```
@@ -46,7 +46,7 @@ const ServiceEntityPage = ({ entity }: { entity: Entity }) => (
 
 ```ts
 // packages/app/src/components/catalog/EntityPage.tsx
-import { ContributorsCard, LanguagesCard, ReadMeCard, ReleasesCard } from '@roadiehq/backstage-plugin-code-insights';
+import { ContributorsCard, LanguagesCard, ReadMeCard, ReleasesCard } from '@roadiehq/backstage-plugin-github-insights';
 
 ...
 
@@ -68,7 +68,7 @@ const OverviewContent = ({ entity }: { entity: Entity }) => (
 
 ## Features
 
-- Add Code Insights plugin tab.
+- Add GitHub Insights plugin tab.
 - Show widgets about repository contributors, languages, readme and release at overview page.
 
 ## Links
