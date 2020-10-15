@@ -43,11 +43,12 @@ type LanguageCardProps = {
 const ReleasesCard: FC<LanguageCardProps> = ({ entity }) => {
   const projectSlug = entity.metadata?.annotations?.['github.com/project-slug'];
   const classes = useStyles();
-  const { value, loading, error } = useAsync(async (): Promise<Release[]> => {
+  const { value, loading, error } = useAsync(async (): Promise<Release[]|null> => {
     const response = await fetch(
       `https://api.github.com/repos/${projectSlug}/releases`,
     );
     const data = await response.json();
+    if(response.status !== 200) return null;
     return data.slice(0, 5);
   }, []);
 

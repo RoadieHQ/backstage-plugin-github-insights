@@ -53,7 +53,7 @@ const ContributorsCard: FC<ContributorsCardProps> = ({ entity }) => {
     return <Alert severity="error">{error.message}</Alert>;
   }
 
-  return projectSlug ? (
+  return value?.length && projectSlug ? (
     <InfoCard
       title="Contributors"
       deepLink={{

@@ -62,10 +62,11 @@ const LanguagesCard: FC<LanguageCardProps> = ({ entity }) => {
   let barWidth = 0;
   const projectSlug = entity.metadata?.annotations?.['github.com/project-slug'];
   const classes = useStyles();
-  const { value, loading, error } = useAsync(async (): Promise<Language> => {
+  const { value, loading, error } = useAsync(async (): Promise<Language|null> => {
     const response = await fetch(
       `https://api.github.com/repos/${projectSlug}/languages`,
     );
+    if(response.status !== 200) return null;
     const data = await response.json();
     return {
       data,

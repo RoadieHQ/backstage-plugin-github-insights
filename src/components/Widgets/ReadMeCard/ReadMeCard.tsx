@@ -87,7 +87,7 @@ const ReadMeCard: FC<ReadMeCardProps> = ({ entity, maxHeight }) => {
     return <Alert severity="error">{error.message}</Alert>;
   }
 
-  return projectSlug ? (
+  return value?.content && projectSlug ? (
     <InfoCard
       title="Read me"
       className={classes.infoCard}
