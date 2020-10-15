@@ -16,14 +16,16 @@
 import React, { FC } from 'react';
 import { Chip, makeStyles, Tooltip } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
-import { InfoCard, Progress } from '@backstage/core';
+import { InfoCard, Progress, useApi, githubAuthApiRef } from '@backstage/core';
 import { Entity } from '@backstage/catalog-model';
 import { useAsync } from 'react-use';
+import { Octokit } from '@octokit/rest';
+import { useProjectEntity } from '../../useProjectEntity';
 import { colors } from './colors';
 
 const useStyles = makeStyles(theme => ({
   infoCard: {
-    '& + .MuiCard-root': {
+    '& + .MuiCard-root, & + .MuiAlert-root': {
       marginTop: theme.spacing(3),
     },
   },
@@ -44,7 +46,7 @@ const useStyles = makeStyles(theme => ({
     borderRadius: '50%',
     marginRight: theme.spacing(1),
     display: 'inline-block',
-  }
+  },
 }));
 
 type Language = {
@@ -60,14 +62,17 @@ type LanguageCardProps = {
 
 const LanguagesCard: FC<LanguageCardProps> = ({ entity }) => {
   let barWidth = 0;
-  const projectSlug = entity.metadata?.annotations?.['github.com/project-slug'];
+  const { owner, repo } = useProjectEntity(entity);
+  const auth = useApi(githubAuthApiRef);
   const classes = useStyles();
   const { value, loading, error } = useAsync(async (): Promise<Language|null> => {
-    const response = await fetch(
-      `https://api.github.com/repos/${projectSlug}/languages`,
-    );
-    if(response.status !== 200) return null;
-    const data = await response.json();
+    const token = await auth.getAccessToken(['repo']);
+    const octokit = new Octokit({auth: token});
+    const response = await octokit.request('GET /repos/{owner}/{repo}/languages', {
+      owner,
+      repo,
+    });
+    const data = await response.data;
     return {
       data,
       total: Object.values(data as number).reduce((a, b) => a + b),
@@ -77,9 +82,9 @@ const LanguagesCard: FC<LanguageCardProps> = ({ entity }) => {
   if (loading) {
     return <Progress />;
   } else if (error) {
-    return <Alert severity="error">{error.message}</Alert>;
+    return <Alert severity="error" className={classes.infoCard}>{error.message}</Alert>;
   }
-  return value && projectSlug ? (
+  return value && owner && repo ? (
     <InfoCard title="Languages" className={classes.infoCard}>
       <div className={classes.barContainer}>
         {

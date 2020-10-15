@@ -16,18 +16,20 @@
 import React, { FC } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Alert from '@material-ui/lab/Alert';
-import { InfoCard, Progress } from '@backstage/core';
+import { InfoCard, Progress, useApi, githubAuthApiRef } from '@backstage/core';
 import { Entity } from '@backstage/catalog-model';
 import { useAsync } from 'react-use';
+import { Octokit } from '@octokit/rest';
 import { ContributorData } from './types';
+import { useProjectEntity } from '../../useProjectEntity';
 import ContributorsList from './components/ContributorsList';
 
 const useStyles = makeStyles(theme => ({
   infoCard: {
-    '& + .MuiCard-root': {
+    '& + .MuiCard-root, & + .MuiAlert-root': {
       marginTop: theme.spacing(3),
     }
-  }
+  },
 }));
 
 type ContributorsCardProps = {
@@ -35,37 +37,42 @@ type ContributorsCardProps = {
 };
 
 const ContributorsCard: FC<ContributorsCardProps> = ({ entity }) => {
-  const projectSlug = entity.metadata?.annotations?.['github.com/project-slug'];
+  const { owner, repo } = useProjectEntity(entity);
+  const auth = useApi(githubAuthApiRef);
   const classes = useStyles();
   const { value, loading, error } = useAsync(async (): Promise<
     ContributorData[]
   > => {
-    const response = await fetch(
-      `https://api.github.com/repos/${projectSlug}/contributors?per_page=10`,
-    );
-    const data = await response.json();
+    const token = await auth.getAccessToken(['repo']);
+    const octokit = new Octokit({auth: token});
+    const response = await octokit.request('GET /repos/{owner}/{repo}/contributors', {
+      owner,
+      repo,
+      per_page: 10,
+    });
+    const data = await response.data;
     return data;
   }, []);
 
   if (loading) {
     return <Progress />;
   } else if (error) {
-    return <Alert severity="error">{error.message}</Alert>;
+    return <Alert severity="error" className={classes.infoCard}>{error.message}</Alert>;
   }
 
-  return value?.length && projectSlug ? (
+  return (
     <InfoCard
       title="Contributors"
       deepLink={{
-        link: `https://github.com/${projectSlug}/graphs/contributors`,
+        link: `https://github.com/${owner}/${repo}/graphs/contributors`,
         title: 'People',
-        onClick: () => window.open(`https://github.com/${projectSlug}/graphs/contributors`),
+        onClick: () => window.open(`https://github.com/${owner}/${repo}/graphs/contributors`),
       }}
       className={classes.infoCard}
     >
       <ContributorsList contributors={value || []} />
     </InfoCard>
-  ) : null;
+  );
 };
 
 export default ContributorsCard;

@@ -17,13 +17,15 @@ import React, { FC } from 'react';
 import { Link, List, ListItem, makeStyles } from '@material-ui/core';
 import LocalOfferOutlinedIcon from '@material-ui/icons/LocalOfferOutlined';
 import Alert from '@material-ui/lab/Alert';
-import { InfoCard, Progress } from '@backstage/core';
+import { InfoCard, Progress, useApi, githubAuthApiRef } from '@backstage/core';
 import { Entity } from '@backstage/catalog-model';
 import { useAsync } from 'react-use';
+import { Octokit } from '@octokit/rest';
+import { useProjectEntity } from '../../useProjectEntity';
 
 const useStyles = makeStyles(theme => ({
   infoCard: {
-    '& + .MuiCard-root': {
+    '& + .MuiCard-root, & + .MuiAlert-root': {
       marginTop: theme.spacing(3),
     }
   }
@@ -41,30 +43,33 @@ type LanguageCardProps = {
 };
 
 const ReleasesCard: FC<LanguageCardProps> = ({ entity }) => {
-  const projectSlug = entity.metadata?.annotations?.['github.com/project-slug'];
+  const { owner, repo } = useProjectEntity(entity);
+  const auth = useApi(githubAuthApiRef);
   const classes = useStyles();
   const { value, loading, error } = useAsync(async (): Promise<Release[]|null> => {
-    const response = await fetch(
-      `https://api.github.com/repos/${projectSlug}/releases`,
-    );
-    const data = await response.json();
-    if(response.status !== 200) return null;
+    const token = await auth.getAccessToken(['repo']);
+    const octokit = new Octokit({auth: token});
+    const response = await octokit.request('GET /repos/{owner}/{repo}/releases', {
+      owner,
+      repo,
+    });
+    const data = await response.data;
     return data.slice(0, 5);
   }, []);
 
   if (loading) {
     return <Progress />;
   } else if (error) {
-    return <Alert severity="error">{error.message}</Alert>;
+    return <Alert severity="error" className={classes.infoCard}>{error.message}</Alert>;
   }
 
-  return value?.length && projectSlug ? (
+  return value?.length && owner && repo ? (
     <InfoCard
       title="Releases"
       deepLink={{
-        link: `https://github.com/${projectSlug}/releases`,
+        link: `https://github.com/${owner}/${repo}/releases`,
         title: 'Releases',
-        onClick: () => window.open(`https://github.com/${projectSlug}/releases`),
+        onClick: () => window.open(`https://github.com/${owner}/${repo}/releases`),
       }}
       className={classes.infoCard}
     >

@@ -17,18 +17,20 @@ import React, { FC } from 'react';
 import { makeStyles } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
 import Alert from '@material-ui/lab/Alert';
-import { InfoCard, Progress } from '@backstage/core';
+import { InfoCard, Progress, useApi, githubAuthApiRef} from '@backstage/core';
 import { Entity } from '@backstage/catalog-model';
+import { Octokit } from '@octokit/rest';
 import { useAsync } from 'react-use';
+import { useProjectEntity } from '../../useProjectEntity';
 
 const useStyles = makeStyles(theme => ({
   infoCard: {
-    '& + .MuiCard-root': {
+    '& + .MuiCard-root, & + .MuiAlert-root': {
       marginTop: theme.spacing(3),
     },
     '& .MuiCardContent-root': {
       padding: theme.spacing(2, 1, 2, 2),
-    }
+    },
   },
   readMe: {
     overflowY: 'auto',
@@ -71,30 +73,34 @@ type ReadMeCardProps = {
 };
 
 const ReadMeCard: FC<ReadMeCardProps> = ({ entity, maxHeight }) => {
-  const projectSlug = entity.metadata?.annotations?.['github.com/project-slug'];
+  const { owner, repo } = useProjectEntity(entity);
+  const auth = useApi(githubAuthApiRef);
   const classes = useStyles();
   const { value, loading, error } = useAsync(async (): Promise<ReadMe> => {
-    const response = await fetch(
-      `https://api.github.com/repos/${projectSlug}/readme`,
-    );
-    const data = await response.json();
+    const token = await auth.getAccessToken(['repo']);
+    const octokit = new Octokit({auth: token});
+    const response = await octokit.request('GET /repos/{owner}/{repo}/readme', {
+      owner,
+      repo,
+    });
+    const data = await response.data;
     return data;
   }, []);
 
   if (loading) {
     return <Progress />;
   } else if (error) {
-    return <Alert severity="error">{error.message}</Alert>;
+    return <Alert severity="error" className={classes.infoCard}>{error.message}</Alert>;
   }
 
-  return value?.content && projectSlug ? (
+  return value?.content && owner && repo ? (
     <InfoCard
       title="Read me"
       className={classes.infoCard}
       deepLink={{
-        link: `https://github.com/${projectSlug}/releases`,
+        link: `https://github.com/${owner}/${repo}/releases`,
         title: 'Read me',
-        onClick: () => window.open(`https://github.com/${projectSlug}/releases`),
+        onClick: () => window.open(`https://github.com/${owner}/${repo}/releases`),
       }}
     >
       <div
