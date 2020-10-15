@@ -93,7 +93,7 @@ const LanguagesCard: FC<LanguageCardProps> = ({ entity }) => {
                     {
                       marginTop: index === 0 ? '0' : `-16px`,
                       zIndex: Object.keys(value.data).length - index,
-                      backgroundColor: colors[(language[0])].color,
+                      backgroundColor: colors[(language[0])]?.color || '#333',
                       width: `${barWidth}%`,
                     }
                   }
