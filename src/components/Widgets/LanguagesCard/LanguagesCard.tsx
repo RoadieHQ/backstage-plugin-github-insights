@@ -110,7 +110,7 @@ const LanguagesCard: FC<LanguageCardProps> = ({ entity }) => {
               <span
                 className={classes.languageDot}
                 style={ {
-                  backgroundColor: colors[(language[0])].color,
+                  backgroundColor: colors[(language[0])]?.color || '#333',
                 }} /> 
                 {language[0]} - {((language[1] / value.total) * 100).toFixed(2)}%
             </>
