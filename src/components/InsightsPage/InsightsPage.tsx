@@ -17,7 +17,6 @@ import React, { FC } from 'react';
 import { Grid } from '@material-ui/core';
 import {
   Page,
-  pageTheme,
   Content,
   ContentHeader,
   SupportButton,
@@ -33,7 +32,7 @@ const InsightsPage: FC<InsightsPageProps> = ({ entity }) => {
   const projectSlug = entity.metadata?.annotations?.['github.com/project-slug'];
 
   return projectSlug ? (
-    <Page theme={pageTheme.tool}>
+    <Page themeId="tool">
       <Content>
         <ContentHeader title="GitHub Insights">
           <SupportButton>Plugin to show GitHub Insights</SupportButton>
