@@ -26,7 +26,8 @@ import ContributorsList from './components/ContributorsList';
 
 const useStyles = makeStyles(theme => ({
   infoCard: {
-    '& + .MuiCard-root, & + .MuiAlert-root': {
+    marginBottom: theme.spacing(3),
+    '& + .MuiAlert-root': {
       marginTop: theme.spacing(3),
     }
   },

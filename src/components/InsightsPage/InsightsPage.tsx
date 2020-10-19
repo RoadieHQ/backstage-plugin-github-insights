@@ -40,7 +40,7 @@ const InsightsPage: FC<InsightsPageProps> = ({ entity }) => {
         <Grid container spacing={3} direction="row" alignItems="stretch">
           <Grid item sm={12} md={6} lg={4}>
             <ContributorsCard entity={entity} />
-              <LanguagesCard entity={entity} />
+            <LanguagesCard entity={entity} />
             <ReleasesCard entity={entity} />
           </Grid>
           <Grid item sm={12} md={6} lg={8}>

@@ -25,7 +25,8 @@ import { colors } from './colors';
 
 const useStyles = makeStyles(theme => ({
   infoCard: {
-    '& + .MuiCard-root, & + .MuiAlert-root': {
+    marginBottom: theme.spacing(3),
+    '& + .MuiAlert-root': {
       marginTop: theme.spacing(3),
     },
   },
