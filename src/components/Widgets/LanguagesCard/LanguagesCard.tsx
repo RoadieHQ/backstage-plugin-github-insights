@@ -48,6 +48,9 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(1),
     display: 'inline-block',
   },
+  label: {
+    color: 'inherit',
+  }
 }));
 
 type Language = {
@@ -112,6 +115,9 @@ const LanguagesCard: FC<LanguageCardProps> = ({ entity }) => {
       </div>
       {Object.entries(value.data).map(language => (
         <Chip
+        classes={{
+          label: classes.label
+        }}
           label={
             <>
               <span

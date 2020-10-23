@@ -67,7 +67,10 @@ const ContributorsCard: FC<ContributorsCardProps> = ({ entity }) => {
       deepLink={{
         link: `https://github.com/${owner}/${repo}/graphs/contributors`,
         title: 'People',
-        onClick: () => window.open(`https://github.com/${owner}/${repo}/graphs/contributors`),
+        onClick: (e) => {
+          e.preventDefault();
+          window.open(`https://github.com/${owner}/${repo}/graphs/contributors`);
+        }
       }}
       className={classes.infoCard}
     >
