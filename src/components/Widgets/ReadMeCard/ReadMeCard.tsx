@@ -43,6 +43,7 @@ const useStyles = makeStyles(theme => ({
       lineHeight: 1.45,
       backgroundColor: '#f6f8fa',
       borderRadius: '6px',
+      color: 'rgba(0, 0, 0, 0.87)',
     },
     '& img': {
       maxWidth: '100%',
@@ -101,7 +102,10 @@ const ReadMeCard: FC<ReadMeCardProps> = ({ entity, maxHeight }) => {
       deepLink={{
         link: `https://github.com/${owner}/${repo}/releases`,
         title: 'Read me',
-        onClick: () => window.open(`https://github.com/${owner}/${repo}/releases`),
+        onClick: (e) => {
+          e.preventDefault();
+          window.open(`https://github.com/${owner}/${repo}/releases`);
+        }
       }}
     >
       <div

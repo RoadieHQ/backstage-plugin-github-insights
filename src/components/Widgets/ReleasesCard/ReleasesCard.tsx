@@ -70,7 +70,10 @@ const ReleasesCard: FC<LanguageCardProps> = ({ entity }) => {
       deepLink={{
         link: `https://github.com/${owner}/${repo}/releases`,
         title: 'Releases',
-        onClick: () => window.open(`https://github.com/${owner}/${repo}/releases`),
+        onClick: (e) => {
+          e.preventDefault();
+          window.open(`https://github.com/${owner}/${repo}/releases`);
+        }
       }}
       className={classes.infoCard}
     >
