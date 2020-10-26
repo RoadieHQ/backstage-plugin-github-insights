@@ -21,6 +21,7 @@ import { InfoCard, Progress, useApi, githubAuthApiRef} from '@backstage/core';
 import { Entity } from '@backstage/catalog-model';
 import { Octokit } from '@octokit/rest';
 import { useAsync } from 'react-use';
+import gfm from 'remark-gfm';
 import { useProjectEntity } from '../../useProjectEntity';
 
 const useStyles = makeStyles(theme => ({
@@ -36,6 +37,13 @@ const useStyles = makeStyles(theme => ({
   readMe: {
     overflowY: 'auto',
     paddingRight: theme.spacing(1),
+    '& table': {
+      borderCollapse: 'collapse',
+      border: '1px solid #000',
+    },
+    '& th, & td': {
+      border: '1px solid #000',
+    },
     '& pre': {
       padding: '16px',
       overflow: 'auto',
@@ -44,6 +52,9 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: '#f6f8fa',
       borderRadius: '6px',
       color: 'rgba(0, 0, 0, 0.87)',
+    },
+    '& a': {
+      color: '#2E77D0',
     },
     '& img': {
       maxWidth: '100%',
@@ -67,17 +78,23 @@ const useStyles = makeStyles(theme => ({
 
 type ReadMe = {
   content: string;
+  url: string;
 };
 
 type ReadMeCardProps = {
   entity: Entity;
   maxHeight?: number;
 };
+const getRepositoryDefaultBranch = (url: string) => {
+  const repositoryUrl = (new URL(url).searchParams).get('ref');
+  return repositoryUrl;
+}
 
 const ReadMeCard: FC<ReadMeCardProps> = ({ entity, maxHeight }) => {
   const { owner, repo } = useProjectEntity(entity);
   const auth = useApi(githubAuthApiRef);
   const classes = useStyles();
+
   const { value, loading, error } = useAsync(async (): Promise<ReadMe> => {
     const token = await auth.getAccessToken(['repo']);
     const octokit = new Octokit({auth: token});
@@ -115,7 +132,7 @@ const ReadMeCard: FC<ReadMeCardProps> = ({ entity, maxHeight }) => {
             maxHeight: `${maxHeight}px`,
           }
         }>
-        <ReactMarkdown source={value && atob(value.content)} />
+        <ReactMarkdown plugins={[gfm]} children={atob(value.content).replace(/\(\./gi, `(https://github.com/${owner}/${repo}/raw/${getRepositoryDefaultBranch(value.url)}`)} />
       </div>
 
     </InfoCard>
