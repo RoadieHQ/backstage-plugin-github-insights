@@ -39,10 +39,18 @@ const useStyles = makeStyles(theme => ({
     paddingRight: theme.spacing(1),
     '& table': {
       borderCollapse: 'collapse',
-      border: '1px solid #000',
+      border: '1px solid #dfe2e5',
+      color: 'rgb(36, 41, 46)',
     },
     '& th, & td': {
-      border: '1px solid #000',
+      border: '1px solid #dfe2e5',
+      padding: theme.spacing(1),
+    },
+    '& tr': {
+      backgroundColor: '#fff',
+    },
+    '& tr:nth-child(2n)': {
+      backgroundColor: '#f6f8fa',
     },
     '& pre': {
       padding: '16px',
@@ -85,6 +93,7 @@ type ReadMeCardProps = {
   entity: Entity;
   maxHeight?: number;
 };
+
 const getRepositoryDefaultBranch = (url: string) => {
   const repositoryUrl = (new URL(url).searchParams).get('ref');
   return repositoryUrl;
