@@ -19,8 +19,10 @@ import ReactMarkdown from 'react-markdown';
 import Alert from '@material-ui/lab/Alert';
 import { InfoCard, Progress } from '@backstage/core';
 import { Entity } from '@backstage/catalog-model';
+import gfm from 'remark-gfm';
 import { useProjectEntity } from '../../useProjectEntity';
 import { useRequest } from '../../useRequest';
+import { useUrl } from '../../useUrl';
 
 const useStyles = makeStyles(theme => ({
   infoCard: {
@@ -35,6 +37,21 @@ const useStyles = makeStyles(theme => ({
   readMe: {
     overflowY: 'auto',
     paddingRight: theme.spacing(1),
+    '& table': {
+      borderCollapse: 'collapse',
+      border: '1px solid #dfe2e5',
+      color: 'rgb(36, 41, 46)',
+    },
+    '& th, & td': {
+      border: '1px solid #dfe2e5',
+      padding: theme.spacing(1),
+    },
+    '& tr': {
+      backgroundColor: '#fff',
+    },
+    '& tr:nth-child(2n)': {
+      backgroundColor: '#f6f8fa',
+    },
     '& pre': {
       padding: '16px',
       overflow: 'auto',
@@ -43,6 +60,9 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: '#f6f8fa',
       borderRadius: '6px',
       color: 'rgba(0, 0, 0, 0.87)',
+    },
+    '& a': {
+      color: '#2E77D0',
     },
     '& img': {
       maxWidth: '100%',
@@ -69,10 +89,16 @@ type ReadMeCardProps = {
   maxHeight?: number;
 };
 
+const getRepositoryDefaultBranch = (url: string) => {
+  const repositoryUrl = (new URL(url).searchParams).get('ref');
+  return repositoryUrl;
+}
+
 const ReadMeCard: FC<ReadMeCardProps> = ({ entity, maxHeight }) => {
   const { owner, repo } = useProjectEntity(entity);
   const classes = useStyles();
   const { value, loading, error } = useRequest(entity, 'readme');
+  const { hostname } = useUrl();
 
   if (loading) {
     return <Progress />;
@@ -85,11 +111,11 @@ const ReadMeCard: FC<ReadMeCardProps> = ({ entity, maxHeight }) => {
       title="Read me"
       className={classes.infoCard}
       deepLink={{
-        link: `https://github.com/${owner}/${repo}/releases`,
+        link: `//${hostname}/${owner}/${repo}/releases`,
         title: 'Read me',
         onClick: (e) => {
           e.preventDefault();
-          window.open(`https://github.com/${owner}/${repo}/releases`);
+          window.open(`//${hostname}/${owner}/${repo}/releases`);
         }
       }}
     >
@@ -100,7 +126,7 @@ const ReadMeCard: FC<ReadMeCardProps> = ({ entity, maxHeight }) => {
             maxHeight: `${maxHeight}px`,
           }
         }>
-        <ReactMarkdown source={value && atob(value.content)} />
+        <ReactMarkdown plugins={[gfm]} children={atob(value.content).replace(/\(\./gi, `(//${hostname}/${owner}/${repo}/raw/${getRepositoryDefaultBranch(value.url)}`)} />
       </div>
 
     </InfoCard>

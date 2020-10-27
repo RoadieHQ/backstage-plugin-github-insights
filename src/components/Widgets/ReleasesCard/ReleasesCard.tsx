@@ -21,6 +21,7 @@ import { InfoCard, Progress } from '@backstage/core';
 import { Entity } from '@backstage/catalog-model';
 import { useProjectEntity } from '../../useProjectEntity';
 import { useRequest } from '../../useRequest';
+import { useUrl } from '../../useUrl';
 
 const useStyles = makeStyles(theme => ({
   infoCard: {
@@ -46,6 +47,7 @@ const ReleasesCard: FC<ReleaseCardProps> = ({ entity }) => {
   const { owner, repo } = useProjectEntity(entity);
   const classes = useStyles();
   const { value, loading, error } = useRequest(entity, 'releases', 0, 5);
+  const { hostname } = useUrl();
 
   if (loading) {
     return <Progress />;
@@ -57,11 +59,11 @@ const ReleasesCard: FC<ReleaseCardProps> = ({ entity }) => {
     <InfoCard
       title="Releases"
       deepLink={{
-        link: `https://github.com/${owner}/${repo}/releases`,
+        link: `//${hostname}/${owner}/${repo}/releases`,
         title: 'Releases',
         onClick: (e) => {
           e.preventDefault();
-          window.open(`https://github.com/${owner}/${repo}/releases`);
+          window.open(`//${hostname}/${owner}/${repo}/releases`);
         }
       }}
       className={classes.infoCard}

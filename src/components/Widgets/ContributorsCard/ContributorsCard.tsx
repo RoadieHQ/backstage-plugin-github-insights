@@ -19,8 +19,9 @@ import Alert from '@material-ui/lab/Alert';
 import { InfoCard, Progress } from '@backstage/core';
 import { Entity } from '@backstage/catalog-model';
 import { useProjectEntity } from '../../useProjectEntity';
-import { useRequest } from '../../useRequest';
 import ContributorsList from './components/ContributorsList';
+import { useRequest } from '../../useRequest';
+import { useUrl } from '../../useUrl';
 
 const useStyles = makeStyles(theme => ({
   infoCard: {
@@ -39,6 +40,7 @@ const ContributorsCard: FC<ContributorsCardProps> = ({ entity }) => {
   const { owner, repo } = useProjectEntity(entity);
   const classes = useStyles();
   const { value, loading, error } = useRequest(entity, 'contributors', 10);
+  const { hostname } = useUrl();
 
   if (loading) {
     return <Progress />;
@@ -50,11 +52,11 @@ const ContributorsCard: FC<ContributorsCardProps> = ({ entity }) => {
     <InfoCard
       title="Contributors"
       deepLink={{
-        link: `https://github.com/${owner}/${repo}/graphs/contributors`,
+        link: `//${hostname}/${owner}/${repo}/graphs/contributors`,
         title: 'People',
         onClick: (e) => {
           e.preventDefault();
-          window.open(`https://github.com/${owner}/${repo}/graphs/contributors`);
+          window.open(`//${hostname}/${owner}/${repo}/graphs/contributors`);
         }
       }}
       className={classes.infoCard}

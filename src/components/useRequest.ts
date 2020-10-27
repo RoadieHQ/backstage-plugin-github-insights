@@ -16,43 +16,41 @@
 import { useAsync } from 'react-use';
 import { Octokit } from '@octokit/rest';
 import { Entity } from '@backstage/catalog-model';
-import { useApi, githubAuthApiRef, configApiRef } from '@backstage/core';
+import { useApi, githubAuthApiRef } from '@backstage/core';
 import { useProjectEntity } from './useProjectEntity';
+import { useUrl } from './useUrl';
 
  export const useRequest = (
-     entity: Entity,
-     requestName: string,
-     perPage: number = 0,
-     maxResults: number = 0,
-     showTotal: boolean = false
+  entity: Entity,
+  requestName: string,
+  perPage: number = 0,
+  maxResults: number = 0,
+  showTotal: boolean = false
 ) => {
-    const auth = useApi(githubAuthApiRef);
-    const config = useApi(configApiRef);
-    const providerConfigs = config.getOptionalConfigArray('integrations.github') ?? [];
-    const targetProviderConfig = providerConfigs[0];
-    const baseUrl = targetProviderConfig?.getOptionalString('apiBaseUrl');
-    
-    const { owner, repo } = useProjectEntity(entity);
-    const { value, loading, error } = useAsync(async (): Promise<
-    any
-  > => {
-    const token = await auth.getAccessToken(['repo']);
-    const octokit = new Octokit({auth: token});
-    const response = await octokit.request(`GET /repos/{owner}/{repo}/${requestName}`, {
-      ...(baseUrl && {baseUrl}),
-      owner,
-      repo,
-      ...(perPage && {per_page: perPage}),
-    });
-    const data = await response.data;
-    if(showTotal) {
-        return {
-            data,
-            total: Object.values(data as number).reduce((a, b) => a + b),
-        }
+  const auth = useApi(githubAuthApiRef);
+  const { baseUrl } = useUrl();
+  const { owner, repo } = useProjectEntity(entity);
+  const { value, loading, error } = useAsync(async (): Promise<any> => {
+  const token = await auth.getAccessToken(['repo']);
+  const octokit = new Octokit({auth: token});
+
+  const response = await octokit.request(`GET /repos/{owner}/{repo}/${requestName}`, {
+    baseUrl,
+    owner,
+    repo,
+    ...(perPage && {per_page: perPage}),
+  });
+
+  const data = response.data;
+
+  if(showTotal) {
+    return {
+      data,
+      total: Object.values(data as number).reduce((a, b) => a + b),
     }
-    return maxResults ? data.slice(0, maxResults) : data;
-  }, []);
+  }
+  return maxResults ? data.slice(0, maxResults) : data;
+}, []);
 
   return {
     value, loading, error

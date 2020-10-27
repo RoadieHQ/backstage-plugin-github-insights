@@ -28,6 +28,7 @@ import { Progress } from '@backstage/core';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import { useAsync } from 'react-use';
 import { ContributorData } from '../../types';
+import { useUrl } from '../../../../useUrl';
 
 const useStyles = makeStyles(theme => ({
   contributorsTooltipContainer: {
@@ -42,9 +43,11 @@ const ContributorTooltipContent: FC<ContributorTooltipContentProps> = ({
   contributorLogin,
 }) => {
   const classes = useStyles();
-  const { value, loading } = useAsync(async (): Promise<ContributorData> => {
+  const { baseUrl, hostname } = useUrl();
+
+  const { value, loading, error } = useAsync(async (): Promise<ContributorData> => {
     const response = await fetch(
-      `https://api.github.com/users/${contributorLogin}`,
+      `${baseUrl}/users/${contributorLogin}`,
     );
     const data = await response.json();
     return data;
@@ -52,23 +55,23 @@ const ContributorTooltipContent: FC<ContributorTooltipContentProps> = ({
 
   if (loading) {
     return <Progress />;
-  } else if (!value?.login) {
+  } else if (error) {
     return <Alert severity="error">Fetching failed!</Alert>;
   }
-  return (
+  return value ? (
     <Grid container className={classes.contributorsTooltipContainer}>
       <Grid item xs={12} sm={2}>
         <Avatar
           key={value.login}
           alt={value.login}
-          src={`http://github.com/${value.login}.png`}
+          src={`//${hostname}/${value.login}.png`}
         />
       </Grid>
       <Grid item xs={12} sm={10}>
         <Grid item xs={12}>
           <Typography variant="h6">
             <Link
-              href={`https://github.com/${value.login}`}
+              href={`//${hostname}/${value.login}`}
               color="inherit"
               target="_blank"
               rel="noopener noreferrer"
@@ -97,7 +100,7 @@ const ContributorTooltipContent: FC<ContributorTooltipContentProps> = ({
         )}
       </Grid>
     </Grid>
-  );
+  ) : null;
 };
 
 export default ContributorTooltipContent;
