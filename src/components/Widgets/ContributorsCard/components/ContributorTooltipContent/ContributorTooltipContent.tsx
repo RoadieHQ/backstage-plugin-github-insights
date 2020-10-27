@@ -45,7 +45,7 @@ const ContributorTooltipContent: FC<ContributorTooltipContentProps> = ({
   const classes = useStyles();
   const { baseUrl, hostname } = useUrl();
 
-  const { value, loading, error } = useAsync(async (): Promise<ContributorData> => {
+  const { value, loading } = useAsync(async (): Promise<ContributorData> => {
     const response = await fetch(
       `${baseUrl}/users/${contributorLogin}`,
     );
@@ -55,10 +55,10 @@ const ContributorTooltipContent: FC<ContributorTooltipContentProps> = ({
 
   if (loading) {
     return <Progress />;
-  } else if (error) {
+  } else if (!value?.login) {
     return <Alert severity="error">Fetching failed!</Alert>;
   }
-  return value ? (
+  return (
     <Grid container className={classes.contributorsTooltipContainer}>
       <Grid item xs={12} sm={2}>
         <Avatar
@@ -100,7 +100,7 @@ const ContributorTooltipContent: FC<ContributorTooltipContentProps> = ({
         )}
       </Grid>
     </Grid>
-  ) : null;
+  );
 };
 
 export default ContributorTooltipContent;
