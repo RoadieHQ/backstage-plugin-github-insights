@@ -17,11 +17,10 @@ import React, { FC } from 'react';
 import { Link, List, ListItem, makeStyles } from '@material-ui/core';
 import LocalOfferOutlinedIcon from '@material-ui/icons/LocalOfferOutlined';
 import Alert from '@material-ui/lab/Alert';
-import { InfoCard, Progress, useApi, githubAuthApiRef } from '@backstage/core';
+import { InfoCard, Progress } from '@backstage/core';
 import { Entity } from '@backstage/catalog-model';
-import { useAsync } from 'react-use';
-import { Octokit } from '@octokit/rest';
 import { useProjectEntity } from '../../useProjectEntity';
+import { useRequest } from '../../useRequest';
 
 const useStyles = makeStyles(theme => ({
   infoCard: {
@@ -39,24 +38,14 @@ type Release = {
   prerelease: boolean;
 };
 
-type LanguageCardProps = {
+type ReleaseCardProps = {
   entity: Entity;
 };
 
-const ReleasesCard: FC<LanguageCardProps> = ({ entity }) => {
+const ReleasesCard: FC<ReleaseCardProps> = ({ entity }) => {
   const { owner, repo } = useProjectEntity(entity);
-  const auth = useApi(githubAuthApiRef);
   const classes = useStyles();
-  const { value, loading, error } = useAsync(async (): Promise<Release[]|null> => {
-    const token = await auth.getAccessToken(['repo']);
-    const octokit = new Octokit({auth: token});
-    const response = await octokit.request('GET /repos/{owner}/{repo}/releases', {
-      owner,
-      repo,
-    });
-    const data = await response.data;
-    return data.slice(0, 5);
-  }, []);
+  const { value, loading, error } = useRequest(entity, 'releases', 0, 5);
 
   if (loading) {
     return <Progress />;
@@ -78,7 +67,7 @@ const ReleasesCard: FC<LanguageCardProps> = ({ entity }) => {
       className={classes.infoCard}
     >
       <List>
-        {value.map(release => (
+        {value.map((release: Release) => (
           <ListItem key={release.id}>
             <Link href={release.html_url} color="inherit" target="_blank" rel="noopener noreferrer">
               <LocalOfferOutlinedIcon fontSize="inherit" /> {release.tag_name}

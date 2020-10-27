@@ -17,11 +17,10 @@ import React, { FC } from 'react';
 import { makeStyles } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
 import Alert from '@material-ui/lab/Alert';
-import { InfoCard, Progress, useApi, githubAuthApiRef} from '@backstage/core';
+import { InfoCard, Progress } from '@backstage/core';
 import { Entity } from '@backstage/catalog-model';
-import { Octokit } from '@octokit/rest';
-import { useAsync } from 'react-use';
 import { useProjectEntity } from '../../useProjectEntity';
+import { useRequest } from '../../useRequest';
 
 const useStyles = makeStyles(theme => ({
   infoCard: {
@@ -65,10 +64,6 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-type ReadMe = {
-  content: string;
-};
-
 type ReadMeCardProps = {
   entity: Entity;
   maxHeight?: number;
@@ -76,18 +71,8 @@ type ReadMeCardProps = {
 
 const ReadMeCard: FC<ReadMeCardProps> = ({ entity, maxHeight }) => {
   const { owner, repo } = useProjectEntity(entity);
-  const auth = useApi(githubAuthApiRef);
   const classes = useStyles();
-  const { value, loading, error } = useAsync(async (): Promise<ReadMe> => {
-    const token = await auth.getAccessToken(['repo']);
-    const octokit = new Octokit({auth: token});
-    const response = await octokit.request('GET /repos/{owner}/{repo}/readme', {
-      owner,
-      repo,
-    });
-    const data = await response.data;
-    return data;
-  }, []);
+  const { value, loading, error } = useRequest(entity, 'readme');
 
   if (loading) {
     return <Progress />;

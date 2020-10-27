@@ -16,12 +16,10 @@
 import React, { FC } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Alert from '@material-ui/lab/Alert';
-import { InfoCard, Progress, useApi, githubAuthApiRef } from '@backstage/core';
+import { InfoCard, Progress } from '@backstage/core';
 import { Entity } from '@backstage/catalog-model';
-import { useAsync } from 'react-use';
-import { Octokit } from '@octokit/rest';
-import { ContributorData } from './types';
 import { useProjectEntity } from '../../useProjectEntity';
+import { useRequest } from '../../useRequest';
 import ContributorsList from './components/ContributorsList';
 
 const useStyles = makeStyles(theme => ({
@@ -39,21 +37,8 @@ type ContributorsCardProps = {
 
 const ContributorsCard: FC<ContributorsCardProps> = ({ entity }) => {
   const { owner, repo } = useProjectEntity(entity);
-  const auth = useApi(githubAuthApiRef);
   const classes = useStyles();
-  const { value, loading, error } = useAsync(async (): Promise<
-    ContributorData[]
-  > => {
-    const token = await auth.getAccessToken(['repo']);
-    const octokit = new Octokit({auth: token});
-    const response = await octokit.request('GET /repos/{owner}/{repo}/contributors', {
-      owner,
-      repo,
-      per_page: 10,
-    });
-    const data = await response.data;
-    return data;
-  }, []);
+  const { value, loading, error } = useRequest(entity, 'contributors', 10);
 
   if (loading) {
     return <Progress />;
