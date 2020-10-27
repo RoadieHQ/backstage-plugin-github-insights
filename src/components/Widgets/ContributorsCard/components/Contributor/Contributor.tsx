@@ -17,6 +17,7 @@ import React, { FC } from 'react';
 import { Avatar, Tooltip, withStyles } from '@material-ui/core';
 import ContributorTooltipContent from '../ContributorTooltipContent';
 import { ContributorData } from '../../types';
+import { useUrl } from '../../../../useUrl';
 
 type ContributorProps = {
   contributor: ContributorData;
@@ -32,6 +33,7 @@ const LightTooltip = withStyles({
 })(Tooltip);
 
 const Contributor: FC<ContributorProps> = ({ contributor }) => {
+  const { hostname } = useUrl();
   return (
     <LightTooltip
       title={<ContributorTooltipContent contributorLogin={contributor.login} />}
@@ -40,7 +42,7 @@ const Contributor: FC<ContributorProps> = ({ contributor }) => {
       <Avatar
         key={contributor.login}
         alt={contributor.login}
-        src={`http://github.com/${contributor.login}.png`}
+        src={`//${hostname}/${contributor.login}.png`}
       />
     </LightTooltip>
   );
