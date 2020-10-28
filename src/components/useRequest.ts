@@ -47,7 +47,7 @@ import { useUrl } from './useUrl';
       if(Object.values(data).length === 0) return null;
       return {
         data,
-        total: Object.values(data as number).reduce((a, b) => a + b),
+        total: Object.values(data as Record<string, number>).reduce((a, b) => a + b),
       }
     }
     return maxResults ? data.slice(0, maxResults) : data;
