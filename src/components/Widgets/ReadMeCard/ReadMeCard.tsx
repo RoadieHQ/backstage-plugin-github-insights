@@ -99,7 +99,7 @@ const ReadMeCard: FC<ReadMeCardProps> = ({ entity, maxHeight }) => {
   const classes = useStyles();
   const { value, loading, error } = useRequest(entity, 'readme');
   const { hostname } = useUrl();
-
+  
   if (loading) {
     return <Progress />;
   } else if (error) {
@@ -111,11 +111,11 @@ const ReadMeCard: FC<ReadMeCardProps> = ({ entity, maxHeight }) => {
       title="Read me"
       className={classes.infoCard}
       deepLink={{
-        link: `//${hostname}/${owner}/${repo}/releases`,
+        link: `//${hostname}/${owner}/${repo}/blob/${getRepositoryDefaultBranch(value.url)}/README.md`,
         title: 'Read me',
         onClick: (e) => {
           e.preventDefault();
-          window.open(`//${hostname}/${owner}/${repo}/releases`);
+          window.open(`//${hostname}/${owner}/${repo}/blob/${getRepositoryDefaultBranch(value.url)}/README.md`);
         }
       }}
     >
