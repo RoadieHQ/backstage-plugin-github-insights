@@ -31,26 +31,27 @@ import { useUrl } from './useUrl';
   const { baseUrl } = useUrl();
   const { owner, repo } = useProjectEntity(entity);
   const { value, loading, error } = useAsync(async (): Promise<any> => {
-  const token = await auth.getAccessToken(['repo']);
-  const octokit = new Octokit({auth: token});
+    const token = await auth.getAccessToken(['repo']);
+    const octokit = new Octokit({auth: token});
 
-  const response = await octokit.request(`GET /repos/{owner}/{repo}/${requestName}`, {
-    baseUrl,
-    owner,
-    repo,
-    ...(perPage && {per_page: perPage}),
-  });
+    const response = await octokit.request(`GET /repos/{owner}/{repo}/${requestName}`, {
+      baseUrl,
+      owner,
+      repo,
+      ...(perPage && {per_page: perPage}),
+    });
 
-  const data = response.data;
+    const data = response.data;
 
-  if(showTotal) {
-    return {
-      data,
-      total: Object.values(data as number).reduce((a, b) => a + b),
+    if(showTotal) {
+      if(Object.values(data).length === 0) return null;
+      return {
+        data,
+        total: Object.values(data as number).reduce((a, b) => a + b),
+      }
     }
-  }
-  return maxResults ? data.slice(0, maxResults) : data;
-}, []);
+    return maxResults ? data.slice(0, maxResults) : data;
+  }, []);
 
   return {
     value, loading, error
