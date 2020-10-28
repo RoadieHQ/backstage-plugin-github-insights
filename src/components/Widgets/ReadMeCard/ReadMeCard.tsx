@@ -99,7 +99,7 @@ const ReadMeCard: FC<ReadMeCardProps> = ({ entity, maxHeight }) => {
   const classes = useStyles();
   const { value, loading, error } = useRequest(entity, 'readme');
   const { hostname } = useUrl();
-  
+
   if (loading) {
     return <Progress />;
   } else if (error) {
