@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
   },
   label: {
     color: 'inherit',
-  }
+  },
 }));
 
 type Language = {
@@ -69,46 +69,53 @@ const LanguagesCard: FC<LanguageCardProps> = ({ entity }) => {
   if (loading) {
     return <Progress />;
   } else if (error) {
-    return <Alert severity="error" className={classes.infoCard}>{error.message}</Alert>;
+    return (
+      <Alert severity="error" className={classes.infoCard}>
+        {error.message}
+      </Alert>
+    );
   }
   return value && owner && repo ? (
     <InfoCard title="Languages" className={classes.infoCard}>
       <div className={classes.barContainer}>
-        {
-          Object.entries(value.data as Language).map((language, index: number) => {
-            barWidth = barWidth + ((language[1] / value.total) * 100);
+        {Object.entries(value.data as Language).map(
+          (language, index: number) => {
+            barWidth = barWidth + (language[1] / value.total) * 100;
             return (
-              <Tooltip title={ language[0] } placement="bottom-end" key={language[0]}>
+              <Tooltip
+                title={language[0]}
+                placement="bottom-end"
+                key={language[0]}
+              >
                 <div
                   className={classes.bar}
-                  key={ language[0] }
-                  style={
-                    {
-                      marginTop: index === 0 ? '0' : `-16px`,
-                      zIndex: Object.keys(value.data).length - index,
-                      backgroundColor: colors[(language[0])]?.color || '#333',
-                      width: `${barWidth}%`,
-                    }
-                  }
+                  key={language[0]}
+                  style={{
+                    marginTop: index === 0 ? '0' : `-16px`,
+                    zIndex: Object.keys(value.data).length - index,
+                    backgroundColor: colors[language[0]]?.color || '#333',
+                    width: `${barWidth}%`,
+                  }}
                 />
               </Tooltip>
             );
-          })
-        }
+          },
+        )}
       </div>
       {Object.entries(value.data as Language).map(language => (
         <Chip
-        classes={{
-          label: classes.label
-        }}
+          classes={{
+            label: classes.label,
+          }}
           label={
             <>
               <span
                 className={classes.languageDot}
-                style={ {
-                  backgroundColor: colors[(language[0])]?.color || '#333',
-                }} /> 
-                {language[0]} - {((language[1] / value.total) * 100).toFixed(2)}%
+                style={{
+                  backgroundColor: colors[language[0]]?.color || '#333',
+                }}
+              />
+              {language[0]} - {((language[1] / value.total) * 100).toFixed(2)}%
             </>
           }
           variant="outlined"

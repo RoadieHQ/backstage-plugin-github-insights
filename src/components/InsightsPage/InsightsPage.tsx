@@ -15,14 +15,14 @@
  */
 import React, { FC } from 'react';
 import { Grid } from '@material-ui/core';
-import {
-  Page,
-  Content,
-  ContentHeader,
-  SupportButton,
-} from '@backstage/core';
+import { Page, Content, ContentHeader, SupportButton } from '@backstage/core';
 import { Entity } from '@backstage/catalog-model';
-import { ContributorsCard, ReadMeCard, LanguagesCard, ReleasesCard } from '../Widgets';
+import {
+  ContributorsCard,
+  ReadMeCard,
+  LanguagesCard,
+  ReleasesCard,
+} from '../Widgets';
 
 type InsightsPageProps = {
   entity: Entity;

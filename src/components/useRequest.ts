@@ -20,40 +20,68 @@ import { useApi, githubAuthApiRef } from '@backstage/core';
 import { useProjectEntity } from './useProjectEntity';
 import { useUrl } from './useUrl';
 
- export const useRequest = (
+export const useRequest = (
   entity: Entity,
   requestName: string,
   perPage: number = 0,
   maxResults: number = 0,
-  showTotal: boolean = false
+  showTotal: boolean = false,
 ) => {
   const auth = useApi(githubAuthApiRef);
   const { baseUrl } = useUrl();
   const { owner, repo } = useProjectEntity(entity);
   const { value, loading, error } = useAsync(async (): Promise<any> => {
     const token = await auth.getAccessToken(['repo']);
-    const octokit = new Octokit({auth: token});
+    const octokit = new Octokit({ auth: token });
 
-    const response = await octokit.request(`GET /repos/{owner}/{repo}/${requestName}`, {
-      baseUrl,
-      owner,
-      repo,
-      ...(perPage && {per_page: perPage}),
-    });
+    const response = await octokit.request(
+      `GET /repos/{owner}/{repo}/${requestName}`,
+      {
+        baseUrl,
+        owner,
+        repo,
+        ...(perPage && { per_page: perPage }),
+      },
+    );
 
     const data = response.data;
 
-    if(showTotal) {
-      if(Object.values(data).length === 0) return null;
+    if (showTotal) {
+      if (Object.values(data).length === 0) return null;
       return {
         data,
-        total: Object.values(data as Record<string, number>).reduce((a, b) => a + b),
-      }
+        total: Object.values(data as Record<string, number>).reduce(
+          (a, b) => a + b,
+        ),
+      };
     }
     return maxResults ? data.slice(0, maxResults) : data;
   }, []);
 
   return {
-    value, loading, error
-  }
-}
+    value,
+    loading,
+    error,
+  };
+};
+
+export const useAvatar = (username: string) => {
+  const auth = useApi(githubAuthApiRef);
+  const { baseUrl } = useUrl();
+
+  const { value, loading, error } = useAsync(async (): Promise<any> => {
+    const token = await auth.getAccessToken(['repo']);
+    const octokit = new Octokit({ auth: token });
+
+    const response = await octokit.request(`GET /user/${username}`, {
+      baseUrl,
+    });
+    return response.data;
+  }, []);
+
+  return {
+    avatar: value.avatar_url,
+    loading,
+    error,
+  };
+};
