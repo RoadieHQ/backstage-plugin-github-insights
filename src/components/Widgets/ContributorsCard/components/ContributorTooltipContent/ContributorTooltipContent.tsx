@@ -26,9 +26,8 @@ import {
 import Alert from '@material-ui/lab/Alert';
 import { Progress } from '@backstage/core';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
-import { useAsync } from 'react-use';
-import { ContributorData } from '../../types';
 import { useUrl } from '../../../../useUrl';
+import { useContributor } from '../../../../useContributor';
 
 const useStyles = makeStyles(theme => ({
   contributorsTooltipContainer: {
@@ -43,58 +42,51 @@ const ContributorTooltipContent: FC<ContributorTooltipContentProps> = ({
   contributorLogin,
 }) => {
   const classes = useStyles();
-  const { baseUrl, hostname } = useUrl();
-
-  const { value, loading } = useAsync(async (): Promise<ContributorData> => {
-    const response = await fetch(
-      `${baseUrl}/users/${contributorLogin}`,
-    );
-    const data = await response.json();
-    return data;
-  }, []);
+  const { hostname } = useUrl();
+  const { contributor, loading } = useContributor(contributorLogin);
 
   if (loading) {
     return <Progress />;
-  } else if (!value?.login) {
+  } else if (!contributor?.login) {
     return <Alert severity="error">Fetching failed!</Alert>;
   }
   return (
     <Grid container className={classes.contributorsTooltipContainer}>
       <Grid item xs={12} sm={2}>
         <Avatar
-          key={value.login}
-          alt={value.login}
-          src={`//${hostname}/${value.login}.png`}
+          key={contributor.login}
+          alt={contributor.login}
+          src={`//${hostname}/${contributor.login}.png`}
         />
       </Grid>
       <Grid item xs={12} sm={10}>
         <Grid item xs={12}>
           <Typography variant="h6">
             <Link
-              href={`//${hostname}/${value.login}`}
+              href={`//${hostname}/${contributor.login}`}
               color="inherit"
               target="_blank"
               rel="noopener noreferrer"
             >
-              {value.name}
+              {contributor.name}
             </Link>
             <Box component="span" ml={2}>
-              <Typography variant="caption">{value.login}</Typography>
+              <Typography variant="caption">{contributor.login}</Typography>
             </Box>
           </Typography>
         </Grid>
-        {value.bio && (
+        {contributor.bio && (
           <Grid item xs={12}>
-            <Typography variant="subtitle2">{value.bio}</Typography>
+            <Typography variant="subtitle2">{contributor.bio}</Typography>
           </Grid>
         )}
-        {value.location && (
+        {contributor.location && (
           <Grid item xs={12}>
             <Box my={2}>
               <Divider />
             </Box>
             <Typography variant="caption">
-              <LocationOnIcon fontSize="inherit" /> {value.location}
+              <LocationOnIcon fontSize="inherit" /> {contributor.location}
             </Typography>
           </Grid>
         )}
