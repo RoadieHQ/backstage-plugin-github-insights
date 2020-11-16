@@ -35,36 +35,6 @@ const useStyles = makeStyles(theme => ({
   readMe: {
     overflowY: 'auto',
     paddingRight: theme.spacing(1),
-    '& table': {
-      borderCollapse: 'collapse',
-      border: '1px solid #dfe2e5',
-      color: 'rgb(36, 41, 46)',
-    },
-    '& th, & td': {
-      border: '1px solid #dfe2e5',
-      padding: theme.spacing(1),
-    },
-    '& tr': {
-      backgroundColor: '#fff',
-    },
-    '& tr:nth-child(2n)': {
-      backgroundColor: '#f6f8fa',
-    },
-    '& pre': {
-      padding: '16px',
-      overflow: 'auto',
-      fontSize: '85%',
-      lineHeight: 1.45,
-      backgroundColor: '#f6f8fa',
-      borderRadius: '6px',
-      color: 'rgba(0, 0, 0, 0.87)',
-    },
-    '& a': {
-      color: '#2E77D0',
-    },
-    '& img': {
-      maxWidth: '100%',
-    },
     '&::-webkit-scrollbar-track': {
       backgroundColor: '#F5F5F5',
       borderRadius: '5px',
