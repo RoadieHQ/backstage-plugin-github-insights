@@ -15,11 +15,9 @@
  */
 import React, { FC } from 'react';
 import { makeStyles } from '@material-ui/core';
-import ReactMarkdown from 'react-markdown';
 import Alert from '@material-ui/lab/Alert';
-import { InfoCard, Progress } from '@backstage/core';
+import { InfoCard, Progress, MarkdownContent } from '@backstage/core';
 import { Entity } from '@backstage/catalog-model';
-import gfm from 'remark-gfm';
 import { useProjectEntity } from '../../useProjectEntity';
 import { useRequest } from '../../useRequest';
 import { useUrl } from '../../useUrl';
@@ -126,7 +124,7 @@ const ReadMeCard: FC<ReadMeCardProps> = ({ entity, maxHeight }) => {
             maxHeight: `${maxHeight}px`,
           }
         }>
-        <ReactMarkdown plugins={[gfm]} children={atob(value.content).replace(/\(\./gi, `(//${hostname}/${owner}/${repo}/raw/${getRepositoryDefaultBranch(value.url)}`)} />
+        <MarkdownContent content={atob(value.content).replace(/\(\./gi, `(//${hostname}/${owner}/${repo}/raw/${getRepositoryDefaultBranch(value.url)}`)} />
       </div>
 
     </InfoCard>
