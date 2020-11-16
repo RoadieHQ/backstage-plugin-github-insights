@@ -16,7 +16,7 @@
 import React, { FC } from 'react';
 import { Grid } from '@material-ui/core';
 import Contributor from '../Contributor';
-import { ContributorData } from '../../types';
+import { ContributorData } from '../../../../types';
 
 type ContributorsListProps = {
   contributors: ContributorData[];

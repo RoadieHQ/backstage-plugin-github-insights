@@ -28,8 +28,8 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(3),
     '& + .MuiAlert-root': {
       marginTop: theme.spacing(3),
-    }
-  }
+    },
+  },
 }));
 
 type Release = {
@@ -52,7 +52,11 @@ const ReleasesCard: FC<ReleaseCardProps> = ({ entity }) => {
   if (loading) {
     return <Progress />;
   } else if (error) {
-    return <Alert severity="error" className={classes.infoCard}>{error.message}</Alert>;
+    return (
+      <Alert severity="error" className={classes.infoCard}>
+        {error.message}
+      </Alert>
+    );
   }
 
   return value?.length && owner && repo ? (
@@ -61,17 +65,22 @@ const ReleasesCard: FC<ReleaseCardProps> = ({ entity }) => {
       deepLink={{
         link: `//${hostname}/${owner}/${repo}/releases`,
         title: 'Releases',
-        onClick: (e) => {
+        onClick: e => {
           e.preventDefault();
           window.open(`//${hostname}/${owner}/${repo}/releases`);
-        }
+        },
       }}
       className={classes.infoCard}
     >
       <List>
         {value.map((release: Release) => (
           <ListItem key={release.id}>
-            <Link href={release.html_url} color="inherit" target="_blank" rel="noopener noreferrer">
+            <Link
+              href={release.html_url}
+              color="inherit"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <LocalOfferOutlinedIcon fontSize="inherit" /> {release.tag_name}
               {/* by {release.author.login} */}
               {/* {release.prerelease ? <Chip color="primary" size="small" label="Pre-release" /> : <Chip color="secondary" size="small" />} */}

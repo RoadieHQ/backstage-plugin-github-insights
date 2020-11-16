@@ -80,7 +80,7 @@ const useStyles = makeStyles(theme => ({
       border: '1px solid #555555',
       backgroundColor: '#555',
       borderRadius: '4px',
-    }
+    },
   },
 }));
 
@@ -90,9 +90,9 @@ type ReadMeCardProps = {
 };
 
 const getRepositoryDefaultBranch = (url: string) => {
-  const repositoryUrl = (new URL(url).searchParams).get('ref');
+  const repositoryUrl = new URL(url).searchParams.get('ref');
   return repositoryUrl;
-}
+};
 
 const ReadMeCard: FC<ReadMeCardProps> = ({ entity, maxHeight }) => {
   const { owner, repo } = useProjectEntity(entity);
@@ -103,7 +103,11 @@ const ReadMeCard: FC<ReadMeCardProps> = ({ entity, maxHeight }) => {
   if (loading) {
     return <Progress />;
   } else if (error) {
-    return <Alert severity="error" className={classes.infoCard}>{error.message}</Alert>;
+    return (
+      <Alert severity="error" className={classes.infoCard}>
+        {error.message}
+      </Alert>
+    );
   }
 
   return value?.content && owner && repo ? (
@@ -111,24 +115,36 @@ const ReadMeCard: FC<ReadMeCardProps> = ({ entity, maxHeight }) => {
       title="Read me"
       className={classes.infoCard}
       deepLink={{
-        link: `//${hostname}/${owner}/${repo}/blob/${getRepositoryDefaultBranch(value.url)}/README.md`,
+        link: `//${hostname}/${owner}/${repo}/blob/${getRepositoryDefaultBranch(
+          value.url,
+        )}/README.md`,
         title: 'Read me',
-        onClick: (e) => {
+        onClick: e => {
           e.preventDefault();
-          window.open(`//${hostname}/${owner}/${repo}/blob/${getRepositoryDefaultBranch(value.url)}/README.md`);
-        }
+          window.open(
+            `//${hostname}/${owner}/${repo}/blob/${getRepositoryDefaultBranch(
+              value.url,
+            )}/README.md`,
+          );
+        },
       }}
     >
       <div
         className={classes.readMe}
-        style={
-          {
-            maxHeight: `${maxHeight}px`,
-          }
-        }>
-        <ReactMarkdown plugins={[gfm]} children={atob(value.content).replace(/\(\./gi, `(//${hostname}/${owner}/${repo}/raw/${getRepositoryDefaultBranch(value.url)}`)} />
+        style={{
+          maxHeight: `${maxHeight}px`,
+        }}
+      >
+        <ReactMarkdown
+          plugins={[gfm]}
+          children={atob(value.content).replace(
+            /\(\./gi,
+            `(//${hostname}/${owner}/${repo}/raw/${getRepositoryDefaultBranch(
+              value.url,
+            )}`,
+          )}
+        />
       </div>
-
     </InfoCard>
   ) : null;
 };

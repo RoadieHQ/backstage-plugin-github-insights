@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(3),
     '& + .MuiAlert-root': {
       marginTop: theme.spacing(3),
-    }
+    },
   },
 }));
 
@@ -45,7 +45,11 @@ const ContributorsCard: FC<ContributorsCardProps> = ({ entity }) => {
   if (loading) {
     return <Progress />;
   } else if (error) {
-    return <Alert severity="error" className={classes.infoCard}>{error.message}</Alert>;
+    return (
+      <Alert severity="error" className={classes.infoCard}>
+        {error.message}
+      </Alert>
+    );
   }
 
   return (
@@ -54,10 +58,10 @@ const ContributorsCard: FC<ContributorsCardProps> = ({ entity }) => {
       deepLink={{
         link: `//${hostname}/${owner}/${repo}/graphs/contributors`,
         title: 'People',
-        onClick: (e) => {
+        onClick: e => {
           e.preventDefault();
           window.open(`//${hostname}/${owner}/${repo}/graphs/contributors`);
-        }
+        },
       }}
       className={classes.infoCard}
     >

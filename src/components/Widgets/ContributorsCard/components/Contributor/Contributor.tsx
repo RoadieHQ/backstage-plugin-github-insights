@@ -16,7 +16,7 @@
 import React, { FC } from 'react';
 import { Avatar, Tooltip, withStyles } from '@material-ui/core';
 import ContributorTooltipContent from '../ContributorTooltipContent';
-import { ContributorData } from '../../types';
+import { ContributorData } from '../../../../types';
 import { useUrl } from '../../../../useUrl';
 
 type ContributorProps = {
