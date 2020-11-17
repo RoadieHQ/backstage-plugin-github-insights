@@ -25,7 +25,7 @@ export const useUrl = () => {
     targetProviderConfig?.getOptionalString('apiBaseUrl') ||
     'https://api.github.com';
   const hostname =
-    targetProviderConfig?.getOptionalString('host') || 'github.com';
+    (targetProviderConfig?.getOptionalString('host') || 'github.com').replace(/(^\w+:|^)\/\//, '');
 
   return {
     hostname,
