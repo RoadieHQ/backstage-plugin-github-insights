@@ -3,4 +3,5 @@ export type ContributorData = {
   login: string;
   bio: string;
   location: string;
+  avatar_url: string;
 };

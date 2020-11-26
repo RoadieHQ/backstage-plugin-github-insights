@@ -26,6 +26,7 @@ describe('Contributor component', () => {
           login: 'octocat',
           bio: 'Example bio',
           location: 'Warsaw, Poland',
+          avatar_url: 'https://eu.ui-avatars.com/api/?name=John+Doe'
         }}
       />,
     );
