@@ -50,13 +50,14 @@ const ContributorTooltipContent: FC<ContributorTooltipContentProps> = ({
   } else if (!contributor?.login) {
     return <Alert severity="error">Fetching failed!</Alert>;
   }
+
   return (
     <Grid container className={classes.contributorsTooltipContainer}>
       <Grid item xs={12} sm={2}>
         <Avatar
           key={contributor.login}
           alt={contributor.login}
-          src={`//${hostname}/${contributor.login}.png`}
+          src={contributor.avatar_url}
         />
       </Grid>
       <Grid item xs={12} sm={10}>
