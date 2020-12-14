@@ -13,9 +13,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-export { default as ContributorsCard } from './ContributorsCard';
-export { default as LanguagesCard } from './LanguagesCard';
-export { default as ReadMeCard } from './ReadMeCard';
-export { default as ReleasesCard } from './ReleasesCard';
-export { default as ComplianceCard } from './ComplianceCard';
+export { default } from './ComplianceCard';
