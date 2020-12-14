@@ -18,11 +18,11 @@ import { Link, List, ListItem } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 import { InfoCard, Progress, StructuredMetadataTable } from '@backstage/core';
 import { Entity } from '@backstage/catalog-model';
-import { useProjectEntity } from '../../useProjectEntity';
 import {
   useProtectedBranches,
   useRepoLicence,
 } from '../../../hooks/useComplianceHooks';
+import { useProjectEntity } from '../../../hooks/useProjectEntity';
 
 type ReleaseCardProps = {
   entity: Entity;

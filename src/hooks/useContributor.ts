@@ -17,7 +17,7 @@ import { useAsync } from 'react-use';
 import { Octokit } from '@octokit/rest';
 import { useApi, githubAuthApiRef } from '@backstage/core';
 import { useUrl } from './useUrl';
-import { ContributorData } from './types';
+import { ContributorData } from '../components/types';
 
 export const useContributor = (username: string) => {
   const auth = useApi(githubAuthApiRef);

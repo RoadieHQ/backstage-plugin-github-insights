@@ -26,8 +26,8 @@ import {
 import Alert from '@material-ui/lab/Alert';
 import { Progress } from '@backstage/core';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
-import { useUrl } from '../../../../useUrl';
-import { useContributor } from '../../../../useContributor';
+import { useUrl } from '../../../../../hooks/useUrl';
+import { useContributor } from '../../../../../hooks/useContributor';
 
 const useStyles = makeStyles(theme => ({
   contributorsTooltipContainer: {

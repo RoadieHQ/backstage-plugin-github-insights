@@ -2,7 +2,7 @@ import { Entity } from '@backstage/catalog-model';
 import { useApi, githubAuthApiRef } from '@backstage/core';
 import { Octokit } from '@octokit/rest';
 import { useAsync } from 'react-use';
-import { useProjectEntity } from '../components/useProjectEntity';
+import { useProjectEntity } from './useProjectEntity';
 
 export const useProtectedBranches = (entity: Entity) => {
   const auth = useApi(githubAuthApiRef);
