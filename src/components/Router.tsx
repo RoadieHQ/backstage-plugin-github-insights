@@ -19,7 +19,7 @@ import { Entity } from '@backstage/catalog-model';
 import { Route, Routes } from 'react-router';
 import { rootRouteRef } from '../plugin';
 import InsightsPage from './InsightsPage';
-import { GITHUB_INSIGHTS_ANNOTATION } from './useProjectName';
+import { GITHUB_INSIGHTS_ANNOTATION } from '../hooks/useProjectName';
 import { MissingAnnotationEmptyState } from '@backstage/core';
 
 export const isPluginApplicableToEntity = (entity: Entity) =>

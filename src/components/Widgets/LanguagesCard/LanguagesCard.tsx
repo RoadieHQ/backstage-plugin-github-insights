@@ -18,9 +18,9 @@ import { Chip, makeStyles, Tooltip } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 import { InfoCard, Progress } from '@backstage/core';
 import { Entity } from '@backstage/catalog-model';
-import { useProjectEntity } from '../../useProjectEntity';
-import { useRequest } from '../../useRequest';
+import { useRequest } from '../../../hooks/useRequest';
 import { colors } from './colors';
+import { useProjectEntity } from '../../../hooks/useProjectEntity';
 
 const useStyles = makeStyles(theme => ({
   infoCard: {

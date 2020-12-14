@@ -19,9 +19,9 @@ import LocalOfferOutlinedIcon from '@material-ui/icons/LocalOfferOutlined';
 import Alert from '@material-ui/lab/Alert';
 import { InfoCard, Progress } from '@backstage/core';
 import { Entity } from '@backstage/catalog-model';
-import { useProjectEntity } from '../../useProjectEntity';
-import { useRequest } from '../../useRequest';
-import { useUrl } from '../../useUrl';
+import { useRequest } from '../../../hooks/useRequest';
+import { useUrl } from '../../../hooks/useUrl';
+import { useProjectEntity } from '../../../hooks/useProjectEntity';
 
 const useStyles = makeStyles(theme => ({
   infoCard: {
