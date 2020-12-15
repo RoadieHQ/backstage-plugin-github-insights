@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import React, { FC } from 'react';
-import { Link, List, ListItem } from '@material-ui/core';
+import { Box, Link, List, ListItem } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 import { InfoCard, Progress, StructuredMetadataTable } from '@backstage/core';
 import { Entity } from '@backstage/catalog-model';
@@ -23,6 +23,7 @@ import {
   useRepoLicence,
 } from '../../../hooks/useComplianceHooks';
 import { useProjectEntity } from '../../../hooks/useProjectEntity';
+import WarningIcon from '@material-ui/icons/ErrorOutline';
 
 type ReleaseCardProps = {
   entity: Entity;
@@ -60,27 +61,45 @@ const ComplianceCard: FC<ReleaseCardProps> = ({ entity }) => {
                 ))}
               </List>
             ) : (
-              <Alert severity="error">
-                You have no protected branches in the{' '}
-                {
-                  <Link href={`https:github.com/${owner}/${repo}`}>
-                    {owner}/{repo}
-                  </Link>
-                }{' '}
-                repository
-              </Alert>
+              <Box display="flex" alignItems="center">
+                <WarningIcon
+                  style={{
+                    color: 'orange',
+                    marginRight: '5px',
+                    flexShrink: 0,
+                  }}
+                />
+                <span>
+                  You don't have any protected branches in the{' '}
+                  {
+                    <Link href={`https:github.com/${owner}/${repo}`}>
+                      {owner}/{repo}
+                    </Link>
+                  }{' '}
+                  repository
+                </span>
+              </Box>
             ),
           License:
             license === 'No license file found' ? (
-              <Alert severity="error">
-                No license file found in the{' '}
-                {
-                  <Link href={`https:github.com/${owner}/${repo}`}>
-                    {owner}/{repo}
-                  </Link>
-                }{' '}
-                repository
-              </Alert>
+              <Box display="flex" alignItems="center">
+                <WarningIcon
+                  style={{
+                    color: 'orange',
+                    marginRight: '5px',
+                    flexShrink: 0,
+                  }}
+                />
+                <span>
+                  No license file found in the{' '}
+                  {
+                    <Link href={`https:github.com/${owner}/${repo}`}>
+                      {owner}/{repo}
+                    </Link>
+                  }{' '}
+                  repository
+                </span>
+              </Box>
             ) : (
               license
             ),

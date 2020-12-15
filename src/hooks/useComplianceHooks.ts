@@ -3,19 +3,25 @@ import { useApi, githubAuthApiRef } from '@backstage/core';
 import { Octokit } from '@octokit/rest';
 import { useAsync } from 'react-use';
 import { useProjectEntity } from './useProjectEntity';
+import { useUrl } from './useUrl';
 
 export const useProtectedBranches = (entity: Entity) => {
   const auth = useApi(githubAuthApiRef);
+  const { baseUrl } = useUrl();
   const { value, loading, error } = useAsync(async (): Promise<any> => {
     const token = await auth.getAccessToken(['repo']);
     const { owner, repo } = useProjectEntity(entity);
     const octokit = new Octokit({ auth: token });
 
-    const response = await octokit.repos.listBranches({
-      owner,
-      repo,
-      protected: true,
-    });
+    const response = await octokit.request(
+      'GET /repos/{owner}/{repo}/branches',
+      {
+        baseUrl,
+        owner,
+        repo,
+        protected: true,
+      },
+    );
     return response.data;
   }, []);
 
@@ -28,6 +34,7 @@ export const useProtectedBranches = (entity: Entity) => {
 
 export const useRepoLicence = (entity: Entity) => {
   const auth = useApi(githubAuthApiRef);
+  const { baseUrl } = useUrl();
   const { value, loading, error } = useAsync(async (): Promise<any> => {
     const token = await auth.getAccessToken(['repo']);
     const { owner, repo } = useProjectEntity(entity);
@@ -35,11 +42,15 @@ export const useRepoLicence = (entity: Entity) => {
 
     let license: string = '';
     try {
-      const response = await octokit.repos.getContent({
-        owner,
-        repo,
-        path: 'LICENSE',
-      });
+      const response = await octokit.request(
+        'GET /repos/{owner}/{repo}/contents/{path}',
+        {
+          baseUrl,
+          owner,
+          repo,
+          path: 'LICENSE',
+        },
+      );
       license = atob(response.data.content)
         .split('\n')
         .map(line => line.trim())
