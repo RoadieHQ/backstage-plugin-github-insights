@@ -69,15 +69,7 @@ const ComplianceCard: FC<ReleaseCardProps> = ({ entity }) => {
                     flexShrink: 0,
                   }}
                 />
-                <span>
-                  You don't have any protected branches in the{' '}
-                  {
-                    <Link href={`https:github.com/${owner}/${repo}`}>
-                      {owner}/{repo}
-                    </Link>
-                  }{' '}
-                  repository
-                </span>
+                <span>None</span>
               </Box>
             ),
           License:
@@ -90,15 +82,7 @@ const ComplianceCard: FC<ReleaseCardProps> = ({ entity }) => {
                     flexShrink: 0,
                   }}
                 />
-                <span>
-                  No license file found in the{' '}
-                  {
-                    <Link href={`https:github.com/${owner}/${repo}`}>
-                      {owner}/{repo}
-                    </Link>
-                  }{' '}
-                  repository
-                </span>
+                <span>None</span>
               </Box>
             ) : (
               license
