@@ -13,8 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React, { FC } from 'react';
-import { Box, Link, List, ListItem } from '@material-ui/core';
+import React from 'react';
+import { Box, List, ListItem } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 import { InfoCard, Progress, StructuredMetadataTable } from '@backstage/core';
 import { Entity } from '@backstage/catalog-model';
@@ -25,11 +25,11 @@ import {
 import { useProjectEntity } from '../../../hooks/useProjectEntity';
 import WarningIcon from '@material-ui/icons/ErrorOutline';
 
-type ReleaseCardProps = {
+type Props = {
   entity: Entity;
 };
 
-const ComplianceCard: FC<ReleaseCardProps> = ({ entity }) => {
+const ComplianceCard = ({ entity }: Props) => {
   const { owner, repo } = useProjectEntity(entity);
   const { branches, loading, error } = useProtectedBranches(entity);
   const {

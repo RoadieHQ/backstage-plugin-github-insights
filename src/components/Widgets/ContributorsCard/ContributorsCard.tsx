@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React, { FC } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Alert from '@material-ui/lab/Alert';
 import { InfoCard, Progress } from '@backstage/core';
@@ -32,11 +32,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-type ContributorsCardProps = {
+type Props = {
   entity: Entity;
 };
 
-const ContributorsCard: FC<ContributorsCardProps> = ({ entity }) => {
+const ContributorsCard = ({ entity }: Props) => {
   const { owner, repo } = useProjectEntity(entity);
   const classes = useStyles();
   const { value, loading, error } = useRequest(entity, 'contributors', 10);

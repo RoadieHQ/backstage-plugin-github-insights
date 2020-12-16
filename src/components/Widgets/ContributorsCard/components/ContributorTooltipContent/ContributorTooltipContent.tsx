@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React, { FC } from 'react';
+import React from 'react';
 import {
   makeStyles,
   Avatar,
@@ -35,12 +35,10 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-type ContributorTooltipContentProps = {
+type Props = {
   contributorLogin: string;
 };
-const ContributorTooltipContent: FC<ContributorTooltipContentProps> = ({
-  contributorLogin,
-}) => {
+const ContributorTooltipContent = ({ contributorLogin }: Props) => {
   const classes = useStyles();
   const { hostname } = useUrl();
   const { contributor, loading } = useContributor(contributorLogin);

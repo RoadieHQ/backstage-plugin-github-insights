@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React, { FC } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 import { InfoCard, Progress, MarkdownContent } from '@backstage/core';
@@ -52,7 +52,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-type ReadMeCardProps = {
+type Props = {
   entity: Entity;
   maxHeight?: number;
 };
@@ -62,7 +62,7 @@ const getRepositoryDefaultBranch = (url: string) => {
   return repositoryUrl;
 };
 
-const ReadMeCard: FC<ReadMeCardProps> = ({ entity, maxHeight }) => {
+const ReadMeCard = ({ entity, maxHeight }: Props) => {
   const { owner, repo } = useProjectEntity(entity);
   const classes = useStyles();
   const { value, loading, error } = useRequest(entity, 'readme');

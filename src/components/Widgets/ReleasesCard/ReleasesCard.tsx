@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React, { FC } from 'react';
+import React from 'react';
 import { Link, List, ListItem, makeStyles } from '@material-ui/core';
 import LocalOfferOutlinedIcon from '@material-ui/icons/LocalOfferOutlined';
 import Alert from '@material-ui/lab/Alert';
@@ -39,11 +39,11 @@ type Release = {
   prerelease: boolean;
 };
 
-type ReleaseCardProps = {
+type Props = {
   entity: Entity;
 };
 
-const ReleasesCard: FC<ReleaseCardProps> = ({ entity }) => {
+const ReleasesCard = ({ entity }: Props) => {
   const { owner, repo } = useProjectEntity(entity);
   const classes = useStyles();
   const { value, loading, error } = useRequest(entity, 'releases', 0, 5);

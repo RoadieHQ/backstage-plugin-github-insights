@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React, { FC } from 'react';
+import React from 'react';
 import { Avatar, Tooltip, withStyles } from '@material-ui/core';
 import ContributorTooltipContent from '../ContributorTooltipContent';
 import { ContributorData } from '../../../../types';
 
-type ContributorProps = {
+type Props = {
   contributor: ContributorData;
 };
 
@@ -31,7 +31,7 @@ const LightTooltip = withStyles({
   },
 })(Tooltip);
 
-const Contributor: FC<ContributorProps> = ({ contributor }) => (
+const Contributor = ({ contributor }: Props) => (
   <LightTooltip
     title={<ContributorTooltipContent contributorLogin={contributor.login} />}
     interactive
@@ -43,6 +43,5 @@ const Contributor: FC<ContributorProps> = ({ contributor }) => (
     />
   </LightTooltip>
 );
-
 
 export default Contributor;
