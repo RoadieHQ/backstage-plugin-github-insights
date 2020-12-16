@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React, { FC } from 'react';
+import React from 'react';
 import { Grid } from '@material-ui/core';
 import { Page, Content, ContentHeader, SupportButton } from '@backstage/core';
 import { Entity } from '@backstage/catalog-model';
@@ -24,11 +24,11 @@ import {
   ReleasesCard,
 } from '../Widgets';
 
-type InsightsPageProps = {
+type Props = {
   entity: Entity;
 };
 
-const InsightsPage: FC<InsightsPageProps> = ({ entity }) => {
+const InsightsPage = ({ entity }: Props) => {
   const projectSlug = entity.metadata?.annotations?.['github.com/project-slug'];
 
   return projectSlug ? (

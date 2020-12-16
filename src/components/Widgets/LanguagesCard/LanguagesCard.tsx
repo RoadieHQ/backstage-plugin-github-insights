@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React, { FC } from 'react';
+import React from 'react';
 import { Chip, makeStyles, Tooltip } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 import { InfoCard, Progress } from '@backstage/core';
@@ -56,11 +56,11 @@ type Language = {
   [key: string]: number;
 };
 
-type LanguageCardProps = {
+type Props = {
   entity: Entity;
 };
 
-const LanguagesCard: FC<LanguageCardProps> = ({ entity }) => {
+const LanguagesCard = ({ entity }: Props) => {
   let barWidth = 0;
   const { owner, repo } = useProjectEntity(entity);
   const classes = useStyles();
