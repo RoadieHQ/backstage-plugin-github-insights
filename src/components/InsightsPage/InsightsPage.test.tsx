@@ -18,10 +18,22 @@ import { render } from '@testing-library/react';
 import InsightsPage from './InsightsPage';
 import { ThemeProvider } from '@material-ui/core';
 import { lightTheme } from '@backstage/theme';
+import { ApiProvider, ApiRegistry, GithubAuth, githubAuthApiRef } from '@backstage/core';
+import { renderWithEffects, wrapInTestApp } from '@backstage/test-utils';
+
+const getSession = jest
+      .fn()
+      .mockResolvedValue({ providerInfo: { accessToken: 'access-token' } });
+    
+const apis = ApiRegistry.from([
+  [githubAuthApiRef, new GithubAuth({ getSession } as any)],
+]);
 
 describe('Insights Page', () => {
   it('should render', () => {
     const rendered = render(
+      wrapInTestApp(
+        <ApiProvider apis={apis}>
       <ThemeProvider theme={lightTheme}>
         <InsightsPage
           entity={{
@@ -36,6 +48,8 @@ describe('Insights Page', () => {
           }}
         />
       </ThemeProvider>,
+        </ApiProvider>,
+      ),
     );
     expect(rendered.getByText('GitHub Insights')).toBeInTheDocument();
   });
