@@ -19,7 +19,7 @@ import InsightsPage from './InsightsPage';
 import { ThemeProvider } from '@material-ui/core';
 import { lightTheme } from '@backstage/theme';
 import { ApiProvider, ApiRegistry, GithubAuth, githubAuthApiRef } from '@backstage/core';
-import { renderWithEffects, wrapInTestApp } from '@backstage/test-utils';
+import { wrapInTestApp } from '@backstage/test-utils';
 
 const getSession = jest
       .fn()
