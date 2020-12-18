@@ -926,12 +926,12 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@backstage/catalog-model@^0.3.0":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@backstage/catalog-model/-/catalog-model-0.3.1.tgz#45d08e2f333c9c566b2bf2629fd707fe989bb404"
-  integrity sha512-9XhV7c4rmVW+Yzj2PiwTQ7DsegWGB3C4ELsDRExuEVZONdqNcC02cyJtrt3fT5F31ZS3tHkB9bMUymFOBLqUSA==
+"@backstage/catalog-model@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@backstage/catalog-model/-/catalog-model-0.5.0.tgz#0f09c15470ffb76ac9cd1597d3a06cd7d8d39789"
+  integrity sha512-6umkDpiKRC+e2OBnmXXJTKI92RG2at8q+uY4MaqgWYBf9/O1qNW661xKy17dBFZ721EyDGe7Rr0lKbof+pK6BQ==
   dependencies:
-    "@backstage/config" "^0.1.1"
+    "@backstage/config" "^0.1.2"
     "@types/json-schema" "^7.0.5"
     "@types/yup" "^0.29.8"
     json-schema "^0.2.5"
@@ -944,10 +944,10 @@
   resolved "https://registry.yarnpkg.com/@backstage/cli-common/-/cli-common-0.1.1.tgz#621f95f2e5e4aa7cca6c632c48ccb3c3d444eb8a"
   integrity sha512-JxbSUkJIXQqamgiE38MtlMn2/BdpLaqMwwi429wZfNg8upfONIrN2BW9qMb8G9CkWdI4ssUfIem1HAtDqhdDvQ==
 
-"@backstage/cli@^0.4.0":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@backstage/cli/-/cli-0.4.1.tgz#02f4ce7c9ac0cfa5ed5ff16921a4d9e2476db993"
-  integrity sha512-gC/D5Z1p3fChBDq255kBzk7XOnIJugsAW0s0bygj4MMiImJoIv6tYrAPInYjnDotuYJ4TfWkXFa0kzAi80Op5w==
+"@backstage/cli@^0.4.1":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@backstage/cli/-/cli-0.4.2.tgz#d3dec4348371954b25706286ca2342de434d0173"
+  integrity sha512-H/KZrAnnkdpKXLiymV8O8488To/41MHHbsGGy36zJVvwn9Is4E9jtbXvocl2s1XCSBAWvLhbzw3bwlkL/ALQlA==
   dependencies:
     "@backstage/cli-common" "^0.1.1"
     "@backstage/config" "^0.1.2"
@@ -1053,7 +1053,7 @@
   dependencies:
     lodash "^4.17.15"
 
-"@backstage/core-api@^0.2.1", "@backstage/core-api@^0.2.5":
+"@backstage/core-api@^0.2.5":
   version "0.2.5"
   resolved "https://registry.yarnpkg.com/@backstage/core-api/-/core-api-0.2.5.tgz#4866f2ac76fea7d5963af229c41d7d8205725a5b"
   integrity sha512-0DGFywT3O+xqcirAepk4WsMVwsM1FB6uxxsNll4ix0Kdlpn/KISIZIoXD26IGW9IjP4sJUs0cugQsbHLir1/Hw==
@@ -1069,45 +1069,6 @@
     react "^16.12.0"
     react-router-dom "6.0.0-beta.0"
     react-use "^15.3.3"
-    zen-observable "^0.8.15"
-
-"@backstage/core@^0.3.0":
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/@backstage/core/-/core-0.3.2.tgz#a8209126d5076cf4a8b9bd632fe4e5e2edb62916"
-  integrity sha512-i5d+Wh8js4qEWoAsPY5L7HVSWpumr1OhfF2dUCGYdyW6AMqVJPca6+n6zp1Rg2CO+J9norp44XAVVCbyhtUpig==
-  dependencies:
-    "@backstage/config" "^0.1.1"
-    "@backstage/core-api" "^0.2.1"
-    "@backstage/theme" "^0.2.1"
-    "@material-ui/core" "^4.11.0"
-    "@material-ui/icons" "^4.9.1"
-    "@material-ui/lab" "4.0.0-alpha.45"
-    "@types/dagre" "^0.7.44"
-    "@types/react" "^16.9"
-    "@types/react-sparklines" "^1.7.0"
-    classnames "^2.2.6"
-    clsx "^1.1.0"
-    d3-selection "^2.0.0"
-    d3-shape "^2.0.0"
-    d3-zoom "^2.0.0"
-    dagre "^0.8.5"
-    immer "^7.0.9"
-    lodash "^4.17.15"
-    material-table "^1.69.1"
-    prop-types "^15.7.2"
-    qs "^6.9.4"
-    rc-progress "^3.0.0"
-    react "^16.12.0"
-    react-dom "^16.12.0"
-    react-helmet "6.1.0"
-    react-hook-form "^6.6.0"
-    react-markdown "^5.0.2"
-    react-router "6.0.0-beta.0"
-    react-router-dom "6.0.0-beta.0"
-    react-sparklines "^1.7.0"
-    react-syntax-highlighter "^13.5.1"
-    react-use "^15.3.3"
-    remark-gfm "^1.0.0"
     zen-observable "^0.8.15"
 
 "@backstage/core@^0.4.0":
@@ -2194,15 +2155,10 @@
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
   integrity sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA==
 
-"@types/node@*", "@types/node@>= 8":
+"@types/node@*", "@types/node@>= 8", "@types/node@^14.14.14":
   version "14.14.14"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.14.tgz#f7fd5f3cc8521301119f63910f0fb965c7d761ae"
   integrity sha512-UHnOPWVWV1z+VV8k6L1HhG7UbGBgIdghqF3l9Ny9ApPghbjICXkUJSd/b9gOgQfjM1r+37cipdw/HJ3F6ICEnQ==
-
-"@types/node@^12.0.0":
-  version "12.19.9"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.19.9.tgz#990ad687ad8b26ef6dcc34a4f69c33d40c95b679"
-  integrity sha512-yj0DOaQeUrk3nJ0bd3Y5PeDRJ6W0r+kilosLA+dzF3dola/o9hxhMSg2sFvVcA2UHS5JSOsZp4S0c1OEXc4m1Q==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
