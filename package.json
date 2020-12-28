@@ -45,7 +45,7 @@
     "@testing-library/user-event": "^12.0.7",
     "@types/jest": "^26.0.7",
     "@types/node": "^12.0.0",
-    "msw": "^0.20.5",
+    "msw": "^0.24.3",
     "node-fetch": "^2.6.1",
     "rollup": "^2.33.1",
     "rollup-plugin-dts": "^1.4.13",
