@@ -26,16 +26,7 @@ import { rest } from 'msw';
 import { msw } from '@backstage/test-utils';
 import { setupServer } from 'msw/node';
 import { wrapInTestApp } from '@backstage/test-utils';
-import {
-  branchesResponseMock,
-  contributorsResponseMock,
-  entityMock,
-  languagesResponseMock,
-  licenseResponseMock,
-  readmeResponseMock,
-  releasesResponseMock,
-  runsResponseMock,
-} from '../../../mocks/mocks';
+import { entityMock, languagesResponseMock } from '../../../mocks/mocks';
 import { ThemeProvider } from '@material-ui/core';
 import { lightTheme } from '@backstage/theme';
 import { LanguagesCard } from '..';
@@ -62,32 +53,8 @@ describe('LanguagesCard', () => {
   beforeEach(() => {
     worker.use(
       rest.get(
-        'https://api.github.com/repos/mcalus3/backstage/actions/runs?per_page=4&page=1',
-        (_, res, ctx) => res(ctx.json(runsResponseMock))
-      ),
-      rest.get(
         'https://api.github.com/repos/mcalus3/backstage/languages',
         (_, res, ctx) => res(ctx.json(languagesResponseMock))
-      ),
-      rest.get(
-        'https://api.github.com/repos/mcalus3/backstage/contents/LICENSE',
-        (_, res, ctx) => res(ctx.json(licenseResponseMock))
-      ),
-      rest.get(
-        'https://api.github.com/repos/mcalus3/backstage/releases',
-        (_, res, ctx) => res(ctx.json(releasesResponseMock))
-      ),
-      rest.get(
-        'https://api.github.com/repos/mcalus3/backstage/readme',
-        (_, res, ctx) => res(ctx.json(readmeResponseMock))
-      ),
-      rest.get(
-        'https://api.github.com/repos/mcalus3/backstage/branches?protected=true',
-        (_, res, ctx) => res(ctx.json(branchesResponseMock))
-      ),
-      rest.get(
-        'https://api.github.com/repos/mcalus3/backstage/contributors?per_page=10',
-        (_, res, ctx) => res(ctx.json(contributorsResponseMock))
       )
     );
   });
