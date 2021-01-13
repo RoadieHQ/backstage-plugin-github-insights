@@ -15,5 +15,6 @@
  */
 
 import '@testing-library/jest-dom';
+import fetch from 'cross-fetch';
 
-global.fetch = require('node-fetch');
+global.fetch = fetch;
