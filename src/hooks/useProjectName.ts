@@ -1,4 +1,3 @@
-/* eslint-disable notice/notice */
 /*
  * Copyright 2020 RoadieHQ
  *
