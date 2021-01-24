@@ -9,9 +9,9 @@ import { useUrl } from './useUrl';
 export const useProtectedBranches = (entity: Entity) => {
   const auth = useApi(githubAuthApiRef);
   const { baseUrl } = useUrl();
+  const { owner, repo } = useProjectEntity(entity);
   const { value, loading, error } = useAsync(async (): Promise<any> => {
     const token = await auth.getAccessToken(['repo']);
-    const { owner, repo } = useProjectEntity(entity);
     const octokit = new Octokit({ auth: token });
 
     const response = await octokit.request(
@@ -21,7 +21,7 @@ export const useProtectedBranches = (entity: Entity) => {
         owner,
         repo,
         protected: true,
-      },
+      }
     );
     return response.data;
   }, []);
@@ -36,25 +36,25 @@ export const useProtectedBranches = (entity: Entity) => {
 export const useRepoLicence = (entity: Entity) => {
   const auth = useApi(githubAuthApiRef);
   const { baseUrl } = useUrl();
+  const { owner, repo } = useProjectEntity(entity);
   const { value, loading, error } = useAsync(async (): Promise<any> => {
     const token = await auth.getAccessToken(['repo']);
-    const { owner, repo } = useProjectEntity(entity);
     const octokit = new Octokit({ auth: token });
 
     let license: string = '';
     try {
-      const response = await octokit.request(
+      const response = (await octokit.request(
         'GET /repos/{owner}/{repo}/contents/{path}',
         {
           baseUrl,
           owner,
           repo,
           path: 'LICENSE',
-        },
-      ) as OctokitResponse<any>;
+        }
+      )) as OctokitResponse<any>;
       license = atob(response.data.content)
         .split('\n')
-        .map(line => line.trim())
+        .map((line) => line.trim())
         .filter(Boolean)[0];
     } catch (error) {
       license = 'No license file found';

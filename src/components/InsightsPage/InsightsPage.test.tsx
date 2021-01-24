@@ -18,15 +18,27 @@ import { render } from '@testing-library/react';
 import InsightsPage from './InsightsPage';
 import { ThemeProvider } from '@material-ui/core';
 import { lightTheme } from '@backstage/theme';
-import { ApiProvider, ApiRegistry, GithubAuth, githubAuthApiRef } from '@backstage/core';
+import {
+  ApiProvider,
+  ApiRegistry,
+  configApiRef,
+  GithubAuth,
+  githubAuthApiRef,
+} from '@backstage/core';
 import { wrapInTestApp } from '@backstage/test-utils';
 
 const getSession = jest
-      .fn()
-      .mockResolvedValue({ providerInfo: { accessToken: 'access-token' } });
-    
+  .fn()
+  .mockResolvedValue({ providerInfo: { accessToken: 'access-token' } });
+const config = {
+  getOptionalConfigArray: (_: string) => [
+    { getOptionalString: (_: string) => undefined },
+  ],
+};
+
 const apis = ApiRegistry.from([
   [githubAuthApiRef, new GithubAuth({ getSession } as any)],
+  [configApiRef, config],
 ]);
 
 describe('Insights Page', () => {
@@ -34,22 +46,23 @@ describe('Insights Page', () => {
     const rendered = render(
       wrapInTestApp(
         <ApiProvider apis={apis}>
-      <ThemeProvider theme={lightTheme}>
-        <InsightsPage
-          entity={{
-            apiVersion: '1',
-            kind: 'a',
-            metadata: {
-              name: 'Example Service',
-              annotations: {
-                'github.com/project-slug': 'octocat/Hello-World',
-              },
-            },
-          }}
-        />
-      </ThemeProvider>,
-        </ApiProvider>,
-      ),
+          <ThemeProvider theme={lightTheme}>
+            <InsightsPage
+              entity={{
+                apiVersion: '1',
+                kind: 'a',
+                metadata: {
+                  name: 'Example Service',
+                  annotations: {
+                    'github.com/project-slug': 'octocat/Hello-World',
+                  },
+                },
+              }}
+            />
+          </ThemeProvider>
+          ,
+        </ApiProvider>
+      )
     );
     expect(rendered.getByText('GitHub Insights')).toBeInTheDocument();
   });

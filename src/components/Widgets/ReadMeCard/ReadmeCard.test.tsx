@@ -23,9 +23,8 @@ import {
   githubAuthApiRef,
 } from '@backstage/core';
 import { rest } from 'msw';
-import { msw } from '@backstage/test-utils';
+import { msw, wrapInTestApp } from '@backstage/test-utils';
 import { setupServer } from 'msw/node';
-import { wrapInTestApp } from '@backstage/test-utils';
 import { entityMock, readmeResponseMock } from '../../../mocks/mocks';
 import { ThemeProvider } from '@material-ui/core';
 import { lightTheme } from '@backstage/theme';
