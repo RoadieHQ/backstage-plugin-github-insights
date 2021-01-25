@@ -1071,6 +1071,23 @@
     react-use "^15.3.3"
     zen-observable "^0.8.15"
 
+"@backstage/core-api@^0.2.7":
+  version "0.2.9"
+  resolved "https://registry.yarnpkg.com/@backstage/core-api/-/core-api-0.2.9.tgz#c6955eeb5e26f66b5def0f93f2c148c5cad6ccdd"
+  integrity sha512-rTj51K3Q06YOvhIBzRvWVQ/C3DvAytQLELOt5c/XcLDuEdTi8Ocen/j+ufmeZg8RoIMIEGBwLGwzmOOxEK2e5Q==
+  dependencies:
+    "@backstage/config" "^0.1.2"
+    "@backstage/theme" "^0.2.2"
+    "@material-ui/core" "^4.11.0"
+    "@material-ui/icons" "^4.9.1"
+    "@types/prop-types" "^15.7.3"
+    "@types/react" "^16.9"
+    prop-types "^15.7.2"
+    react "^16.12.0"
+    react-router-dom "6.0.0-beta.0"
+    react-use "^15.3.3"
+    zen-observable "^0.8.15"
+
 "@backstage/core@^0.4.0":
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/@backstage/core/-/core-0.4.0.tgz#a8c138a424a8ceeea571c89f6431da3d2587127a"
@@ -1148,6 +1165,26 @@
   integrity sha512-KktGskN6/goy4C0lq0IgEmYyFjOIBAiCFLRx5wZxYEL2LCnGTrTUS1ZzSnRbdLtLccGAVUsEla3FhbpQ4XL3Hw==
   dependencies:
     "@backstage/core-api" "^0.2.5"
+    "@backstage/test-utils-core" "^0.1.1"
+    "@backstage/theme" "^0.2.2"
+    "@material-ui/core" "^4.11.0"
+    "@testing-library/jest-dom" "^5.10.1"
+    "@testing-library/react" "^10.4.1"
+    "@testing-library/user-event" "^12.0.7"
+    "@types/react" "^16.9"
+    msw "^0.21.3"
+    react "^16.12.0"
+    react-dom "^16.12.0"
+    react-router "6.0.0-beta.0"
+    react-router-dom "6.0.0-beta.0"
+    zen-observable "^0.8.15"
+
+"@backstage/test-utils@^0.1.6":
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/@backstage/test-utils/-/test-utils-0.1.6.tgz#35ace651f31024c91ebf9f94ccc26b92ef70e9a9"
+  integrity sha512-s2fRC05rXxv9iZjWhUuTr2ewPuvKk4COHfKp6wrHvyKsR8KQDhRAppHE0X0Iu2fT3K6hNytpxgcJln+/K5lUEg==
+  dependencies:
+    "@backstage/core-api" "^0.2.7"
     "@backstage/test-utils-core" "^0.1.1"
     "@backstage/theme" "^0.2.2"
     "@material-ui/core" "^4.11.0"
@@ -2120,7 +2157,7 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@*", "@types/jest@26.x", "@types/jest@^26.0.7":
+"@types/jest@*", "@types/jest@26.x":
   version "26.0.19"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-26.0.19.tgz#e6fa1e3def5842ec85045bd5210e9bb8289de790"
   integrity sha512-jqHoirTG61fee6v6rwbnEuKhpSKih0tuhqeFbCmMmErhtu3BYlOZaXWjffgOstMM4S/3iQD31lI5bGLTrs97yQ==
@@ -2159,11 +2196,6 @@
   version "14.14.14"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.14.tgz#f7fd5f3cc8521301119f63910f0fb965c7d761ae"
   integrity sha512-UHnOPWVWV1z+VV8k6L1HhG7UbGBgIdghqF3l9Ny9ApPghbjICXkUJSd/b9gOgQfjM1r+37cipdw/HJ3F6ICEnQ==
-
-"@types/node@^12.0.0":
-  version "12.19.9"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.19.9.tgz#990ad687ad8b26ef6dcc34a4f69c33d40c95b679"
-  integrity sha512-yj0DOaQeUrk3nJ0bd3Y5PeDRJ6W0r+kilosLA+dzF3dola/o9hxhMSg2sFvVcA2UHS5JSOsZp4S0c1OEXc4m1Q==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -10433,10 +10465,10 @@ react-universal-interface@^0.6.2:
   resolved "https://registry.yarnpkg.com/react-universal-interface/-/react-universal-interface-0.6.2.tgz#5e8d438a01729a4dbbcbeeceb0b86be146fe2b3b"
   integrity sha512-dg8yXdcQmvgR13RIlZbTRQOoUrDciFVoSBZILwjE2LFISxZZ8loVJKAkuzswl5js8BHda79bIb2b84ehU8IjXw==
 
-react-use@^15.3.3:
-  version "15.3.4"
-  resolved "https://registry.yarnpkg.com/react-use/-/react-use-15.3.4.tgz#f853d310bd71f75b38900a8caa3db93f6dc6e872"
-  integrity sha512-cHq1dELW6122oi1+xX7lwNyE/ugZs5L902BuO8eFJCfn2api1KeuPVG1M/GJouVARoUf54S2dYFMKo5nQXdTag==
+react-use@^15.3.3, react-use@^15.3.8:
+  version "15.3.8"
+  resolved "https://registry.yarnpkg.com/react-use/-/react-use-15.3.8.tgz#ca839ac7fb3d696e5ccbeabbc8dadc2698969d30"
+  integrity sha512-GeGcrmGuUvZrY5wER3Lnph9DSYhZt5nEjped4eKDq8BRGr2CnLf9bDQWG9RFc7oCPphnscUUdOovzq0E5F2c6Q==
   dependencies:
     "@types/js-cookie" "2.2.6"
     "@xobotyi/scrollbar-width" "1.9.5"
