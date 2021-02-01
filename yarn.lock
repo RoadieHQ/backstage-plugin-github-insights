@@ -1666,10 +1666,10 @@
     "@octokit/types" "^6.0.0"
     universal-user-agent "^6.0.0"
 
-"@octokit/openapi-types@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@octokit/openapi-types/-/openapi-types-2.0.0.tgz#6d8f8ad9db3b75a39115f5def2654df8bed39f28"
-  integrity sha512-J4bfM7lf8oZvEAdpS71oTvC1ofKxfEZgU5vKVwzZKi4QPiL82udjpseJwxPid9Pu2FNmyRQOX4iEj6W1iOSnPw==
+"@octokit/openapi-types@^3.4.1":
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/@octokit/openapi-types/-/openapi-types-3.4.1.tgz#317f78cede7f387046e6bad2041e01ddf9607e96"
+  integrity sha512-7Sjm3UwEAM11f+ck9+qlyEfgl8hCk5sSZBU2qcWY8+8ibowjqcwxhhtvY0/pjHPF8mcvmedFpGmmIYs2qM9/+Q==
 
 "@octokit/plugin-paginate-rest@^2.6.2":
   version "2.6.2"
@@ -1724,19 +1724,12 @@
     "@octokit/plugin-request-log" "^1.0.2"
     "@octokit/plugin-rest-endpoint-methods" "4.4.1"
 
-"@octokit/types@^5.0.1":
-  version "5.5.0"
-  resolved "https://registry.yarnpkg.com/@octokit/types/-/types-5.5.0.tgz#e5f06e8db21246ca102aa28444cdb13ae17a139b"
-  integrity sha512-UZ1pErDue6bZNjYOotCNveTXArOMZQFG6hKJfOnGnulVCMcVVi7YIIuuR4WfBhjo7zgpmzn/BkPDnUXtNx+PcQ==
+"@octokit/types@^6.0.0", "@octokit/types@^6.0.1", "@octokit/types@^6.0.3", "@octokit/types@^6.1.0", "@octokit/types@^6.7.0":
+  version "6.7.0"
+  resolved "https://registry.yarnpkg.com/@octokit/types/-/types-6.7.0.tgz#a548ed7a5606620a55c4814e11d64e3d19285f47"
+  integrity sha512-QiE7y2Brh0Bv61K//kFGJ6jCZihCf4fGL1FP0Oims5h2SlSYtDiAQMJW15s8udyLfjo/jY05G1YlN8ED/c6RNw==
   dependencies:
-    "@types/node" ">= 8"
-
-"@octokit/types@^6.0.0", "@octokit/types@^6.0.1", "@octokit/types@^6.0.3", "@octokit/types@^6.1.0":
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/@octokit/types/-/types-6.1.1.tgz#bc88b3eb5f447b025a2a1a8177a72db216e8d4ca"
-  integrity sha512-btm3D6S7VkRrgyYF31etUtVY/eQ1KzrNRqhFt25KSe2mKlXuLXJilglRC6eDA2P6ou94BUnk/Kz5MPEolXgoiw==
-  dependencies:
-    "@octokit/openapi-types" "^2.0.0"
+    "@octokit/openapi-types" "^3.4.1"
     "@types/node" ">= 8"
 
 "@open-draft/until@^1.0.3":
