@@ -76,6 +76,10 @@ const OverviewContent = ({ entity }: { entity: Entity }) => (
 
 ```
 
+## Readme path
+
+By default the plugin will use the annotation `github.com/project-slug` and get the root `README.md` from the repository. You can use a specific path by using the annotation `'github.com/project-readme-path': 'packages/sub-module/README.md'`. It can be useful if you have a component inside a monorepos.
+
 ## Features
 
 - Add GitHub Insights plugin tab.

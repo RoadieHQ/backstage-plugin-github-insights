@@ -63,9 +63,12 @@ const getRepositoryDefaultBranch = (url: string) => {
 };
 
 const ReadMeCard = ({ entity, maxHeight }: Props) => {
-  const { owner, repo } = useProjectEntity(entity);
+  const { owner, repo, readmePath } = useProjectEntity(entity);
   const classes = useStyles();
-  const { value, loading, error } = useRequest(entity, 'readme');
+  const request = readmePath ? `contents/${readmePath}` : "readme";
+  const path = readmePath || "README.MD";
+
+  const { value, loading, error } = useRequest(entity, request);
   const { hostname } = useUrl();
 
   if (loading) {
@@ -85,14 +88,14 @@ const ReadMeCard = ({ entity, maxHeight }: Props) => {
       deepLink={{
         link: `//${hostname}/${owner}/${repo}/blob/${getRepositoryDefaultBranch(
           value.url,
-        )}/README.md`,
+        )}/${path}`,
         title: 'Read me',
         onClick: e => {
           e.preventDefault();
           window.open(
             `//${hostname}/${owner}/${repo}/blob/${getRepositoryDefaultBranch(
               value.url,
-            )}/README.md`,
+            )}/${path}`,
           );
         },
       }}

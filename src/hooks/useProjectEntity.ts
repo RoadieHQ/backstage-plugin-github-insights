@@ -19,8 +19,14 @@ export const useProjectEntity = (entity: Entity) => {
   const projectSlug = entity.metadata?.annotations?.[
     'github.com/project-slug'
   ] as string;
+
+  const readmePath = entity.metadata?.annotations?.[
+    "github.com/project-readme-path"
+  ] as string;
+
   return {
-    owner: projectSlug.split('/')[0],
-    repo: projectSlug.split('/')[1],
+    owner: projectSlug.split("/")[0],
+    repo: projectSlug.split("/")[1],
+    readmePath,
   };
 };
