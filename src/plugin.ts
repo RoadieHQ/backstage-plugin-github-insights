@@ -14,17 +14,72 @@
  * limitations under the License.
  */
 
-import { createPlugin, createRouteRef } from '@backstage/core';
-import InsightsPage from './components/InsightsPage';
+import {
+  createComponentExtension,
+  createPlugin,
+  createRoutableExtension,
+  createRouteRef,
+} from '@backstage/core';
 
-export const rootRouteRef = createRouteRef({
-  path: '',
-  title: 'code-insights',
+export const entityContentRouteRef = createRouteRef({
+  title: 'githubInsights Entity Content',
 });
 
-export const plugin = createPlugin({
+export const githubInsightsPlugin = createPlugin({
   id: 'code-insights',
-  register({ router }) {
-    router.addRoute(rootRouteRef, InsightsPage);
+  routes: {
+    entityContent: entityContentRouteRef,
   },
 });
+
+export const EntityGithubInsightsContent = githubInsightsPlugin.provide(
+  createRoutableExtension({
+    component: () => import('./components/Router').then((m) => m.Router),
+    mountPoint: entityContentRouteRef,
+  })
+);
+
+export const EntityGithubInsightsComplianceCard = githubInsightsPlugin.provide(
+  createComponentExtension({
+    component: {
+      lazy: () =>
+        import('./components/Widgets/index').then((m) => m.ComplianceCard),
+    },
+  })
+);
+
+export const EntityGithubInsightsContributorsCard = githubInsightsPlugin.provide(
+  createComponentExtension({
+    component: {
+      lazy: () =>
+        import('./components/Widgets/index').then((m) => m.ContributorsCard),
+    },
+  })
+);
+
+export const EntityGithubInsightsLanguagesCard = githubInsightsPlugin.provide(
+  createComponentExtension({
+    component: {
+      lazy: () =>
+        import('./components/Widgets/index').then((m) => m.LanguagesCard),
+    },
+  })
+);
+
+export const EntityGithubInsightsReadmeCard = githubInsightsPlugin.provide(
+  createComponentExtension({
+    component: {
+      lazy: () =>
+        import('./components/Widgets/index').then((m) => m.ReadMeCard),
+    },
+  })
+);
+
+export const EntityGithubInsightsReleasesCard = githubInsightsPlugin.provide(
+  createComponentExtension({
+    component: {
+      lazy: () =>
+        import('./components/Widgets/index').then((m) => m.ReleasesCard),
+    },
+  })
+);

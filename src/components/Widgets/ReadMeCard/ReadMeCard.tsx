@@ -22,7 +22,7 @@ import { useRequest } from '../../../hooks/useRequest';
 import { useUrl } from '../../../hooks/useUrl';
 import { useProjectEntity } from '../../../hooks/useProjectEntity';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   infoCard: {
     marginBottom: theme.spacing(3),
     '& + .MuiAlert-root': {
@@ -65,8 +65,8 @@ const getRepositoryDefaultBranch = (url: string) => {
 const ReadMeCard = ({ entity, maxHeight }: Props) => {
   const { owner, repo, readmePath } = useProjectEntity(entity);
   const classes = useStyles();
-  const request = readmePath ? `contents/${readmePath}` : "readme";
-  const path = readmePath || "README.MD";
+  const request = readmePath ? `contents/${readmePath}` : 'readme';
+  const path = readmePath || 'README.MD';
 
   const { value, loading, error } = useRequest(entity, request);
   const { hostname } = useUrl();
@@ -87,15 +87,15 @@ const ReadMeCard = ({ entity, maxHeight }: Props) => {
       className={classes.infoCard}
       deepLink={{
         link: `//${hostname}/${owner}/${repo}/blob/${getRepositoryDefaultBranch(
-          value.url,
+          value.url
         )}/${path}`,
         title: 'Read me',
-        onClick: e => {
+        onClick: (e) => {
           e.preventDefault();
           window.open(
             `//${hostname}/${owner}/${repo}/blob/${getRepositoryDefaultBranch(
-              value.url,
-            )}/${path}`,
+              value.url
+            )}/${path}`
           );
         },
       }}
@@ -110,13 +110,15 @@ const ReadMeCard = ({ entity, maxHeight }: Props) => {
           content={atob(value.content).replace(
             /\(\./gi,
             `(//${hostname}/${owner}/${repo}/raw/${getRepositoryDefaultBranch(
-              value.url,
-            )}`,
+              value.url
+            )}`
           )}
         />
       </div>
     </InfoCard>
-  ) : null;
+  ) : (
+    <></>
+  );
 };
 
 export default ReadMeCard;

@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 import React from 'react';
-import { Avatar, Tooltip, withStyles } from '@material-ui/core';
+import { Avatar, Tooltip } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import ContributorTooltipContent from '../ContributorTooltipContent';
 import { ContributorData } from '../../../../types';
 
