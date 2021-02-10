@@ -32,7 +32,7 @@ const getSession = jest
   .mockResolvedValue({ providerInfo: { accessToken: 'access-token' } });
 const config = {
   getOptionalConfigArray: (_: string) => [
-    { getOptionalString: (_: string) => undefined },
+    { getOptionalString: (_2: string) => undefined },
   ],
 };
 
