@@ -56,7 +56,7 @@ export const useRepoLicence = (entity: Entity) => {
         .split('\n')
         .map((line) => line.trim())
         .filter(Boolean)[0];
-    } catch (error) {
+    } catch (a) {
       license = 'No license file found';
     }
     return license;
