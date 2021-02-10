@@ -23,7 +23,7 @@ import { useRequest } from '../../../hooks/useRequest';
 import { useUrl } from '../../../hooks/useUrl';
 import { useProjectEntity } from '../../../hooks/useProjectEntity';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   infoCard: {
     marginBottom: theme.spacing(3),
     '& + .MuiAlert-root': {
@@ -65,7 +65,7 @@ const ReleasesCard = ({ entity }: Props) => {
       deepLink={{
         link: `//${hostname}/${owner}/${repo}/releases`,
         title: 'Releases',
-        onClick: e => {
+        onClick: (e) => {
           e.preventDefault();
           window.open(`//${hostname}/${owner}/${repo}/releases`);
         },
@@ -89,7 +89,9 @@ const ReleasesCard = ({ entity }: Props) => {
         ))}
       </List>
     </InfoCard>
-  ) : null;
+  ) : (
+    <></>
+  );
 };
 
 export default ReleasesCard;
