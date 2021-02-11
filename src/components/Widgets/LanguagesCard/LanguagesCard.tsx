@@ -22,7 +22,7 @@ import { useRequest } from '../../../hooks/useRequest';
 import { colors } from './colors';
 import { useProjectEntity } from '../../../hooks/useProjectEntity';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   infoCard: {
     marginBottom: theme.spacing(3),
     '& + .MuiAlert-root': {
@@ -99,10 +99,10 @@ const LanguagesCard = ({ entity }: Props) => {
                 />
               </Tooltip>
             );
-          },
+          }
         )}
       </div>
-      {Object.entries(value.data as Language).map(language => (
+      {Object.entries(value.data as Language).map((language) => (
         <Chip
           classes={{
             label: classes.label,
@@ -123,7 +123,9 @@ const LanguagesCard = ({ entity }: Props) => {
         />
       ))}
     </InfoCard>
-  ) : null;
+  ) : (
+    <></>
+  );
 };
 
 export default LanguagesCard;

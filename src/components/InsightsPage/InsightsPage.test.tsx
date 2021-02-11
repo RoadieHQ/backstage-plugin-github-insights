@@ -25,7 +25,6 @@ import {
   GithubAuth,
   githubAuthApiRef,
 } from '@backstage/core';
-import { wrapInTestApp } from '@backstage/test-utils';
 
 const getSession = jest
   .fn()
@@ -44,25 +43,22 @@ const apis = ApiRegistry.from([
 describe('Insights Page', () => {
   it('should render', () => {
     const rendered = render(
-      wrapInTestApp(
-        <ApiProvider apis={apis}>
-          <ThemeProvider theme={lightTheme}>
-            <InsightsPage
-              entity={{
-                apiVersion: '1',
-                kind: 'a',
-                metadata: {
-                  name: 'Example Service',
-                  annotations: {
-                    'github.com/project-slug': 'octocat/Hello-World',
-                  },
+      <ApiProvider apis={apis}>
+        <ThemeProvider theme={lightTheme}>
+          <InsightsPage
+            entity={{
+              apiVersion: '1',
+              kind: 'a',
+              metadata: {
+                name: 'Example Service',
+                annotations: {
+                  'github.com/project-slug': 'octocat/Hello-World',
                 },
-              }}
-            />
-          </ThemeProvider>
-          ,
-        </ApiProvider>
-      )
+              },
+            }}
+          />
+        </ThemeProvider>
+      </ApiProvider>
     );
     expect(rendered.getByText('GitHub Insights')).toBeInTheDocument();
   });

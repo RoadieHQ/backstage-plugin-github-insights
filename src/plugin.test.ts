@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-import { plugin } from './plugin';
+import { githubInsightsPlugin } from './plugin';
 
 describe('github-insights', () => {
   it('should export plugin', () => {
-    expect(plugin).toBeDefined();
+    expect(githubInsightsPlugin).toBeDefined();
   });
 });
