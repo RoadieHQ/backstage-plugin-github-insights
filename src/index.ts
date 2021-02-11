@@ -14,6 +14,16 @@
  * limitations under the License.
  */
 
-export { plugin } from './plugin';
-export { Router, isPluginApplicableToEntity } from './components/Router';
+export { githubInsightsPlugin as plugin } from './plugin';
+export {
+  Router,
+  /**
+   * @deprecated since v0.3.0 you should use new name isGithubInsightsAvailable
+   */
+  isGithubInsightsAvailable as isPluginApplicableToEntity,
+  isGithubInsightsAvailable,
+} from './components/Router';
+/**
+ * @deprecated since v0.3.0 you should use new composability API
+ */
 export * from './components/Widgets';
