@@ -66,7 +66,7 @@ const ReadMeCard = ({ entity, maxHeight }: Props) => {
   const { owner, repo, readmePath } = useProjectEntity(entity);
   const classes = useStyles();
   const request = readmePath ? `contents/${readmePath}` : 'readme';
-  const path = readmePath || 'README.MD';
+  const path = readmePath || 'README.md';
 
   const { value, loading, error } = useRequest(entity, request);
   const { hostname } = useUrl();
