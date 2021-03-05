@@ -18,6 +18,8 @@ import { render } from '@testing-library/react';
 import InsightsPage from './InsightsPage';
 import { ThemeProvider } from '@material-ui/core';
 import { lightTheme } from '@backstage/theme';
+import { wrapInTestApp } from '@backstage/test-utils';
+
 import {
   ApiProvider,
   ApiRegistry,
@@ -29,10 +31,29 @@ import {
 const getSession = jest
   .fn()
   .mockResolvedValue({ providerInfo: { accessToken: 'access-token' } });
+
+const supportConfig = {
+  getString: (_2: string) => {
+    return '';
+  },
+
+  getOptionalString: (_3: string) => {
+    return null;
+  },
+
+  getConfigArray: (_:string) => {
+    return [];
+  },
+};
+
 const config = {
   getOptionalConfigArray: (_: string) => [
     { getOptionalString: (_2: string) => undefined },
   ],
+
+  getOptionalConfig: (_:string) => {
+    return supportConfig;
+  },
 };
 
 const apis = ApiRegistry.from([
@@ -41,25 +62,28 @@ const apis = ApiRegistry.from([
 ]);
 
 describe('Insights Page', () => {
-  it('should render', () => {
+  it('should render', async () => {
     const rendered = render(
-      <ApiProvider apis={apis}>
-        <ThemeProvider theme={lightTheme}>
-          <InsightsPage
-            entity={{
-              apiVersion: '1',
-              kind: 'a',
-              metadata: {
-                name: 'Example Service',
-                annotations: {
-                  'github.com/project-slug': 'octocat/Hello-World',
-                },
-              },
-            }}
-          />
-        </ThemeProvider>
-      </ApiProvider>
+      wrapInTestApp(
+        <ApiProvider apis={apis}>
+          <ThemeProvider theme={lightTheme}>
+            <InsightsPage
+              entity={{
+                apiVersion: '1',
+                  kind: 'a',
+                  metadata: {
+                    name: 'Example Service',
+                      annotations: {
+                        'github.com/project-slug': 'octocat/Hello-World',
+                      },
+                    },
+              }}
+            />
+          </ThemeProvider>
+        </ApiProvider>
+      )
     );
-    expect(rendered.getByText('GitHub Insights')).toBeInTheDocument();
+
+    return expect(rendered.getByText('GitHub Insights')).toBeInTheDocument();
   });
 });
