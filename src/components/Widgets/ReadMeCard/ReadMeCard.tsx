@@ -112,6 +112,9 @@ const ReadMeCard = ({ entity, maxHeight }: Props) => {
             `(//${hostname}/${owner}/${repo}/raw/${getRepositoryDefaultBranch(
               value.url
             )}`
+          ).replace(
+            /\[([^\[\]]*)\]\((?!https?:\/\/)(.*?)(\.md)\)/gim,
+            '[$1]($2/)'
           )}
         />
       </div>
