@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, RenderResult, act, waitFor } from '@testing-library/react';
 import InsightsPage from './InsightsPage';
 import { ThemeProvider } from '@material-ui/core';
 import { lightTheme } from '@backstage/theme';
@@ -61,10 +61,13 @@ const apis = ApiRegistry.from([
   [configApiRef, config],
 ]);
 
+
 describe('Insights Page', () => {
   it('should render', async () => {
-    const rendered = render(
-      wrapInTestApp(
+    let renderResult: RenderResult;
+
+    await act(async () => {
+      renderResult = render(wrapInTestApp(
         <ApiProvider apis={apis}>
           <ThemeProvider theme={lightTheme}>
             <InsightsPage
@@ -81,9 +84,12 @@ describe('Insights Page', () => {
             />
           </ThemeProvider>
         </ApiProvider>
-      )
-    );
 
-    return expect(rendered.getByText('GitHub Insights')).toBeInTheDocument();
+      ));
+    });
+
+    await waitFor(() =>
+      expect(renderResult.getByText('GitHub Insights')).toBeInTheDocument()
+    );
   });
 });
