@@ -29,6 +29,7 @@ import { entityMock, readmeResponseMock } from '../../../mocks/mocks';
 import { ThemeProvider } from '@material-ui/core';
 import { lightTheme } from '@backstage/theme';
 import { ReadMeCard } from '..';
+import {EntityProvider} from "@backstage/plugin-catalog-react";
 
 const mockGithubAuth = {
   getAccessToken: async (_: string[]) => 'test-token',
@@ -63,7 +64,9 @@ describe('ReadmeCard', () => {
       wrapInTestApp(
         <ApiProvider apis={apis}>
           <ThemeProvider theme={lightTheme}>
-            <ReadMeCard entity={entityMock} />
+            <EntityProvider entity={entityMock}>
+              <ReadMeCard />
+            </EntityProvider>
           </ThemeProvider>
         </ApiProvider>
       )

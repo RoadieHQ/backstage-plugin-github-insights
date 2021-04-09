@@ -15,7 +15,11 @@
  */
 
 export {
+  /**
+   * @deprecated since v0.3.0 you should use new composability API
+   */
   githubInsightsPlugin as plugin,
+  githubInsightsPlugin,
   EntityGithubInsightsContent,
   EntityGithubInsightsComplianceCard,
   EntityGithubInsightsContributorsCard,

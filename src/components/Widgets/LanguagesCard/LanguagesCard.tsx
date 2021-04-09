@@ -21,6 +21,7 @@ import { Entity } from '@backstage/catalog-model';
 import { useRequest } from '../../../hooks/useRequest';
 import { colors } from './colors';
 import { useProjectEntity } from '../../../hooks/useProjectEntity';
+import {useEntity} from "@backstage/plugin-catalog-react";
 
 const useStyles = makeStyles((theme) => ({
   infoCard: {
@@ -57,10 +58,12 @@ type Language = {
 };
 
 type Props = {
-  entity: Entity;
+  /** @deprecated The entity is now grabbed from context instead */
+  entity?: Entity;
 };
 
-const LanguagesCard = ({ entity }: Props) => {
+const LanguagesCard = (_props: Props) => {
+  const { entity } = useEntity();
   let barWidth = 0;
   const { owner, repo } = useProjectEntity(entity);
   const classes = useStyles();

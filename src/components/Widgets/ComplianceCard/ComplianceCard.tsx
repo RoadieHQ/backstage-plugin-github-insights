@@ -24,12 +24,15 @@ import {
 } from '../../../hooks/useComplianceHooks';
 import { useProjectEntity } from '../../../hooks/useProjectEntity';
 import WarningIcon from '@material-ui/icons/ErrorOutline';
+import {useEntity} from "@backstage/plugin-catalog-react";
 
 type Props = {
-  entity: Entity;
+  /** @deprecated The entity is now grabbed from context instead */
+  entity?: Entity;
 };
 
-const ComplianceCard = ({ entity }: Props) => {
+const ComplianceCard = (_props: Props) => {
+  const { entity } = useEntity();
   const { owner, repo } = useProjectEntity(entity);
   const { branches, loading, error } = useProtectedBranches(entity);
   const {

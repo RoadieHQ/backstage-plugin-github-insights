@@ -21,6 +21,7 @@ import { Entity } from '@backstage/catalog-model';
 import { useRequest } from '../../../hooks/useRequest';
 import { useUrl } from '../../../hooks/useUrl';
 import { useProjectEntity } from '../../../hooks/useProjectEntity';
+import {useEntity} from "@backstage/plugin-catalog-react";
 
 const useStyles = makeStyles((theme) => ({
   infoCard: {
@@ -53,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 type Props = {
-  entity: Entity;
+  entity?: Entity;
   maxHeight?: number;
 };
 
@@ -62,7 +63,8 @@ const getRepositoryDefaultBranch = (url: string) => {
   return repositoryUrl;
 };
 
-const ReadMeCard = ({ entity, maxHeight }: Props) => {
+const ReadMeCard = (props: Props) => {
+  const { entity } = useEntity();
   const { owner, repo, readmePath } = useProjectEntity(entity);
   const classes = useStyles();
   const request = readmePath ? `contents/${readmePath}` : 'readme';
@@ -103,7 +105,7 @@ const ReadMeCard = ({ entity, maxHeight }: Props) => {
       <div
         className={classes.readMe}
         style={{
-          maxHeight: `${maxHeight}px`,
+          maxHeight: `${props.maxHeight}px`,
         }}
       >
         <MarkdownContent
