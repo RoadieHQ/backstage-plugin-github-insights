@@ -21,7 +21,7 @@ import { Entity } from '@backstage/catalog-model';
 import { useRequest } from '../../../hooks/useRequest';
 import { useUrl } from '../../../hooks/useUrl';
 import { useProjectEntity } from '../../../hooks/useProjectEntity';
-import {useEntity} from "@backstage/plugin-catalog-react";
+import { useEntity } from "@backstage/plugin-catalog-react";
 
 const useStyles = makeStyles((theme) => ({
   infoCard: {

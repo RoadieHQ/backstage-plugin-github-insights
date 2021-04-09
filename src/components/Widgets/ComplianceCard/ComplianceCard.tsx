@@ -24,7 +24,7 @@ import {
 } from '../../../hooks/useComplianceHooks';
 import { useProjectEntity } from '../../../hooks/useProjectEntity';
 import WarningIcon from '@material-ui/icons/ErrorOutline';
-import {useEntity} from "@backstage/plugin-catalog-react";
+import { useEntity } from "@backstage/plugin-catalog-react";
 
 type Props = {
   /** @deprecated The entity is now grabbed from context instead */

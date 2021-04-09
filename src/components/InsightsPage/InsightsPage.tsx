@@ -23,7 +23,7 @@ import {
   LanguagesCard,
   ReleasesCard,
 } from '../Widgets';
-import {useEntity} from "@backstage/plugin-catalog-react";
+import { useEntity } from "@backstage/plugin-catalog-react";
 
 type Props = {
   /** @deprecated The entity is now grabbed from context instead */

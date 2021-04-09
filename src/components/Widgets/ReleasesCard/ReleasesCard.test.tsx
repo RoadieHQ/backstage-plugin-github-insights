@@ -29,7 +29,7 @@ import { entityMock, releasesResponseMock } from '../../../mocks/mocks';
 import { ThemeProvider } from '@material-ui/core';
 import { lightTheme } from '@backstage/theme';
 import ReleasesCard from '.';
-import {EntityProvider} from "@backstage/plugin-catalog-react";
+import { EntityProvider } from "@backstage/plugin-catalog-react";
 
 const mockGithubAuth = {
   getAccessToken: async (_: string[]) => 'test-token',
