@@ -14,7 +14,15 @@
  * limitations under the License.
  */
 
-export { githubInsightsPlugin as plugin } from './plugin';
+export {
+  githubInsightsPlugin as plugin,
+  EntityGithubInsightsContent,
+  EntityGithubInsightsComplianceCard,
+  EntityGithubInsightsContributorsCard,
+  EntityGithubInsightsLanguagesCard,
+  EntityGithubInsightsReadmeCard,
+  EntityGithubInsightsReleasesCard,
+} from './plugin';
 export {
   Router,
   /**
