@@ -22,6 +22,7 @@ import ContributorsList from './components/ContributorsList';
 import { useRequest } from '../../../hooks/useRequest';
 import { useUrl } from '../../../hooks/useUrl';
 import { useProjectEntity } from '../../../hooks/useProjectEntity';
+import { useEntity } from "@backstage/plugin-catalog-react";
 
 const useStyles = makeStyles(theme => ({
   infoCard: {
@@ -33,10 +34,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 type Props = {
-  entity: Entity;
+  /** @deprecated The entity is now grabbed from context instead */
+  entity?: Entity;
 };
 
-const ContributorsCard = ({ entity }: Props) => {
+const ContributorsCard = (_props: Props) => {
+  const { entity } = useEntity();
   const { owner, repo } = useProjectEntity(entity);
   const classes = useStyles();
   const { value, loading, error } = useRequest(entity, 'contributors', 10);

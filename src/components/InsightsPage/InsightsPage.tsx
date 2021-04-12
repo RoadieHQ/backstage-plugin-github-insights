@@ -23,12 +23,15 @@ import {
   LanguagesCard,
   ReleasesCard,
 } from '../Widgets';
+import { useEntity } from "@backstage/plugin-catalog-react";
 
 type Props = {
-  entity: Entity;
+  /** @deprecated The entity is now grabbed from context instead */
+  entity?: Entity;
 };
 
-const InsightsPage = ({ entity }: Props) => {
+const InsightsPage = (_props: Props) => {
+  const { entity } = useEntity();
   const projectSlug = entity.metadata?.annotations?.['github.com/project-slug'];
 
   return projectSlug ? (

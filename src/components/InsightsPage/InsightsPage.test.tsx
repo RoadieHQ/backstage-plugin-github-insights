@@ -19,6 +19,7 @@ import InsightsPage from './InsightsPage';
 import { ThemeProvider } from '@material-ui/core';
 import { lightTheme } from '@backstage/theme';
 import { wrapInTestApp } from '@backstage/test-utils';
+import { EntityProvider } from '@backstage/plugin-catalog-react';
 
 import {
   ApiProvider,
@@ -70,18 +71,18 @@ describe('Insights Page', () => {
       renderResult = render(wrapInTestApp(
         <ApiProvider apis={apis}>
           <ThemeProvider theme={lightTheme}>
-            <InsightsPage
-              entity={{
-                apiVersion: '1',
-                  kind: 'a',
-                  metadata: {
-                    name: 'Example Service',
-                      annotations: {
-                        'github.com/project-slug': 'octocat/Hello-World',
-                      },
-                    },
-              }}
-            />
+            <EntityProvider entity={{
+              apiVersion: '1',
+              kind: 'a',
+              metadata: {
+                name: 'Example Service',
+                annotations: {
+                  'github.com/project-slug': 'octocat/Hello-World',
+                },
+              },
+            }}>
+            <InsightsPage />
+            </EntityProvider>
           </ThemeProvider>
         </ApiProvider>
 

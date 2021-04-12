@@ -14,7 +14,19 @@
  * limitations under the License.
  */
 
-export { githubInsightsPlugin as plugin } from './plugin';
+export {
+  /**
+   * @deprecated since v0.3.0 you should use new composability API
+   */
+  githubInsightsPlugin as plugin,
+  githubInsightsPlugin,
+  EntityGithubInsightsContent,
+  EntityGithubInsightsComplianceCard,
+  EntityGithubInsightsContributorsCard,
+  EntityGithubInsightsLanguagesCard,
+  EntityGithubInsightsReadmeCard,
+  EntityGithubInsightsReleasesCard,
+} from './plugin';
 export {
   Router,
   /**

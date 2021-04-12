@@ -33,6 +33,7 @@ import {
 import { ThemeProvider } from '@material-ui/core';
 import { lightTheme } from '@backstage/theme';
 import ComplianceCard from '.';
+import { EntityProvider } from "@backstage/plugin-catalog-react";
 
 const mockGithubAuth = {
   getAccessToken: async (_: string[]) => 'test-token',
@@ -71,7 +72,9 @@ describe('ComplianceCard', () => {
       wrapInTestApp(
         <ApiProvider apis={apis}>
           <ThemeProvider theme={lightTheme}>
-            <ComplianceCard entity={entityMock} />
+            <EntityProvider entity={entityMock}>
+              <ComplianceCard />
+            </EntityProvider>
           </ThemeProvider>
         </ApiProvider>
       )

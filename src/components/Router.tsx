@@ -16,6 +16,7 @@
 
 import React from 'react';
 import { Entity } from '@backstage/catalog-model';
+import { useEntity } from '@backstage/plugin-catalog-react';
 import { Route, Routes } from 'react-router';
 import InsightsPage from './InsightsPage';
 import { GITHUB_INSIGHTS_ANNOTATION } from '../hooks/useProjectName';
@@ -24,14 +25,20 @@ import { MissingAnnotationEmptyState } from '@backstage/core';
 export const isGithubInsightsAvailable = (entity: Entity) =>
   entity?.metadata.annotations?.[GITHUB_INSIGHTS_ANNOTATION];
 
-/**
- * @deprecated since v0.3.0 you should use new composability API
- */
-export const Router = ({ entity }: { entity: Entity }) =>
-  !isGithubInsightsAvailable(entity) ? (
-    <MissingAnnotationEmptyState annotation={GITHUB_INSIGHTS_ANNOTATION} />
+
+type Props = {
+  /** @deprecated The entity is now grabbed from context instead */
+  entity?: Entity;
+};
+
+export const Router = (_props: Props) =>{
+  const { entity } = useEntity();
+  return   !isGithubInsightsAvailable(entity) ? (
+      <MissingAnnotationEmptyState annotation={GITHUB_INSIGHTS_ANNOTATION} />
   ) : (
-    <Routes>
-      <Route path="/" element={<InsightsPage entity={entity} />} />
-    </Routes>
+      <Routes>
+        <Route path="/" element={<InsightsPage entity={entity} />} />
+      </Routes>
   );
+
+}
