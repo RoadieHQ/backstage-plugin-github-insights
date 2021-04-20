@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import React from 'react';
-import { Link, List, ListItem, makeStyles } from '@material-ui/core';
+import { Link, List, ListItem, Chip, makeStyles } from '@material-ui/core';
 import LocalOfferOutlinedIcon from '@material-ui/icons/LocalOfferOutlined';
 import Alert from '@material-ui/lab/Alert';
 import { InfoCard, Progress } from '@backstage/core';
@@ -31,6 +31,18 @@ const useStyles = makeStyles((theme) => ({
       marginTop: theme.spacing(3),
     },
   },
+  releaseTitle: {
+    fontSize: '1.1rem',
+    fontWeight: theme.typography.fontWeightMedium,
+    margin: 0,
+    marginRight: '0.5rem', 
+  },
+  releaseTagIcon: {
+    verticalAlign: 'middle',
+  },
+  listItem: {
+    justifyContent: 'space-between'
+  },
 }));
 
 type Release = {
@@ -38,6 +50,7 @@ type Release = {
   html_url: string;
   tag_name: string;
   prerelease: boolean;
+  name: string;
 };
 
 type Props = {
@@ -77,17 +90,18 @@ const ReleasesCard = (_props: Props) => {
     >
       <List>
         {value.map((release: Release) => (
-          <ListItem key={release.id}>
+          <ListItem className={classes.listItem} key={release.id}>
             <Link
               href={release.html_url}
               color="inherit"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <LocalOfferOutlinedIcon fontSize="inherit" /> {release.tag_name}
+            <p className={classes.releaseTitle}>{release.name}</p>
+            <LocalOfferOutlinedIcon fontSize="inherit" className={classes.releaseTagIcon} /> {release.tag_name}
               {/* by {release.author.login} */}
-              {/* {release.prerelease ? <Chip color="primary" size="small" label="Pre-release" /> : <Chip color="secondary" size="small" />} */}
             </Link>
+            {!release.prerelease && <Chip color="primary" size="small" label="Pre-release"/>}
           </ListItem>
         ))}
       </List>
