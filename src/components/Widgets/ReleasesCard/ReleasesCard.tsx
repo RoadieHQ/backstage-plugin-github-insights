@@ -101,7 +101,7 @@ const ReleasesCard = (_props: Props) => {
             <LocalOfferOutlinedIcon fontSize="inherit" className={classes.releaseTagIcon} /> {release.tag_name}
               {/* by {release.author.login} */}
             </Link>
-            {!release.prerelease && <Chip color="primary" size="small" label="Pre-release"/>}
+            {release.prerelease && <Chip color="primary" size="small" label="Pre-release"/>}
           </ListItem>
         ))}
       </List>
