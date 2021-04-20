@@ -18,6 +18,7 @@ import { Grid } from '@material-ui/core';
 import { Page, Content, ContentHeader, SupportButton } from '@backstage/core';
 import { Entity } from '@backstage/catalog-model';
 import {
+  ComplianceCard,
   ContributorsCard,
   ReadMeCard,
   LanguagesCard,
@@ -45,6 +46,7 @@ const InsightsPage = (_props: Props) => {
             <ContributorsCard entity={entity} />
             <LanguagesCard entity={entity} />
             <ReleasesCard entity={entity} />
+            <ComplianceCard />
           </Grid>
           <Grid item sm={12} md={6} lg={8}>
             <ReadMeCard entity={entity} maxHeight={450} />
