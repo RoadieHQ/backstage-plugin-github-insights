@@ -43,13 +43,13 @@ const InsightsPage = (_props: Props) => {
         </ContentHeader>
         <Grid container spacing={3} direction="row" alignItems="stretch">
           <Grid item sm={12} md={6} lg={4}>
-            <ContributorsCard entity={entity} />
-            <LanguagesCard entity={entity} />
-            <ReleasesCard entity={entity} />
+            <ContributorsCard />
+            <LanguagesCard />
+            <ReleasesCard />
             <ComplianceCard />
           </Grid>
           <Grid item sm={12} md={6} lg={8}>
-            <ReadMeCard entity={entity} maxHeight={450} />
+            <ReadMeCard maxHeight={450} />
           </Grid>
         </Grid>
       </Content>
