@@ -14,26 +14,27 @@ yarn add @roadiehq/backstage-plugin-github-insights
 
 ```ts
 // packages/app/src/plugins.ts
-export { plugin as GitHubInsights } from '@roadiehq/backstage-plugin-github-insights';
+export { githubInsightsPlugin } from '@roadiehq/backstage-plugin-github-insights';
 ```
 
 3. Add plugin API to your Backstage instance:
 
 ```ts
 // packages/app/src/components/catalog/EntityPage.tsx
-import { Router as GitHubInsightsRouter } from '@roadiehq/backstage-plugin-github-insights';
+import { EntityGithubInsightsContent } from '@roadiehq/backstage-plugin-github-insights';
 
 ...
 
-const ServiceEntityPage = ({ entity }: { entity: Entity }) => (
-  <EntityPageLayout>
+const serviceEntityPage = (
+  <EntityLayoutWrapper>
     ...
-    <EntityPageLayout.Content
+    <EntityLayout.Route 
       path="/code-insights"
-      title="Code Insights"
-      element={<GitHubInsightsRouter entity={entity} />}
-    />
-  </EntityPageLayout>
+      title="Code Insights">
+      <EntityGithubInsightsContent />
+    </EntityLayout.Route>
+  </EntityLayoutWrapper>
+);
 ```
 
 4. Run backstage app with `yarn start` and navigate to services tabs.
@@ -47,30 +48,28 @@ const ServiceEntityPage = ({ entity }: { entity: Entity }) => (
 ```ts
 // packages/app/src/components/catalog/EntityPage.tsx
 import {
-  ContributorsCard,
-  LanguagesCard,
-  ReadMeCard,
-  ReleasesCard,
-  isPluginApplicableToEntity as isGitHubAvailable,
+  EntityGithubInsightsContent,
+  EntityGithubInsightsLanguagesCard,
+  EntityGithubInsightsReadmeCard,
+  EntityGithubInsightsReleasesCard,
+  isGithubInsightsAvailable,
 } from '@roadiehq/backstage-plugin-github-insights';
 
 ...
 
-const OverviewContent = ({ entity }: { entity: Entity }) => (
-  <Grid container spacing={3}>
-    ...
-    {isGitHubAvailable(entity) && (
-      <>
+const overviewContent = (
+  <Grid container spacing={3} alignItems="stretch">
+   <EntitySwitch>
+      <EntitySwitch.Case if={e => Boolean(isGithubInsightsAvailable(e))}>
         <Grid item md={6}>
-          <ContributorsCard entity={entity} />
-          <LanguagesCard entity={entity} />
-          <ReleasesCard entity={entity} />
+          <EntityGithubInsightsLanguagesCard />
+          <EntityGithubInsightsReleasesCard />
         </Grid>
         <Grid item md={6}>
-          <ReadMeCard entity={entity} />
+          <EntityGithubInsightsReadmeCard maxHeight={350} />
         </Grid>
-      </>
-    )}
+      </EntitySwitch.Case>
+    </EntitySwitch>
   </Grid>
 );
 
