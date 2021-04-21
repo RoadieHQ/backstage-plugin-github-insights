@@ -71,6 +71,6 @@ describe('ReleasesCard', () => {
         </ApiProvider>
       )
     );
-    expect(await rendered.findByText('release-2021-01-09')).toBeInTheDocument();
+    expect(await rendered.findAllByText('release-2021-01-09')).toHaveLength(2);
   });
 });
