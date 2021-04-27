@@ -77,4 +77,20 @@ describe('ReadmeCard', () => {
       )
     ).toBeInTheDocument();
   });
+  it('should render unicode correctly', async () => {
+    const rendered = render(
+      wrapInTestApp(
+        <ApiProvider apis={apis}>
+          <ThemeProvider theme={lightTheme}>
+            <EntityProvider entity={entityMock}>
+              <ReadMeCard />
+            </EntityProvider>
+          </ThemeProvider>
+        </ApiProvider>
+      )
+    );
+    expect(
+      await rendered.findByText('⭐', { exact: false })
+    ).toBeInTheDocument();
+  });
 });
