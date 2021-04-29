@@ -5119,10 +5119,10 @@ es-to-primitive@^1.2.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
-esbuild@^0.11.14:
-  version "0.11.14"
-  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.11.14.tgz#0f4beba211d6d23e2825f61a89ccff1eef96361b"
-  integrity sha512-ejheEPkqhq5y0LM9rG9e+3yDihPtqeeE4NZmG7VQiSGJ3CjO4HvPOHmhhttSksfSztjLAGo2+0/zSIvlqj4JOQ==
+esbuild@^0.11.16:
+  version "0.11.16"
+  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.11.16.tgz#435f00474fb21e70f59a545b85e4cfc7ba106485"
+  integrity sha512-34ZWjo4ouvM5cDe7uRoM9GFuMyEmpH9fnVYmomvS1cq9ED9d/0ZG1r+p4P2VbX7ihjv36zA2SWTmP8Zmt/EANA==
 
 esbuild@^0.8.56:
   version "0.8.57"
