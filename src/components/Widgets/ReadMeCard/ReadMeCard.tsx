@@ -114,7 +114,7 @@ const ReadMeCard = (props: Props) => {
             '[$1]' + `(//${hostname}/${owner}/${repo}/blob/${getRepositoryDefaultBranch(
               value.url
             )}/` + '$2$3)').replace(
-              /\[([^\[\]]*)\]\((?!https?:\/\/)(.*?)(\.png|\.jpg|\.jpeg)\)/gim,
+              /\[([^\[\]]*)\]\((?!https?:\/\/)(.*?)(\.png|\.jpg|\.jpeg|\.gif|\.webp)\)/gim,
               '[$1]' + `(//${hostname}/${owner}/${repo}/raw/${getRepositoryDefaultBranch(
                 value.url
               )}/` + '$2$3)')}
