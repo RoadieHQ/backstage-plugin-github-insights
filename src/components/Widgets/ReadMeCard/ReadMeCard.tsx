@@ -110,14 +110,14 @@ const ReadMeCard = (props: Props) => {
       >
         <MarkdownContent
           content={atob(value.content).replace(
-            /\(\./gi,
-            `(//${hostname}/${owner}/${repo}/raw/${getRepositoryDefaultBranch(
-              value.url
-            )}`
-          ).replace(
             /\[([^\[\]]*)\]\((?!https?:\/\/)(.*?)(\.md)\)/gim,
-            '[$1]($2/)'
-          )}
+            '[$1]' + `(//${hostname}/${owner}/${repo}/blob/${getRepositoryDefaultBranch(
+              value.url
+            )}/` + '$2$3)').replace(
+              /\[([^\[\]]*)\]\((?!https?:\/\/)(.*?)(\.png|\.jpg|\.jpeg|\.gif|\.webp)\)/gim,
+              '[$1]' + `(//${hostname}/${owner}/${repo}/raw/${getRepositoryDefaultBranch(
+                value.url
+              )}/` + '$2$3)')}
         />
       </div>
     </InfoCard>
