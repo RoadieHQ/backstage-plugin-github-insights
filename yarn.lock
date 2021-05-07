@@ -1190,10 +1190,10 @@
     react-router-dom "6.0.0-beta.0"
     zen-observable "^0.8.15"
 
-"@backstage/theme@^0.2.3", "@backstage/theme@^0.2.6":
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/@backstage/theme/-/theme-0.2.6.tgz#f3523738eba3111b03d86adae07d55455d63b272"
-  integrity sha512-7ucdGXMR/c8LKxR8ILCdjPi5SdQVBw+goou49oop45d3SUV70ZVwaCWBi75NNC91dNgaws/tEjxwvCV47rOlEQ==
+"@backstage/theme@^0.2.3", "@backstage/theme@^0.2.6", "@backstage/theme@^0.2.7":
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/@backstage/theme/-/theme-0.2.7.tgz#376903a05ae6a6cca3774c99b6e6331320714522"
+  integrity sha512-3PcspFspIbiOXAMJFOU+9qHvICSC37gHlVMvaUnU4BGYZcVJz/3Tn9J5IQHEhdmmIAUbPacqpb9U8lvLJIUWUA==
   dependencies:
     "@material-ui/core" "^4.11.0"
 
