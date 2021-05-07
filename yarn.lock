@@ -917,16 +917,16 @@
     "@backstage/errors" "^0.1.1"
     cross-fetch "^3.0.6"
 
-"@backstage/catalog-model@^0.7.3", "@backstage/catalog-model@^0.7.5", "@backstage/catalog-model@^0.7.7":
-  version "0.7.7"
-  resolved "https://registry.yarnpkg.com/@backstage/catalog-model/-/catalog-model-0.7.7.tgz#f022c72a21ac4127f3dd1be63d6a5d6ddee656d0"
-  integrity sha512-8+Y1Zw/g0GOfLDRrmMjg+psOeqni5Qjd9u5KDi3AI99v43GDO9Ani0xgsExLL/2OuENNnTaHtm7hf4HmceziBQ==
+"@backstage/catalog-model@^0.7.3", "@backstage/catalog-model@^0.7.5", "@backstage/catalog-model@^0.7.7", "@backstage/catalog-model@^0.7.8":
+  version "0.7.8"
+  resolved "https://registry.yarnpkg.com/@backstage/catalog-model/-/catalog-model-0.7.8.tgz#3226d2416caa12bad4ca8ebca31218e469572f89"
+  integrity sha512-YPoSdhzc1T2SisKI4G2HyrLaRM4xqEEN0iayPydpjq8ki5CBVmQTHi6Qv5rYa9AYjA8io7EwgSGl7c5QWc4HWw==
   dependencies:
-    "@backstage/config" "^0.1.3"
+    "@backstage/config" "^0.1.5"
     "@types/json-schema" "^7.0.5"
     "@types/yup" "^0.29.8"
     ajv "^7.0.3"
-    json-schema "^0.2.5"
+    json-schema "^0.3.0"
     lodash "^4.17.15"
     uuid "^8.0.0"
     yup "^0.29.3"
@@ -1045,7 +1045,7 @@
     yaml "^1.9.2"
     yup "^0.29.3"
 
-"@backstage/config@^0.1.2", "@backstage/config@^0.1.3", "@backstage/config@^0.1.4", "@backstage/config@^0.1.5":
+"@backstage/config@^0.1.2", "@backstage/config@^0.1.4", "@backstage/config@^0.1.5":
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/@backstage/config/-/config-0.1.5.tgz#a883c1b5bdab7ab2ff041cd278f3e8c885203cb3"
   integrity sha512-/pudFgexXqFLe1NdLDVeosBfJwS6+VsuNAduXW+g4901BxwptojqJxJcpi42nC2F9z74jDtYJlqlYIsJAEB8nA==
@@ -7757,11 +7757,6 @@ json-schema@0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/json-schema/-/json-schema-0.2.3.tgz#b480c892e59a2f05954ce727bd3f2a4e882f9e13"
   integrity sha1-tIDIkuWaLwWVTOcnvT8qTogvnhM=
-
-json-schema@^0.2.5:
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/json-schema/-/json-schema-0.2.5.tgz#97997f50972dd0500214e208c407efa4b5d7063b"
-  integrity sha512-gWJOWYFrhQ8j7pVm0EM8Slr+EPVq1Phf6lvzvD/WCeqkrx/f2xBI0xOsRRS9xCn3I4vKtP519dvs3TP09r24wQ==
 
 json-schema@^0.3.0:
   version "0.3.0"
