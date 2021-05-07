@@ -84,6 +84,52 @@ By default the plugin will use the annotation `github.com/project-slug` and get 
 - Add GitHub Insights plugin tab.
 - Show widgets about repository contributors, languages, readme and release at overview page.
 
+### Widgets
+
+#### Compliance Card
+```ts
+// packages/app/src/components/catalog/EntityPage.tsx
+import {
+EntityGithubInsightsComplianceCard
+} from '@roadiehq/backstage-plugin-github-insights';
+```
+![a preview of the compliance widget](docs/compliance-report-widget.png)
+
+#### Contributors Card
+```ts
+// packages/app/src/components/catalog/EntityPage.tsx
+import {
+EntityGithubInsightsContributorsCard
+} from '@roadiehq/backstage-plugin-github-insights';
+```
+![a preview of the contributors widget](docs/contributors-widget.png)
+
+#### Languages Card
+```ts
+// packages/app/src/components/catalog/EntityPage.tsx
+import {
+EntityGithubInsightsLanguagesCard
+} from '@roadiehq/backstage-plugin-github-insights';
+```
+![a preview of the languages widget](docs/languages-widget.png)
+
+#### ReadMeCard
+```ts
+// packages/app/src/components/catalog/EntityPage.tsx
+import {
+EntityGithubInsightsReadmeCard
+} from '@roadiehq/backstage-plugin-github-insights';
+```
+![a preview of the compliance widget](docs/readme-widget.png)
+#### ReleasesCard
+```ts
+// packages/app/src/components/catalog/EntityPage.tsx
+import {
+EntityGithubInsightsReleasesCard
+} from '@roadiehq/backstage-plugin-github-insights';
+```
+![a preview of the releases widget](docs/releases-widget.png)
+
 ## Links
 
 - [Backstage](https://backstage.io)
