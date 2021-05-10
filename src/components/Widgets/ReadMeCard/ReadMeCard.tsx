@@ -63,6 +63,20 @@ const getRepositoryDefaultBranch = (url: string) => {
   return repositoryUrl;
 };
 
+// Decoding base64 ⇢ UTF8
+// Taken from https://stackoverflow.com/a/30106551/6950
+function b64DecodeUnicode(str: string): string {
+  return decodeURIComponent(
+    Array.prototype.map
+      // eslint-disable-next-line func-names
+      .call(atob(str), function (c) {
+        // eslint-disable-next-line prefer-template
+        return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+      })
+      .join("")
+  );
+}
+
 const ReadMeCard = (props: Props) => {
   const { entity } = useEntity();
   const { owner, repo, readmePath } = useProjectEntity(entity);
@@ -109,7 +123,7 @@ const ReadMeCard = (props: Props) => {
         }}
       >
         <MarkdownContent
-          content={atob(value.content).replace(
+          content={b64DecodeUnicode(value.content).replace(
             /\[([^\[\]]*)\]\((?!https?:\/\/)(.*?)(\.md)\)/gim,
             '[$1]' + `(//${hostname}/${owner}/${repo}/blob/${getRepositoryDefaultBranch(
               value.url
