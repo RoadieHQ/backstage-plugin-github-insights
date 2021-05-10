@@ -64,7 +64,6 @@ const getRepositoryDefaultBranch = (url: string) => {
 };
 
 // Decoding base64 ⇢ UTF8
-// Taken from https://stackoverflow.com/a/30106551/6950
 function b64DecodeUnicode(str: string): string {
   return decodeURIComponent(
     Array.prototype.map
