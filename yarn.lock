@@ -907,26 +907,26 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@backstage/catalog-client@^0.3.9":
-  version "0.3.10"
-  resolved "https://registry.yarnpkg.com/@backstage/catalog-client/-/catalog-client-0.3.10.tgz#3f909f3b2733495c0660f50d7507cdc18d41dcb3"
-  integrity sha512-s+aBqQ1THLZB1XyDhKG9qeSLx/rFMapd/KI5ZpnwQ5iUASKAyUIIO5g1ugWqFwD9PJ2QZzfwyg6efh8TZLdsmg==
+"@backstage/catalog-client@^0.3.11":
+  version "0.3.11"
+  resolved "https://registry.yarnpkg.com/@backstage/catalog-client/-/catalog-client-0.3.11.tgz#3454a26b763afe5a25aac92e4503f19e7ad6f607"
+  integrity sha512-AgMXP9BwHMBSIuBNdcluA0hWmHqRrDLvovwY/hxX7FbD1t4s5RzekHb5VyI6UaxcxBL+9agu+b23Vax5u9jIKQ==
   dependencies:
-    "@backstage/catalog-model" "^0.7.7"
-    "@backstage/config" "^0.1.4"
+    "@backstage/catalog-model" "^0.7.8"
+    "@backstage/config" "^0.1.5"
     "@backstage/errors" "^0.1.1"
     cross-fetch "^3.0.6"
 
-"@backstage/catalog-model@^0.7.3", "@backstage/catalog-model@^0.7.5", "@backstage/catalog-model@^0.7.7":
-  version "0.7.7"
-  resolved "https://registry.yarnpkg.com/@backstage/catalog-model/-/catalog-model-0.7.7.tgz#f022c72a21ac4127f3dd1be63d6a5d6ddee656d0"
-  integrity sha512-8+Y1Zw/g0GOfLDRrmMjg+psOeqni5Qjd9u5KDi3AI99v43GDO9Ani0xgsExLL/2OuENNnTaHtm7hf4HmceziBQ==
+"@backstage/catalog-model@^0.7.3", "@backstage/catalog-model@^0.7.7", "@backstage/catalog-model@^0.7.8":
+  version "0.7.8"
+  resolved "https://registry.yarnpkg.com/@backstage/catalog-model/-/catalog-model-0.7.8.tgz#3226d2416caa12bad4ca8ebca31218e469572f89"
+  integrity sha512-YPoSdhzc1T2SisKI4G2HyrLaRM4xqEEN0iayPydpjq8ki5CBVmQTHi6Qv5rYa9AYjA8io7EwgSGl7c5QWc4HWw==
   dependencies:
-    "@backstage/config" "^0.1.3"
+    "@backstage/config" "^0.1.5"
     "@types/json-schema" "^7.0.5"
     "@types/yup" "^0.29.8"
     ajv "^7.0.3"
-    json-schema "^0.2.5"
+    json-schema "^0.3.0"
     lodash "^4.17.15"
     uuid "^8.0.0"
     yup "^0.29.3"
@@ -1045,7 +1045,7 @@
     yaml "^1.9.2"
     yup "^0.29.3"
 
-"@backstage/config@^0.1.2", "@backstage/config@^0.1.3", "@backstage/config@^0.1.4", "@backstage/config@^0.1.5":
+"@backstage/config@^0.1.2", "@backstage/config@^0.1.4", "@backstage/config@^0.1.5":
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/@backstage/config/-/config-0.1.5.tgz#a883c1b5bdab7ab2ff041cd278f3e8c885203cb3"
   integrity sha512-/pudFgexXqFLe1NdLDVeosBfJwS6+VsuNAduXW+g4901BxwptojqJxJcpi42nC2F9z74jDtYJlqlYIsJAEB8nA==
@@ -1069,7 +1069,7 @@
     react-use "^15.3.3"
     zen-observable "^0.8.15"
 
-"@backstage/core@^0.7.0", "@backstage/core@^0.7.3", "@backstage/core@^0.7.8":
+"@backstage/core@^0.7.0", "@backstage/core@^0.7.8":
   version "0.7.8"
   resolved "https://registry.yarnpkg.com/@backstage/core/-/core-0.7.8.tgz#a61d3052b141902d004a77a90135ba1d00842ce8"
   integrity sha512-xp4fxf848wJFlh/l2R2m92MiRIHZbIyT4e95KthIzWT/s+MZYBNgMj3OepkhPlGTZutdjRwiNOQN652gH5MW9w==
@@ -1145,16 +1145,17 @@
     cross-fetch "^3.0.6"
     serialize-error "^8.0.1"
 
-"@backstage/plugin-catalog-react@^0.1.1", "@backstage/plugin-catalog-react@^0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@backstage/plugin-catalog-react/-/plugin-catalog-react-0.1.4.tgz#4e136ff8c5e2b0a264b9a94c32e65def5c3f4609"
-  integrity sha512-JOVXrSddjIVJ8UoGmzpy0VHHMMgU9b5+ukK8Lj8ry9ESUDTxOTvSaKKgpkskuXbTh7+FkBsEfJLY4J3QQGgB/Q==
+"@backstage/plugin-catalog-react@^0.1.1", "@backstage/plugin-catalog-react@^0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@backstage/plugin-catalog-react/-/plugin-catalog-react-0.1.5.tgz#b3c4d9d43b80503fa1ac27185ea0b78edde9333c"
+  integrity sha512-T1/zvXHGBPZtctgUJ6sVzfd9E/RAvE1+dKrruI+V78MO422qk4YB9uKByvrj0oM5nSkoN9PiAgGaNj3Gokocjg==
   dependencies:
-    "@backstage/catalog-client" "^0.3.9"
-    "@backstage/catalog-model" "^0.7.5"
-    "@backstage/core" "^0.7.3"
+    "@backstage/catalog-client" "^0.3.11"
+    "@backstage/catalog-model" "^0.7.8"
+    "@backstage/core" "^0.7.8"
     "@material-ui/core" "^4.11.0"
     "@types/react" "^16.9"
+    lodash "^4.17.15"
     react "^16.13.1"
     react-router "6.0.0-beta.0"
     react-router-dom "6.0.0-beta.0"
@@ -7757,11 +7758,6 @@ json-schema@0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/json-schema/-/json-schema-0.2.3.tgz#b480c892e59a2f05954ce727bd3f2a4e882f9e13"
   integrity sha1-tIDIkuWaLwWVTOcnvT8qTogvnhM=
-
-json-schema@^0.2.5:
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/json-schema/-/json-schema-0.2.5.tgz#97997f50972dd0500214e208c407efa4b5d7063b"
-  integrity sha512-gWJOWYFrhQ8j7pVm0EM8Slr+EPVq1Phf6lvzvD/WCeqkrx/f2xBI0xOsRRS9xCn3I4vKtP519dvs3TP09r24wQ==
 
 json-schema@^0.3.0:
   version "0.3.0"
