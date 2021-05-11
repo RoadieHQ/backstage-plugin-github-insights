@@ -24,6 +24,7 @@ import {
 } from '../../../hooks/useComplianceHooks';
 import { useProjectEntity } from '../../../hooks/useProjectEntity';
 import WarningIcon from '@material-ui/icons/ErrorOutline';
+import { styles as useStyles } from '../../utils/styles';
 import { useEntity } from "@backstage/plugin-catalog-react";
 
 type Props = {
@@ -40,6 +41,7 @@ const ComplianceCard = (_props: Props) => {
     loading: licenseLoading,
     error: licenseError,
   } = useRepoLicence(entity);
+  const classes = useStyles();
 
   if (loading || licenseLoading) {
     return <Progress />;
@@ -58,7 +60,7 @@ const ComplianceCard = (_props: Props) => {
         metadata={{
           'Protected branches':
             branches?.length && owner && repo ? (
-              <List>
+              <List className={classes.listStyle}>
                 {branches.map((branch: any) => (
                   <ListItem key={branch.name}>{branch.name}</ListItem>
                 ))}

@@ -23,27 +23,7 @@ import { useRequest } from '../../../hooks/useRequest';
 import { useUrl } from '../../../hooks/useUrl';
 import { useProjectEntity } from '../../../hooks/useProjectEntity';
 import { useEntity } from "@backstage/plugin-catalog-react";
-
-const useStyles = makeStyles((theme) => ({
-  infoCard: {
-    marginBottom: theme.spacing(3),
-    '& + .MuiAlert-root': {
-      marginTop: theme.spacing(3),
-    },
-  },
-  releaseTitle: {
-    fontSize: '1.1rem',
-    fontWeight: theme.typography.fontWeightMedium,
-    margin: 0,
-    marginRight: '0.5rem', 
-  },
-  releaseTagIcon: {
-    verticalAlign: 'middle',
-  },
-  listItem: {
-    justifyContent: 'space-between'
-  },
-}));
+import { styles as useStyles } from '../../utils/styles';
 
 type Release = {
   id: number;
@@ -59,9 +39,9 @@ type Props = {
 };
 
 const ReleasesCard = (_props: Props) => {
+  const classes = useStyles();
   const { entity } = useEntity();
   const { owner, repo } = useProjectEntity(entity);
-  const classes = useStyles();
   const { value, loading, error } = useRequest(entity, 'releases', 0, 5);
   const { hostname } = useUrl();
 
@@ -97,11 +77,11 @@ const ReleasesCard = (_props: Props) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-            <p className={classes.releaseTitle}>{release.name}</p>
-            <LocalOfferOutlinedIcon fontSize="inherit" className={classes.releaseTagIcon} /> {release.tag_name}
+              <p className={classes.releaseTitle}>{release.name}</p>
+              <LocalOfferOutlinedIcon fontSize="inherit" className={classes.releaseTagIcon} /> {release.tag_name}
               {/* by {release.author.login} */}
             </Link>
-            {release.prerelease && <Chip color="primary" size="small" label="Pre-release"/>}
+            {release.prerelease && <Chip color="primary" size="small" label="Pre-release" />}
           </ListItem>
         ))}
       </List>
