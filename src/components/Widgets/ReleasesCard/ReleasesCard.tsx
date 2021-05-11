@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import React from 'react';
-import { Link, List, ListItem, Chip, makeStyles } from '@material-ui/core';
+import { Link, List, ListItem, Chip } from '@material-ui/core';
 import LocalOfferOutlinedIcon from '@material-ui/icons/LocalOfferOutlined';
 import Alert from '@material-ui/lab/Alert';
 import { InfoCard, Progress } from '@backstage/core';
