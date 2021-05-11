@@ -599,7 +599,7 @@ export const colors: Colors = {
     url: 'https://github.com/trending?l=Haxe',
   },
   HCL: {
-    color: 'inherit',
+    color: '#00dfd4',
     url: 'https://github.com/trending?l=HCL',
   },
   HiveQL: {
@@ -1423,7 +1423,7 @@ export const colors: Colors = {
     url: 'https://github.com/trending?l=Smalltalk',
   },
   Smarty: {
-    color: 'inherit',
+    color: '#bedf00',
     url: 'https://github.com/trending?l=Smarty',
   },
   SmPL: {
