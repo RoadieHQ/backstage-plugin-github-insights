@@ -93,4 +93,20 @@ describe('ReadmeCard', () => {
       await rendered.findByText('⭐', { exact: false })
     ).toBeInTheDocument();
   });
+  it('should render techdocs links correctly', async () => {
+    const rendered = render(
+      wrapInTestApp(
+        <ApiProvider apis={apis}>
+          <ThemeProvider theme={lightTheme}>
+            <EntityProvider entity={entityMock}>
+              <ReadMeCard />
+            </EntityProvider>
+          </ThemeProvider>
+        </ApiProvider>
+      )
+    );
+    expect(await rendered.findByText('TechDocs Test Link')).toHaveAttribute(
+      'href', 'docs/overview/what-is-backstage/',
+    );
+  });
 });
