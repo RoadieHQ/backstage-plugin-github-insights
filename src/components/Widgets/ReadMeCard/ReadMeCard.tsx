@@ -123,14 +123,16 @@ const ReadMeCard = (props: Props) => {
       >
         <MarkdownContent
           content={b64DecodeUnicode(value.content).replace(
+            /\[([^\[\]]*)\]\((?!https?:\/\/)(.*?)(\.png|\.jpg|\.jpeg|\.gif|\.webp)\)/gim,
+            '[$1]' + `(//${hostname}/${owner}/${repo}/raw/${getRepositoryDefaultBranch(
+              value.url
+            )}/` + '$2$3)').replace(
+            /\[([^\[\]]*)\]\((?!https?:\/\/)docs\/(.*?)(\.md)\)/gim,
+            '[$1](docs/$2/)').replace(
             /\[([^\[\]]*)\]\((?!https?:\/\/)(.*?)(\.md)\)/gim,
             '[$1]' + `(//${hostname}/${owner}/${repo}/blob/${getRepositoryDefaultBranch(
               value.url
-            )}/` + '$2$3)').replace(
-              /\[([^\[\]]*)\]\((?!https?:\/\/)(.*?)(\.png|\.jpg|\.jpeg|\.gif|\.webp)\)/gim,
-              '[$1]' + `(//${hostname}/${owner}/${repo}/raw/${getRepositoryDefaultBranch(
-                value.url
-              )}/` + '$2$3)')}
+            )}/` + '$2$3)')}
         />
       </div>
     </InfoCard>
