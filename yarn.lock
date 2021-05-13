@@ -917,10 +917,10 @@
     "@backstage/errors" "^0.1.1"
     cross-fetch "^3.0.6"
 
-"@backstage/catalog-model@^0.7.3", "@backstage/catalog-model@^0.7.7", "@backstage/catalog-model@^0.7.8":
-  version "0.7.8"
-  resolved "https://registry.yarnpkg.com/@backstage/catalog-model/-/catalog-model-0.7.8.tgz#3226d2416caa12bad4ca8ebca31218e469572f89"
-  integrity sha512-YPoSdhzc1T2SisKI4G2HyrLaRM4xqEEN0iayPydpjq8ki5CBVmQTHi6Qv5rYa9AYjA8io7EwgSGl7c5QWc4HWw==
+"@backstage/catalog-model@^0.7.3", "@backstage/catalog-model@^0.7.7", "@backstage/catalog-model@^0.7.8", "@backstage/catalog-model@^0.7.9":
+  version "0.7.9"
+  resolved "https://registry.yarnpkg.com/@backstage/catalog-model/-/catalog-model-0.7.9.tgz#4fa65d70845d5f96f4b909724a1b4b7d5f4b40d7"
+  integrity sha512-8NTkh17Nm5IHfJt6hk63UmgVmLTnrAp9CZmNKnNYTvTmIGM7AFGvVcHVIKbiVxM18/fayOa6kZOSVMgxyykkpw==
   dependencies:
     "@backstage/config" "^0.1.5"
     "@types/json-schema" "^7.0.5"
@@ -1052,7 +1052,7 @@
   dependencies:
     lodash "^4.17.15"
 
-"@backstage/core-api@^0.2.16", "@backstage/core-api@^0.2.17":
+"@backstage/core-api@^0.2.16":
   version "0.2.17"
   resolved "https://registry.yarnpkg.com/@backstage/core-api/-/core-api-0.2.17.tgz#98036af3caabfc3c8fe6e0cbdad978ca99de16e3"
   integrity sha512-Q4DOALePzBJtvjSluRyF12jP81FXBgYwF6VMUL/BwA77tfNhZysemQWYjwZZq4AZWYYhUcl5awfEhAjSHXUF1Q==
@@ -1069,13 +1069,30 @@
     react-use "^15.3.3"
     zen-observable "^0.8.15"
 
-"@backstage/core@^0.7.0", "@backstage/core@^0.7.8":
-  version "0.7.8"
-  resolved "https://registry.yarnpkg.com/@backstage/core/-/core-0.7.8.tgz#a61d3052b141902d004a77a90135ba1d00842ce8"
-  integrity sha512-xp4fxf848wJFlh/l2R2m92MiRIHZbIyT4e95KthIzWT/s+MZYBNgMj3OepkhPlGTZutdjRwiNOQN652gH5MW9w==
+"@backstage/core-api@^0.2.18":
+  version "0.2.18"
+  resolved "https://registry.yarnpkg.com/@backstage/core-api/-/core-api-0.2.18.tgz#65d285922a2683a511530b687bfd8de66fe0fc2b"
+  integrity sha512-ftxZUtAVn2gnYfbW5vAvhiJ9jAjiclBz/llUqyuy2hR+7N+W7eI/igmZgTk1jDPKnGgYSOXfYg9bW33q8BVp2w==
+  dependencies:
+    "@backstage/config" "^0.1.4"
+    "@backstage/theme" "^0.2.6"
+    "@material-ui/core" "^4.11.0"
+    "@material-ui/icons" "^4.9.1"
+    "@types/prop-types" "^15.7.3"
+    "@types/react" "^16.9"
+    prop-types "^15.7.2"
+    react "^16.12.0"
+    react-router-dom "6.0.0-beta.0"
+    react-use "^17.2.4"
+    zen-observable "^0.8.15"
+
+"@backstage/core@^0.7.0", "@backstage/core@^0.7.8", "@backstage/core@^0.7.9":
+  version "0.7.9"
+  resolved "https://registry.yarnpkg.com/@backstage/core/-/core-0.7.9.tgz#cbfd42b0243eb303d1e08541281b7af228d2dd40"
+  integrity sha512-fo5dnEIU6HxWdJX5tQnH6q79UUw90uqxQHUntm3+OkWYqnVettMe858hfT0vYBAL17Oe+6tF9MnTWDAfdzimPw==
   dependencies:
     "@backstage/config" "^0.1.5"
-    "@backstage/core-api" "^0.2.17"
+    "@backstage/core-api" "^0.2.18"
     "@backstage/errors" "^0.1.1"
     "@backstage/theme" "^0.2.7"
     "@material-ui/core" "^4.11.0"
@@ -1097,6 +1114,7 @@
     immer "^9.0.1"
     lodash "^4.17.15"
     material-table "^1.69.1"
+    pluralize "^8.0.0"
     prop-types "^15.7.2"
     qs "^6.9.4"
     rc-progress "^3.0.0"
@@ -1110,7 +1128,7 @@
     react-sparklines "^1.7.0"
     react-syntax-highlighter "^15.4.3"
     react-text-truncate "^0.16.0"
-    react-use "^15.3.3"
+    react-use "^17.2.4"
     remark-gfm "^1.0.0"
     zen-observable "^0.8.15"
 
@@ -1145,21 +1163,21 @@
     cross-fetch "^3.0.6"
     serialize-error "^8.0.1"
 
-"@backstage/plugin-catalog-react@^0.1.1", "@backstage/plugin-catalog-react@^0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@backstage/plugin-catalog-react/-/plugin-catalog-react-0.1.5.tgz#b3c4d9d43b80503fa1ac27185ea0b78edde9333c"
-  integrity sha512-T1/zvXHGBPZtctgUJ6sVzfd9E/RAvE1+dKrruI+V78MO422qk4YB9uKByvrj0oM5nSkoN9PiAgGaNj3Gokocjg==
+"@backstage/plugin-catalog-react@^0.1.1", "@backstage/plugin-catalog-react@^0.1.6":
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/@backstage/plugin-catalog-react/-/plugin-catalog-react-0.1.6.tgz#1d72756cce22b880987c30ac27e23af8efa22843"
+  integrity sha512-/60GIrcFfyAiKn3bylXegwtHf1NQxQa4PcXD7nSIB5ISCuot2mkI32LMjciEvNHR7efGA5Yv6yWelFSFdvbcKQ==
   dependencies:
     "@backstage/catalog-client" "^0.3.11"
-    "@backstage/catalog-model" "^0.7.8"
-    "@backstage/core" "^0.7.8"
+    "@backstage/catalog-model" "^0.7.9"
+    "@backstage/core" "^0.7.9"
     "@material-ui/core" "^4.11.0"
     "@types/react" "^16.9"
     lodash "^4.17.15"
     react "^16.13.1"
     react-router "6.0.0-beta.0"
     react-router-dom "6.0.0-beta.0"
-    react-use "^15.3.3"
+    react-use "^17.2.4"
 
 "@backstage/test-utils-core@^0.1.1":
   version "0.1.1"
@@ -1499,7 +1517,7 @@
   dependencies:
     npmlog "^4.1.2"
 
-"@material-ui/core@^4.11.0", "@material-ui/core@^4.11.4":
+"@material-ui/core@^4.11.0":
   version "4.11.4"
   resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-4.11.4.tgz#4fb9fe5dec5dcf780b687e3a40cff78b2b9640a4"
   integrity sha512-oqb+lJ2Dl9HXI9orc6/aN8ZIAMkeThufA5iZELf2LQeBn2NtjVilF5D2w7e9RpntAzDb4jK5DsVhkfOvFY/8fg==
@@ -1534,17 +1552,6 @@
     clsx "^1.0.4"
     prop-types "^15.7.2"
     react-is "^16.8.0"
-
-"@material-ui/lab@4.0.0-alpha.58":
-  version "4.0.0-alpha.58"
-  resolved "https://registry.yarnpkg.com/@material-ui/lab/-/lab-4.0.0-alpha.58.tgz#c7ebb66f49863c5acbb20817163737caa299fafc"
-  integrity sha512-GKHlJqLxUeHH3L3dGQ48ZavYrqGOTXkFkiEiuYMAnAvXAZP4rhMIqeHOPXSUQan4Bd8QnafDcpovOSLnadDmKw==
-  dependencies:
-    "@babel/runtime" "^7.4.4"
-    "@material-ui/utils" "^4.11.2"
-    clsx "^1.0.4"
-    prop-types "^15.7.2"
-    react-is "^16.8.0 || ^17.0.0"
 
 "@material-ui/pickers@3.2.2":
   version "3.2.2"
@@ -5126,11 +5133,6 @@ es-to-primitive@^1.2.1:
     is-callable "^1.1.4"
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
-
-esbuild@^0.11.20:
-  version "0.11.20"
-  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.11.20.tgz#7cefa1aee8b372c184e42457885f7ce5d3e62a1e"
-  integrity sha512-QOZrVpN/Yz74xfat0H6euSgn3RnwLevY1mJTEXneukz1ln9qB+ieaerRMzSeETpz/UJWsBMzRVR/andBht5WKw==
 
 esbuild@^0.8.56:
   version "0.8.57"
@@ -9528,6 +9530,11 @@ pkg-up@3.1.0:
   integrity sha512-nDywThFk1i4BQK4twPQ6TA4RT8bDY96yeuCVBWL3ePARCiEKDRSrNGbFIgUJpLp+XeIR65v8ra7WuJOFUBtkMA==
   dependencies:
     find-up "^3.0.0"
+
+pluralize@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-8.0.0.tgz#1a6fa16a38d12a1901e0320fa017051c539ce3b1"
+  integrity sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==
 
 popper.js@1.16.1-lts:
   version "1.16.1-lts"
