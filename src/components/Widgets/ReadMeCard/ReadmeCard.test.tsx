@@ -109,4 +109,66 @@ describe('ReadmeCard', () => {
       'href', 'docs/overview/what-is-backstage/',
     );
   });
+  it('should render images and add headlines correctly', async () => {
+    const rendered = render(
+      wrapInTestApp(
+        <ApiProvider apis={apis}>
+          <ThemeProvider theme={lightTheme}>
+            <EntityProvider entity={entityMock}>
+              <ReadMeCard />
+            </EntityProvider>
+          </ThemeProvider>
+        </ApiProvider>
+      )
+    );
+    expect(await rendered.findByAltText('headline')).toBeInTheDocument();
+  });
+  it('should render images and add title correctly', async () => {
+    const rendered = render(
+      wrapInTestApp(
+        <ApiProvider apis={apis}>
+          <ThemeProvider theme={lightTheme}>
+            <EntityProvider entity={entityMock}>
+              <ReadMeCard />
+            </EntityProvider>
+          </ThemeProvider>
+        </ApiProvider>
+      )
+    );
+    expect(await rendered.findByAltText('alt-text')).toHaveAttribute(
+      'title', 'cc some-title',
+    );
+  });
+  it('should check image not to have title', async () => {
+    const rendered = render(
+      wrapInTestApp(
+        <ApiProvider apis={apis}>
+          <ThemeProvider theme={lightTheme}>
+            <EntityProvider entity={entityMock}>
+              <ReadMeCard />
+            </EntityProvider>
+          </ThemeProvider>
+        </ApiProvider>
+      )
+    );
+    expect(await rendered.findByAltText('headline')).not.toHaveAttribute(
+      'title', 'cc some-title',
+    );
+  });
+  it('should render images url correctly', async () => {
+    const rendered = render(
+      wrapInTestApp(
+        <ApiProvider apis={apis}>
+          <ThemeProvider theme={lightTheme}>
+            <EntityProvider entity={entityMock}>
+              <ReadMeCard />
+            </EntityProvider>
+          </ThemeProvider>
+        </ApiProvider>
+      )
+    );
+    expect(await rendered.findByAltText('headline')).toHaveAttribute(
+      'src', '//github.com/mcalus3/backstage/raw/master/docs/assets/headline.png',
+    );
+  });
 });
