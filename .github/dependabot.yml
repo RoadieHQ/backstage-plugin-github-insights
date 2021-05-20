@@ -10,5 +10,5 @@ updates:
       - dependencies
  ignore:
       - dependency-name: "material-ui/*"
-      - dependency-name: "react-dom"
+      - dependency-name: "react*"
     
