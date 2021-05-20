@@ -9,6 +9,6 @@ updates:
     labels:
       - dependencies
     ignore:
-      - dependency-name: "material-ui/*"
-      - dependency-name: "react*"
-      - dependency-name: "esbuild"
+      - dependency-name: "@material-ui/*"
+      - dependency-name: "@react*"
+      - dependency-name: "@esbuild"
