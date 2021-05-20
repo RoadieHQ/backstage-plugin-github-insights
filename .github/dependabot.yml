@@ -11,4 +11,5 @@ updates:
  ignore:
       - dependency-name: "material-ui/*"
       - dependency-name: "react*"
+      - dependency-name: "esbuild"
     
