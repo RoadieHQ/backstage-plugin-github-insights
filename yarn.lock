@@ -1052,10 +1052,10 @@
   dependencies:
     lodash "^4.17.15"
 
-"@backstage/core-api@^0.2.16", "@backstage/core-api@^0.2.17":
-  version "0.2.17"
-  resolved "https://registry.yarnpkg.com/@backstage/core-api/-/core-api-0.2.17.tgz#98036af3caabfc3c8fe6e0cbdad978ca99de16e3"
-  integrity sha512-Q4DOALePzBJtvjSluRyF12jP81FXBgYwF6VMUL/BwA77tfNhZysemQWYjwZZq4AZWYYhUcl5awfEhAjSHXUF1Q==
+"@backstage/core-api@^0.2.16", "@backstage/core-api@^0.2.19":
+  version "0.2.19"
+  resolved "https://registry.yarnpkg.com/@backstage/core-api/-/core-api-0.2.19.tgz#33011fa06869ffa7cede1aae8cead3071d86f687"
+  integrity sha512-Nj/jXDMqeYlC6GwlabK/IoF9uKlVs0PMr4ESkKIpm8bNCkJOPTQuHv+qMN7X5ZHkwBDieq+k/WTKj2GKVBowgw==
   dependencies:
     "@backstage/config" "^0.1.4"
     "@backstage/theme" "^0.2.6"
@@ -1066,16 +1066,16 @@
     prop-types "^15.7.2"
     react "^16.12.0"
     react-router-dom "6.0.0-beta.0"
-    react-use "^15.3.3"
+    react-use "^17.2.4"
     zen-observable "^0.8.15"
 
-"@backstage/core@^0.7.0", "@backstage/core@^0.7.8":
-  version "0.7.8"
-  resolved "https://registry.yarnpkg.com/@backstage/core/-/core-0.7.8.tgz#a61d3052b141902d004a77a90135ba1d00842ce8"
-  integrity sha512-xp4fxf848wJFlh/l2R2m92MiRIHZbIyT4e95KthIzWT/s+MZYBNgMj3OepkhPlGTZutdjRwiNOQN652gH5MW9w==
+"@backstage/core@^0.7.0", "@backstage/core@^0.7.10", "@backstage/core@^0.7.8":
+  version "0.7.10"
+  resolved "https://registry.yarnpkg.com/@backstage/core/-/core-0.7.10.tgz#95e8481a4eabafa880f190265f7061afb0b7f920"
+  integrity sha512-gc+Xc3SkX5XT/m+pBZgI3VrrOBvIWKUxgEr//sPc/CbugpWm6/a+w343wEYf1OpAAjKv6PYOITeqbyyjXnbyjw==
   dependencies:
     "@backstage/config" "^0.1.5"
-    "@backstage/core-api" "^0.2.17"
+    "@backstage/core-api" "^0.2.19"
     "@backstage/errors" "^0.1.1"
     "@backstage/theme" "^0.2.7"
     "@material-ui/core" "^4.11.0"
@@ -1097,6 +1097,7 @@
     immer "^9.0.1"
     lodash "^4.17.15"
     material-table "^1.69.1"
+    pluralize "^8.0.0"
     prop-types "^15.7.2"
     qs "^6.9.4"
     rc-progress "^3.0.0"
@@ -1110,7 +1111,7 @@
     react-sparklines "^1.7.0"
     react-syntax-highlighter "^15.4.3"
     react-text-truncate "^0.16.0"
-    react-use "^15.3.3"
+    react-use "^17.2.4"
     remark-gfm "^1.0.0"
     zen-observable "^0.8.15"
 
@@ -1669,10 +1670,10 @@
     "@octokit/types" "^6.0.3"
     universal-user-agent "^6.0.0"
 
-"@octokit/openapi-types@^7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@octokit/openapi-types/-/openapi-types-7.0.0.tgz#0f6992db9854af15eca77d71ab0ec7fad2f20411"
-  integrity sha512-gV/8DJhAL/04zjTI95a7FhQwS6jlEE0W/7xeYAzuArD0KVAVWDLP2f3vi98hs3HLTczxXdRK/mF0tRoQPpolEw==
+"@octokit/openapi-types@^7.2.0":
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/@octokit/openapi-types/-/openapi-types-7.2.1.tgz#3ba1abe8906863edd403e185bc12e2bf79b3e240"
+  integrity sha512-IHQJpLciwzwDvciLxiFj3IEV5VYn7lSVcj5cu0jbTwMfK4IG6/g8SPrVp3Le1VRzIiYSRcBzm1dA7vgWelYP3Q==
 
 "@octokit/plugin-paginate-rest@^2.6.2":
   version "2.9.1"
@@ -1727,12 +1728,12 @@
     "@octokit/plugin-request-log" "^1.0.2"
     "@octokit/plugin-rest-endpoint-methods" "5.0.1"
 
-"@octokit/types@^6.0.3", "@octokit/types@^6.13.1", "@octokit/types@^6.14.2", "@octokit/types@^6.7.1", "@octokit/types@^6.8.0":
-  version "6.14.2"
-  resolved "https://registry.yarnpkg.com/@octokit/types/-/types-6.14.2.tgz#64c9457f38fb8522bdbba3c8cc814590a2d61bf5"
-  integrity sha512-wiQtW9ZSy4OvgQ09iQOdyXYNN60GqjCL/UdMsepDr1Gr0QzpW6irIKbH3REuAHXAhxkEk9/F2a3Gcs1P6kW5jA==
+"@octokit/types@^6.0.3", "@octokit/types@^6.13.1", "@octokit/types@^6.16.0", "@octokit/types@^6.7.1", "@octokit/types@^6.8.0":
+  version "6.16.0"
+  resolved "https://registry.yarnpkg.com/@octokit/types/-/types-6.16.0.tgz#15f71e391ca74e91a21b70e3a1b033c89625dca4"
+  integrity sha512-EktqSNq8EKXE82a7Vw33ozOEhFXIRik+rZHJTHAgVZRm/p2K5r5ecn5fVpRkLCm3CAVFwchRvt3yvtmfbt2LCQ==
   dependencies:
-    "@octokit/openapi-types" "^7.0.0"
+    "@octokit/openapi-types" "^7.2.0"
 
 "@open-draft/until@^1.0.3":
   version "1.0.3"
@@ -9512,6 +9513,11 @@ pkg-up@3.1.0:
   integrity sha512-nDywThFk1i4BQK4twPQ6TA4RT8bDY96yeuCVBWL3ePARCiEKDRSrNGbFIgUJpLp+XeIR65v8ra7WuJOFUBtkMA==
   dependencies:
     find-up "^3.0.0"
+
+pluralize@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-8.0.0.tgz#1a6fa16a38d12a1901e0320fa017051c539ce3b1"
+  integrity sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==
 
 popper.js@1.16.1-lts:
   version "1.16.1-lts"
