@@ -1052,7 +1052,7 @@
   dependencies:
     lodash "^4.17.15"
 
-"@backstage/core-api@^0.2.16", "@backstage/core-api@^0.2.19":
+"@backstage/core-api@^0.2.17", "@backstage/core-api@^0.2.19":
   version "0.2.19"
   resolved "https://registry.yarnpkg.com/@backstage/core-api/-/core-api-0.2.19.tgz#33011fa06869ffa7cede1aae8cead3071d86f687"
   integrity sha512-Nj/jXDMqeYlC6GwlabK/IoF9uKlVs0PMr4ESkKIpm8bNCkJOPTQuHv+qMN7X5ZHkwBDieq+k/WTKj2GKVBowgw==
@@ -1173,18 +1173,18 @@
     react "^16.12.0"
     react-dom "^16.12.0"
 
-"@backstage/test-utils@^0.1.10", "@backstage/test-utils@^0.1.8":
-  version "0.1.10"
-  resolved "https://registry.yarnpkg.com/@backstage/test-utils/-/test-utils-0.1.10.tgz#4301472326f6b49ff595f1873fee3098e2315eaf"
-  integrity sha512-MwIjxemQ8Km/yKSPTyMvUz9O2JOPPbdXFauqyINynaUykiOrpqhvfdKbaarqBFzpuBoxZitNyf8iQ0PsX/twNQ==
+"@backstage/test-utils@^0.1.12", "@backstage/test-utils@^0.1.8":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@backstage/test-utils/-/test-utils-0.1.12.tgz#fcbfc9555ca00b757c9544bd3fd5f81cfa3d64fb"
+  integrity sha512-9D+I3dQ7ZOo1FFw6nc8TgqJ3A0NFa6W+8mEnf8eLMILx6ihGIvXMW5jtxMXRCsD+ggWFpZroRKfJM6fSpMmYrA==
   dependencies:
-    "@backstage/core-api" "^0.2.16"
+    "@backstage/core-api" "^0.2.19"
     "@backstage/test-utils-core" "^0.1.1"
     "@backstage/theme" "^0.2.3"
     "@material-ui/core" "^4.11.0"
     "@testing-library/jest-dom" "^5.10.1"
     "@testing-library/react" "^11.2.5"
-    "@testing-library/user-event" "^12.0.7"
+    "@testing-library/user-event" "^13.1.8"
     "@types/react" "^16.9"
     msw "^0.21.3"
     react "^16.12.0"
@@ -2016,6 +2016,13 @@
   version "12.6.3"
   resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-12.6.3.tgz#4a77c56a48823cf8adebd0f57670e4a89c24d058"
   integrity sha512-PCmbUKofE4SXA7l8jphZAbvv5H3c4ix34xPZ/GNe99fASX//msJRgiMbHIBP+GwRfgVG9c7zmkODSPu2X2vNRw==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+
+"@testing-library/user-event@^13.1.8":
+  version "13.1.9"
+  resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-13.1.9.tgz#29e49a42659ac3c1023565ff56819e0153a82e99"
+  integrity sha512-NZr0zL2TMOs2qk+dNlqrAdbaRW5dAmYwd1yuQ4r7HpkVEOj0MWuUjDWwKhcLd/atdBy8ZSMHSKp+kXSQe47ezg==
   dependencies:
     "@babel/runtime" "^7.12.5"
 
