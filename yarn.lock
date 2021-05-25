@@ -1052,7 +1052,7 @@
   dependencies:
     lodash "^4.17.15"
 
-"@backstage/core-api@^0.2.17", "@backstage/core-api@^0.2.19":
+"@backstage/core-api@^0.2.19":
   version "0.2.19"
   resolved "https://registry.yarnpkg.com/@backstage/core-api/-/core-api-0.2.19.tgz#33011fa06869ffa7cede1aae8cead3071d86f687"
   integrity sha512-Nj/jXDMqeYlC6GwlabK/IoF9uKlVs0PMr4ESkKIpm8bNCkJOPTQuHv+qMN7X5ZHkwBDieq+k/WTKj2GKVBowgw==
@@ -2004,10 +2004,10 @@
     "@babel/runtime" "^7.10.3"
     "@testing-library/dom" "^7.22.3"
 
-"@testing-library/react@^11.2.5", "@testing-library/react@^11.2.6":
-  version "11.2.6"
-  resolved "https://registry.yarnpkg.com/@testing-library/react/-/react-11.2.6.tgz#586a23adc63615985d85be0c903f374dab19200b"
-  integrity sha512-TXMCg0jT8xmuU8BkKMtp8l7Z50Ykew5WNX8UoIKTaLFwKkP2+1YDhOLA2Ga3wY4x29jyntk7EWfum0kjlYiSjQ==
+"@testing-library/react@^11.2.5", "@testing-library/react@^11.2.7":
+  version "11.2.7"
+  resolved "https://registry.yarnpkg.com/@testing-library/react/-/react-11.2.7.tgz#b29e2e95c6765c815786c0bc1d5aed9cb2bf7818"
+  integrity sha512-tzRNp7pzd5QmbtXNG/mhdcl7Awfu/Iz1RaVHY75zTdOkmHCuzMhRL83gWHSgOAcjS3CCbyfwUHMZgRJb4kAfpA==
   dependencies:
     "@babel/runtime" "^7.12.5"
     "@testing-library/dom" "^7.28.1"
