@@ -10,7 +10,7 @@
 yarn add @roadiehq/backstage-plugin-github-insights
 ```
 
-3. Add plugin API to your Backstage instance:
+2. Add plugin API to your Backstage instance:
 
 ```ts
 // packages/app/src/components/catalog/EntityPage.tsx
