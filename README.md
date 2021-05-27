@@ -10,13 +10,6 @@
 yarn add @roadiehq/backstage-plugin-github-insights
 ```
 
-2. Add plugin to the list of plugins:
-
-```ts
-// packages/app/src/plugins.ts
-export { githubInsightsPlugin } from '@roadiehq/backstage-plugin-github-insights';
-```
-
 3. Add plugin API to your Backstage instance:
 
 ```ts
@@ -60,7 +53,7 @@ import {
 const overviewContent = (
   <Grid container spacing={3} alignItems="stretch">
    <EntitySwitch>
-      <EntitySwitch.Case if={e => Boolean(isGithubInsightsAvailable(e))}>
+      <EntitySwitch.Case if={isGithubInsightsAvailable}>
         <Grid item md={6}>
           <EntityGithubInsightsLanguagesCard />
           <EntityGithubInsightsReleasesCard />

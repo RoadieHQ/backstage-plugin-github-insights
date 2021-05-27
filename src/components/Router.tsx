@@ -23,8 +23,7 @@ import { GITHUB_INSIGHTS_ANNOTATION } from '../hooks/useProjectName';
 import { MissingAnnotationEmptyState } from '@backstage/core';
 
 export const isGithubInsightsAvailable = (entity: Entity) =>
-  entity?.metadata.annotations?.[GITHUB_INSIGHTS_ANNOTATION];
-
+  Boolean(entity?.metadata.annotations?.[GITHUB_INSIGHTS_ANNOTATION]);
 
 type Props = {
   /** @deprecated The entity is now grabbed from context instead */
