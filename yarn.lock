@@ -931,6 +931,22 @@
     uuid "^8.0.0"
     yup "^0.29.3"
 
+"@backstage/catalog-model@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@backstage/catalog-model/-/catalog-model-0.8.0.tgz#7302691c4d542363af98641c8310744d39451fe6"
+  integrity sha512-rTj22txZ56zYH0OJiF2gw9hvnN3BDdrozFoF/GEIRgYRu1hSw7BqPH4feX+B5LhuKHIAI7CGN01pXhpHth94cg==
+  dependencies:
+    "@backstage/config" "^0.1.5"
+    "@backstage/errors" "^0.1.1"
+    "@types/json-schema" "^7.0.5"
+    "@types/yup" "^0.29.8"
+    ajv "^7.0.3"
+    json-schema "^0.3.0"
+    lodash "^4.17.15"
+    typescript-json-schema "^0.49.0"
+    uuid "^8.0.0"
+    yup "^0.29.3"
+
 "@backstage/cli-common@^0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@backstage/cli-common/-/cli-common-0.1.1.tgz#621f95f2e5e4aa7cca6c632c48ccb3c3d444eb8a"
@@ -1052,11 +1068,10 @@
   dependencies:
     lodash "^4.17.15"
 
-
-"@backstage/core-api@^0.2.17", "@backstage/core-api@^0.2.19":
-  version "0.2.19"
-  resolved "https://registry.yarnpkg.com/@backstage/core-api/-/core-api-0.2.19.tgz#33011fa06869ffa7cede1aae8cead3071d86f687"
-  integrity sha512-Nj/jXDMqeYlC6GwlabK/IoF9uKlVs0PMr4ESkKIpm8bNCkJOPTQuHv+qMN7X5ZHkwBDieq+k/WTKj2GKVBowgw==
+"@backstage/core-api@^0.2.19", "@backstage/core-api@^0.2.20":
+  version "0.2.20"
+  resolved "https://registry.yarnpkg.com/@backstage/core-api/-/core-api-0.2.20.tgz#49b2898c9a4f0407252e9583952c66a4bca4556b"
+  integrity sha512-50BuyKBvqSqhjihfEPTKt10CoHbbseCnxW0bs4/6y5ARDecCwK5Cp9HiLyYF5EurWj611LFaJ06FjfeA6T5z8Q==
   dependencies:
     "@backstage/config" "^0.1.4"
     "@backstage/theme" "^0.2.6"
@@ -1070,13 +1085,13 @@
     react-use "^17.2.4"
     zen-observable "^0.8.15"
 
-"@backstage/core@^0.7.10", "@backstage/core@^0.7.9":
-  version "0.7.10"
-  resolved "https://registry.yarnpkg.com/@backstage/core/-/core-0.7.10.tgz#95e8481a4eabafa880f190265f7061afb0b7f920"
-  integrity sha512-gc+Xc3SkX5XT/m+pBZgI3VrrOBvIWKUxgEr//sPc/CbugpWm6/a+w343wEYf1OpAAjKv6PYOITeqbyyjXnbyjw==
+"@backstage/core@^0.7.10", "@backstage/core@^0.7.11", "@backstage/core@^0.7.9":
+  version "0.7.11"
+  resolved "https://registry.yarnpkg.com/@backstage/core/-/core-0.7.11.tgz#b388544a4fd5bd21fde7ddc15afda635ad940137"
+  integrity sha512-XG8RjdySFZWuTjh/6CwZycMwakqSF0Vq/eBel2zQ3Wh9EXMqN1qvKSGw+EfmLVYHHcKtgW3F/sdIKum3z+/DTg==
   dependencies:
     "@backstage/config" "^0.1.5"
-    "@backstage/core-api" "^0.2.19"
+    "@backstage/core-api" "^0.2.20"
     "@backstage/errors" "^0.1.1"
     "@backstage/theme" "^0.2.7"
     "@material-ui/core" "^4.11.0"
@@ -1203,7 +1218,7 @@
     react "^16.12.0"
     react-dom "^16.12.0"
 
-"@backstage/test-utils@^0.1.12", "@backstage/test-utils@^0.1.8":
+"@backstage/test-utils@^0.1.12":
   version "0.1.12"
   resolved "https://registry.yarnpkg.com/@backstage/test-utils/-/test-utils-0.1.12.tgz#fcbfc9555ca00b757c9544bd3fd5f81cfa3d64fb"
   integrity sha512-9D+I3dQ7ZOo1FFw6nc8TgqJ3A0NFa6W+8mEnf8eLMILx6ihGIvXMW5jtxMXRCsD+ggWFpZroRKfJM6fSpMmYrA==
@@ -1767,15 +1782,10 @@
     "@octokit/types" "^6.12.2"
     btoa-lite "^1.0.0"
 
-"@octokit/openapi-types@^7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@octokit/openapi-types/-/openapi-types-7.0.0.tgz#0f6992db9854af15eca77d71ab0ec7fad2f20411"
-  integrity sha512-gV/8DJhAL/04zjTI95a7FhQwS6jlEE0W/7xeYAzuArD0KVAVWDLP2f3vi98hs3HLTczxXdRK/mF0tRoQPpolEw==
-
-"@octokit/openapi-types@^7.2.0":
-  version "7.2.1"
-  resolved "https://registry.yarnpkg.com/@octokit/openapi-types/-/openapi-types-7.2.1.tgz#3ba1abe8906863edd403e185bc12e2bf79b3e240"
-  integrity sha512-IHQJpLciwzwDvciLxiFj3IEV5VYn7lSVcj5cu0jbTwMfK4IG6/g8SPrVp3Le1VRzIiYSRcBzm1dA7vgWelYP3Q==
+"@octokit/openapi-types@^7.2.3":
+  version "7.2.3"
+  resolved "https://registry.yarnpkg.com/@octokit/openapi-types/-/openapi-types-7.2.3.tgz#a7105796db9b85d25d3feba9a1785a124c7803e4"
+  integrity sha512-V1ycxkR19jqbIl3evf2RQiMRBvTNRi+Iy9h20G5OP5dPfEF6GJ1DPlUeiZRxo2HJxRr+UA4i0H1nn4btBDPFrw==
 
 "@octokit/plugin-paginate-rest@^2.6.2":
   version "2.9.1"
@@ -1842,19 +1852,12 @@
     "@octokit/plugin-request-log" "^1.0.2"
     "@octokit/plugin-rest-endpoint-methods" "5.0.1"
 
-"@octokit/types@^6.0.3", "@octokit/types@^6.13.1", "@octokit/types@^6.14.2", "@octokit/types@^6.7.1", "@octokit/types@^6.8.0":
-  version "6.14.2"
-  resolved "https://registry.yarnpkg.com/@octokit/types/-/types-6.14.2.tgz#64c9457f38fb8522bdbba3c8cc814590a2d61bf5"
-  integrity sha512-wiQtW9ZSy4OvgQ09iQOdyXYNN60GqjCL/UdMsepDr1Gr0QzpW6irIKbH3REuAHXAhxkEk9/F2a3Gcs1P6kW5jA==
+"@octokit/types@^6.0.3", "@octokit/types@^6.10.0", "@octokit/types@^6.12.2", "@octokit/types@^6.13.1", "@octokit/types@^6.16.2", "@octokit/types@^6.7.1", "@octokit/types@^6.8.0":
+  version "6.16.2"
+  resolved "https://registry.yarnpkg.com/@octokit/types/-/types-6.16.2.tgz#62242e0565a3eb99ca2fd376283fe78b4ea057b4"
+  integrity sha512-wWPSynU4oLy3i4KGyk+J1BLwRKyoeW2TwRHgwbDz17WtVFzSK2GOErGliruIx8c+MaYtHSYTx36DSmLNoNbtgA==
   dependencies:
-    "@octokit/openapi-types" "^7.0.0"
-
-"@octokit/types@^6.10.0", "@octokit/types@^6.12.2":
-  version "6.16.0"
-  resolved "https://registry.yarnpkg.com/@octokit/types/-/types-6.16.0.tgz#15f71e391ca74e91a21b70e3a1b033c89625dca4"
-  integrity sha512-EktqSNq8EKXE82a7Vw33ozOEhFXIRik+rZHJTHAgVZRm/p2K5r5ecn5fVpRkLCm3CAVFwchRvt3yvtmfbt2LCQ==
-  dependencies:
-    "@octokit/openapi-types" "^7.2.0"
+    "@octokit/openapi-types" "^7.2.3"
 
 "@open-draft/until@^1.0.3":
   version "1.0.3"
@@ -2132,13 +2135,6 @@
   dependencies:
     "@babel/runtime" "^7.12.5"
     "@testing-library/dom" "^7.28.1"
-
-"@testing-library/user-event@^13.1.8":
-  version "13.1.9"
-  resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-13.1.9.tgz#29e49a42659ac3c1023565ff56819e0153a82e99"
-  integrity sha512-NZr0zL2TMOs2qk+dNlqrAdbaRW5dAmYwd1yuQ4r7HpkVEOj0MWuUjDWwKhcLd/atdBy8ZSMHSKp+kXSQe47ezg==
-  dependencies:
-    "@babel/runtime" "^7.12.5"
 
 "@testing-library/user-event@^13.1.8":
   version "13.1.9"

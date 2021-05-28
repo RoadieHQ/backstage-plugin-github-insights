@@ -26,8 +26,8 @@
     "clean": "backstage-cli clean"
   },
   "dependencies": {
-    "@backstage/catalog-model": "^0.7.10",
-    "@backstage/core": "^0.7.10",
+    "@backstage/catalog-model": "^0.8.0",
+    "@backstage/core": "^0.7.11",
     "@backstage/plugin-catalog-react": "^0.1.5",
     "@backstage/theme": "^0.2.7",
     "@date-io/core": "2.10.7",
@@ -35,7 +35,7 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "4.0.0-alpha.45",
     "@octokit/rest": "^18.5.3",
-    "@octokit/types": "^6.14.2",
+    "@octokit/types": "^6.16.2",
     "history": "^5.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
