@@ -931,6 +931,22 @@
     uuid "^8.0.0"
     yup "^0.29.3"
 
+"@backstage/catalog-model@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@backstage/catalog-model/-/catalog-model-0.8.0.tgz#7302691c4d542363af98641c8310744d39451fe6"
+  integrity sha512-rTj22txZ56zYH0OJiF2gw9hvnN3BDdrozFoF/GEIRgYRu1hSw7BqPH4feX+B5LhuKHIAI7CGN01pXhpHth94cg==
+  dependencies:
+    "@backstage/config" "^0.1.5"
+    "@backstage/errors" "^0.1.1"
+    "@types/json-schema" "^7.0.5"
+    "@types/yup" "^0.29.8"
+    ajv "^7.0.3"
+    json-schema "^0.3.0"
+    lodash "^4.17.15"
+    typescript-json-schema "^0.49.0"
+    uuid "^8.0.0"
+    yup "^0.29.3"
+
 "@backstage/cli-common@^0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@backstage/cli-common/-/cli-common-0.1.1.tgz#621f95f2e5e4aa7cca6c632c48ccb3c3d444eb8a"
@@ -1070,13 +1086,13 @@
     react-use "^17.2.4"
     zen-observable "^0.8.15"
 
-"@backstage/core@^0.7.10", "@backstage/core@^0.7.9":
-  version "0.7.10"
-  resolved "https://registry.yarnpkg.com/@backstage/core/-/core-0.7.10.tgz#95e8481a4eabafa880f190265f7061afb0b7f920"
-  integrity sha512-gc+Xc3SkX5XT/m+pBZgI3VrrOBvIWKUxgEr//sPc/CbugpWm6/a+w343wEYf1OpAAjKv6PYOITeqbyyjXnbyjw==
+"@backstage/core@^0.7.10", "@backstage/core@^0.7.11", "@backstage/core@^0.7.9":
+  version "0.7.11"
+  resolved "https://registry.yarnpkg.com/@backstage/core/-/core-0.7.11.tgz#b388544a4fd5bd21fde7ddc15afda635ad940137"
+  integrity sha512-XG8RjdySFZWuTjh/6CwZycMwakqSF0Vq/eBel2zQ3Wh9EXMqN1qvKSGw+EfmLVYHHcKtgW3F/sdIKum3z+/DTg==
   dependencies:
     "@backstage/config" "^0.1.5"
-    "@backstage/core-api" "^0.2.19"
+    "@backstage/core-api" "^0.2.20"
     "@backstage/errors" "^0.1.1"
     "@backstage/theme" "^0.2.7"
     "@material-ui/core" "^4.11.0"
