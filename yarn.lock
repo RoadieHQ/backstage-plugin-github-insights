@@ -907,29 +907,15 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@backstage/catalog-client@^0.3.11":
-  version "0.3.11"
-  resolved "https://registry.yarnpkg.com/@backstage/catalog-client/-/catalog-client-0.3.11.tgz#3454a26b763afe5a25aac92e4503f19e7ad6f607"
-  integrity sha512-AgMXP9BwHMBSIuBNdcluA0hWmHqRrDLvovwY/hxX7FbD1t4s5RzekHb5VyI6UaxcxBL+9agu+b23Vax5u9jIKQ==
+"@backstage/catalog-client@^0.3.12":
+  version "0.3.12"
+  resolved "https://registry.yarnpkg.com/@backstage/catalog-client/-/catalog-client-0.3.12.tgz#1b661aa0ff176ebb73aceef1c76dd6201ab8bd8b"
+  integrity sha512-JUnpkWMDExcnJK1taenBemxj9SKfyfisAwwPEE9QnIo/1XyucoHvaKu8jsmVOqAUx1djjaMa3Z6JZOooEBbZRw==
   dependencies:
-    "@backstage/catalog-model" "^0.7.8"
+    "@backstage/catalog-model" "^0.8.0"
     "@backstage/config" "^0.1.5"
     "@backstage/errors" "^0.1.1"
     cross-fetch "^3.0.6"
-
-"@backstage/catalog-model@^0.7.10", "@backstage/catalog-model@^0.7.8", "@backstage/catalog-model@^0.7.9":
-  version "0.7.10"
-  resolved "https://registry.yarnpkg.com/@backstage/catalog-model/-/catalog-model-0.7.10.tgz#bfc0a4e162c1246b319eabfd8497c0c6adbc3f2c"
-  integrity sha512-HA12kAbsoBNj0qY7+rvX2/Hsr375HoB9F7bqwJBo5uL1K0xDJSgQwe2EBVIZqqYSKCMpXGmFjkvp0+RN/m4QTg==
-  dependencies:
-    "@backstage/config" "^0.1.5"
-    "@types/json-schema" "^7.0.5"
-    "@types/yup" "^0.29.8"
-    ajv "^7.0.3"
-    json-schema "^0.3.0"
-    lodash "^4.17.15"
-    uuid "^8.0.0"
-    yup "^0.29.3"
 
 "@backstage/catalog-model@^0.8.0":
   version "0.8.0"
@@ -1085,7 +1071,7 @@
     react-use "^17.2.4"
     zen-observable "^0.8.15"
 
-"@backstage/core@^0.7.10", "@backstage/core@^0.7.11", "@backstage/core@^0.7.9":
+"@backstage/core@^0.7.11", "@backstage/core@^0.7.9":
   version "0.7.11"
   resolved "https://registry.yarnpkg.com/@backstage/core/-/core-0.7.11.tgz#b388544a4fd5bd21fde7ddc15afda635ad940137"
   integrity sha512-XG8RjdySFZWuTjh/6CwZycMwakqSF0Vq/eBel2zQ3Wh9EXMqN1qvKSGw+EfmLVYHHcKtgW3F/sdIKum3z+/DTg==
@@ -1131,15 +1117,15 @@
     remark-gfm "^1.0.0"
     zen-observable "^0.8.15"
 
-"@backstage/dev-utils@^0.1.15":
-  version "0.1.15"
-  resolved "https://registry.yarnpkg.com/@backstage/dev-utils/-/dev-utils-0.1.15.tgz#9ad9da05cb1c6fb1db7cc5fa7d1bc1aedae4f956"
-  integrity sha512-DgVgEjsriIL9TfJKoAEHyO7lLgDDczoFJzgzR199enH3oPUVtOQUtp8Ma6LmWSufcr0luCMvBjGNLLOtvh+V0w==
+"@backstage/dev-utils@^0.1.16":
+  version "0.1.16"
+  resolved "https://registry.yarnpkg.com/@backstage/dev-utils/-/dev-utils-0.1.16.tgz#1364a80ba9ab7243d73b37bd3ac753d50d132ce5"
+  integrity sha512-UtUZXjAR+DIy0V7ELbZBNfJ98/e/FttR1nHShMYW2+axErkjB9yDKsxGPu6lWiaGn9VvQ9nC8l+eK+wJe8fPuQ==
   dependencies:
-    "@backstage/catalog-model" "^0.7.10"
-    "@backstage/core" "^0.7.10"
+    "@backstage/catalog-model" "^0.8.0"
+    "@backstage/core" "^0.7.11"
     "@backstage/integration-react" "^0.1.2"
-    "@backstage/plugin-catalog-react" "^0.1.6"
+    "@backstage/plugin-catalog-react" "^0.2.0"
     "@backstage/test-utils" "^0.1.12"
     "@backstage/theme" "^0.2.3"
     "@material-ui/core" "^4.11.0"
@@ -1191,15 +1177,17 @@
     git-url-parse "^11.4.4"
     luxon "^1.25.0"
 
-"@backstage/plugin-catalog-react@^0.1.5", "@backstage/plugin-catalog-react@^0.1.6":
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/@backstage/plugin-catalog-react/-/plugin-catalog-react-0.1.6.tgz#1d72756cce22b880987c30ac27e23af8efa22843"
-  integrity sha512-/60GIrcFfyAiKn3bylXegwtHf1NQxQa4PcXD7nSIB5ISCuot2mkI32LMjciEvNHR7efGA5Yv6yWelFSFdvbcKQ==
+"@backstage/plugin-catalog-react@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@backstage/plugin-catalog-react/-/plugin-catalog-react-0.2.0.tgz#d0561727fd6e770cf199b2d4e270718b8c618fa9"
+  integrity sha512-0FUaGlDTH3j9nfThk8/LvjOyNTGTUGXpdcYmMtAmyDOr7Xktr/i05n3y+DFdYFhm6q66kY4qA9R9ndkUm+Y9Vg==
   dependencies:
-    "@backstage/catalog-client" "^0.3.11"
-    "@backstage/catalog-model" "^0.7.9"
-    "@backstage/core" "^0.7.9"
+    "@backstage/catalog-client" "^0.3.12"
+    "@backstage/catalog-model" "^0.8.0"
+    "@backstage/core" "^0.7.11"
     "@material-ui/core" "^4.11.0"
+    "@material-ui/icons" "^4.9.1"
+    "@material-ui/lab" "4.0.0-alpha.45"
     "@types/react" "^16.9"
     lodash "^4.17.15"
     react "^16.13.1"
