@@ -15,7 +15,7 @@ jobs:
     steps:
       - run: npx @backstage/create-app scaffolded-test-app
       - uses: actions/checkout@v2
-         with:
+        with:
           path: plugins/${{ github.repository }}
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
