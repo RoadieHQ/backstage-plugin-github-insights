@@ -2,9 +2,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [main]
+    branches: [workflow]
   pull_request:
-    branches: [main]
+    branches: [main-workflow-test-strategy]
 
 jobs:
   build:
@@ -15,7 +15,9 @@ jobs:
         node-version: [12.x, 14.x]
 
     steps:
+      - run: npx @backstage/create-app scaffolded-test-app
       - uses: actions/checkout@v2
+        path: plugins/${{ github.repository }}
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
