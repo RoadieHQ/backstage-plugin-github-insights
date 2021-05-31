@@ -1,10 +1,8 @@
 name: Node.js CI
 
 on:
-  push:
-    branches: [workflow]
   pull_request:
-    branches: [main-workflow-test-strategy]
+    branches: [main]
 
 jobs:
   build:
