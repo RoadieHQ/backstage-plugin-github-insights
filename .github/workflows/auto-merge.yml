@@ -1,7 +1,7 @@
 name: Merge me!
 
 on:
-  repository_dispatch:
+  push:
 
 jobs:
   merge-me:
