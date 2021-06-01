@@ -1,6 +1,7 @@
 name: Remote Dispatch Action Initiator
 
 on:
+  push:
   pull_request:
     branches: [main]
   repository_dispatch:
@@ -16,7 +17,7 @@ jobs:
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.ACCESS_TOKEN }} \
           --data '{"event_type": "call", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
-      - name: ACK - Acknowledge response from remote repository
+      - name: Acknowledge response from remote repository
         if: github.event.action == 'response'
         run: |
           echo "RESPONSE received from '${{ github.event.client_payload.repository }}'" && \
