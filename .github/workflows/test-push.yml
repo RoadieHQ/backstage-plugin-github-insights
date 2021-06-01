@@ -20,7 +20,7 @@ jobs:
       - name: Acknowledge response from remote repository
         if: github.event.action == 'response'
         run: |
-          echo "RESPONSE received from '${{ github.event.client_payload.repository }}'" && \
+          echo "RESPOoNSE received from '${{ github.event.client_payload.repository }}'" && \
           curl -X POST https://api.github.com/repos/RoadieHQ/plugins-verification/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.ACCESS_TOKEN }} \
