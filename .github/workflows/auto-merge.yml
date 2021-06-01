@@ -1,6 +1,7 @@
 name: Merge me!
 
 on:
+  push:
   workflow_run:
     types:
       - completed
