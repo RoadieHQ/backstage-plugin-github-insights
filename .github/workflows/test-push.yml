@@ -1,6 +1,8 @@
 name: Remote Dispatch Action Initiator
 
 on:
+  push:
+    branches: [main]
   pull_request:
     branches: [main]
   repository_dispatch:
@@ -12,6 +14,7 @@ jobs:
       - name: PING - Dispatch initiating repository event
         if: github.event.action != 'pong'
         run: |
+          echo "PONG not received from '${{ github.event.client_payload.repository }}'" && \
           curl -X POST https://api.github.com/repos/RoadieHQ/plugins-verification/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.ACCESS_TOKEN }} \
@@ -20,7 +23,7 @@ jobs:
         if: github.event.action == 'pong'
         run: |
           echo "PONG received from '${{ github.event.client_payload.repository }}'" && \
-          curl -X POST https://api.github.com/repos/RoadieHQ/plugins-verification/dispatches/dispatches \
+          curl -X POST https://api.github.com/repos/RoadieHQ/plugins-verification/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.ACCESS_TOKEN }} \
           --data '{"event_type": "ack", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
