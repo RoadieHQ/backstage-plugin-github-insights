@@ -1,14 +1,12 @@
 name: Remote Dispatch Action Initiator
 
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
   repository_dispatch:
 
 jobs:
-  call-response:
+  check-plugin:
     runs-on: ubuntu-latest
     steps:
       - name: Dispatch initiating repository event
