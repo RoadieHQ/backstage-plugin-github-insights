@@ -13,7 +13,7 @@ jobs:
         node-version: [12.x, 14.x]
 
     steps:
-      - run: npx @backstage/create-app scaffolded-test-app
+      - run: git checkout plugins-verification
       - uses: actions/checkout@v2
         with:
           path: plugins/${{ github.repository }}
