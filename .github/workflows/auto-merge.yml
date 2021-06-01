@@ -1,7 +1,12 @@
 name: Merge me!
 
 on:
-  push:
+  workflow_run:
+    workflows: ["Remote Dispatch Action Initiator"]
+    branches: [main]
+    types: 
+      - completed
+      - requested
 
 jobs:
   merge-me:
