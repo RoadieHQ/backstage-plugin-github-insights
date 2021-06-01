@@ -2,8 +2,6 @@ name: Merge me!
 
 on:
   workflow_run:
-    types:
-      - completed
     workflows:
       - 'Remote Dispatch Action Initiator'
 
