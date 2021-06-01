@@ -2,10 +2,11 @@ name: Merge me!
 
 on:
   workflow_run:
-    workflows:
-      - 'Integrate'
-    types:
+    workflows: ["Remote Dispatch Action Initiator"]
+    branches: [main]
+    types: 
       - completed
+      - requested
 
 jobs:
   merge-me:
