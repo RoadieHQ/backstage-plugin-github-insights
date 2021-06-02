@@ -24,11 +24,11 @@ jobs:
           curl -X POST https://api.github.com/repos/RoadieHQ/plugins-verification/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.ACCESS_TOKEN }} \
-          --data '{"event_type": "call", "branch": "${GIT_BRANCH}", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+          --data '{"event_type": "call", "ref": "${GIT_BRANCH}", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
       - name: Acknowledge response from remote repository
         if: github.event.action == 'response'
         run: |
-          echo "RESPOoNSE received from '${{ github.event.client_payload.repository }}'" && \
+          echo "Acknowledged and verified message received from '${{ github.event.client_payload.repository }}'" && \
           curl -X POST https://api.github.com/repos/RoadieHQ/plugins-verification/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.ACCESS_TOKEN }} \
