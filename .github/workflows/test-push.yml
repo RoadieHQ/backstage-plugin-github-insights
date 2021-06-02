@@ -21,7 +21,7 @@ jobs:
       - name: Dispatch initiating repository event
         if: github.event.action != 'response'
         run: |
-          echo "Sending branch name'$GITHUB_REF'" && \
+          echo "Sending branch name '${GIT_BRANCH}' && \
           curl -X POST https://api.github.com/repos/RoadieHQ/plugins-verification/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.ACCESS_TOKEN }} \
