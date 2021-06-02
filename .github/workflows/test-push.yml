@@ -10,6 +10,14 @@ jobs:
   check-plugin:
     runs-on: ubuntu-latest
     steps:
+      - name: Set environment variables
+        run: |
+          echo "GIT_SHA=${GITHUB_SHA}" >> $GITHUB_ENV
+          echo "GIT_BRANCH=${GITHUB_REF##*/}" >> $GITHUB_ENV
+      - name: Use environment variables
+        run: |
+          echo "GIT_SHA=${GIT_SHA}"
+          echo "GIT_BRANCH=${GIT_BRANCH}"
       - name: Dispatch initiating repository event
         if: github.event.action != 'response'
         run: |
