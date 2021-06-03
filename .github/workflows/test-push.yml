@@ -14,7 +14,7 @@ jobs:
         run: |
           echo "GIT_SHA=${GITHUB_SHA}" >> $GITHUB_ENV
           echo "GIT_BRANCH=${GITHUB_REF##*/}" >> $GITHUB_ENV
-          echo "GIT_REPO=${GITHUB_REPOSITORY##*}" >> $GITHUB_ENV
+          echo "GIT_REPO=${GITHUB_REPOSITORY#*}" >> $GITHUB_ENV
       - name: Use environment variables
         run: |
           echo "GIT_SHA=${GIT_SHA}"
@@ -27,7 +27,7 @@ jobs:
           curl -X POST https://api.github.com/repos/RoadieHQ/plugins-verification/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.ACCESS_TOKEN }} \
-          --data '{"event_type": "call", "client_payload": { "repository": "'"${GIT_REPO}"'", "sha":"'${GIT_SHA}'", "branch":"'${GIT_BRANCH}'" }}'
+          --data '{"event_type": "call", "client_payload": { "repository": "'${{ github.event.repository.name }}'", "sha":"'${GIT_SHA}'", "branch":"'${GIT_BRANCH}'" }}'
       - name: Acknowledge response from remote repository
         if: github.event.action == 'response'
         run: |
