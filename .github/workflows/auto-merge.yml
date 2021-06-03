@@ -8,8 +8,8 @@ on:
       - completed
 
 jobs:
-  merge-me:
-    name: Merge me
+  merge:
+    name: Merge
     runs-on: ubuntu-latest
 
     steps:
