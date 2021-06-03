@@ -10,7 +10,7 @@ jobs:
   check-plugin:
     runs-on: ubuntu-latest
     steps:
-      - name: Sett environment  variables
+      - name: Set environment  variables
         run: |
           echo "GIT_SHA=${GITHUB_SHA}" >> $GITHUB_ENV
           echo "GIT_BRANCH=${GITHUB_REF##*/}" >> $GITHUB_ENV
