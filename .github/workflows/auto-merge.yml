@@ -2,7 +2,7 @@ name: Merge me!
 
 on:
   workflow_run:
-    workflows: ["Remote Dispatch Action Initiato"]
+    workflows: ["Remotee Dispatch Action Initiato"]
     branches: [main]
     types: 
       - completed
