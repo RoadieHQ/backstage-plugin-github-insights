@@ -23,7 +23,7 @@ jobs:
           GITHUB_BRANCH: ${GITHUB_REF##*/}
         if: github.event.action != 'response'
         run: |
-          echo "Sending sha for commit '${GIT_SHA}'" && \
+          echo "Send sha for commit '${GIT_SHA}'" && \
           curl -X POST https://api.github.com/repos/RoadieHQ/plugins-verification/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.ACCESS_TOKEN }} \
