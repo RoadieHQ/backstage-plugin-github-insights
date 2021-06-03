@@ -9,7 +9,7 @@ on:
 
 jobs:
   merge-me:
-    name: Merge me!
+    name: Merge me
     runs-on: ubuntu-latest
 
     steps:
