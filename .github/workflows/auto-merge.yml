@@ -2,7 +2,7 @@ name: Merge me!
 
 on:
   workflow_run:
-    workflows: ["Remotee Dispatch Action Initiato"]
+    workflows: ["Remote Dispatch Action Initiator"]
     branches: [main]
     types: 
       - completed
@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Merge me!
+      - name: Merge
         if: ${{ github.event.workflow_run.conclusion == 'success' }}
         uses: ridedott/merge-me-action@v2
         with:
