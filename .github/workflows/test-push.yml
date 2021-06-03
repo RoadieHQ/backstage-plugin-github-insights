@@ -18,7 +18,7 @@ jobs:
         run: |
           echo "GIT_SHA=${GIT_SHA}"
           echo "GIT_BRANCH=${GIT_BRANCH}"
-      - name: Dispatch initiating repository event
+      - name: Dispatch initiate repository event
         env:
           GITHUB_BRANCH: ${GITHUB_REF##*/}
         if: github.event.action != 'response'
