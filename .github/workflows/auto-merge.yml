@@ -1,0 +1,19 @@
+name: Merge me!
+
+on:
+  workflow_run:
+    workflows: ["Remote Dispatch Action Initiator"]
+    branches: [main]
+    types: 
+      - completed
+
+jobs:
+  merge:
+    name: Merge
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Merge
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
+        run: |
+          echo "Success"
