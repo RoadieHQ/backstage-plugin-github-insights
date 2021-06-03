@@ -23,7 +23,7 @@ jobs:
       - name: Dispatch initiating repository event
         if: github.event.action != 'response'
         run: |
-          echo "Send sha for commit '${GIT_SHA}' and repo '${GIT_REPO}'" && \
+          echo "Call plugin-verification repository" && \
           curl -X POST https://api.github.com/repos/RoadieHQ/plugins-verification/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.ACCESS_TOKEN }} \
