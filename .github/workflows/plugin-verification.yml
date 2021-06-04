@@ -1,7 +1,6 @@
 name: Remote Dispatch Action Initiator
 
 on:
-  push:
   pull_request:
     branches: [main]
   repository_dispatch:
@@ -28,11 +27,9 @@ jobs:
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.ACCESS_TOKEN }} \
           --data '{"event_type": "call", "client_payload": { "repository": "'${{ github.event.repository.name }}'", "sha":"'${GIT_SHA}'", "branch":"'${GIT_BRANCH}'" }}'
-      - name: Acknowledge response from remote repository
+      - name: Merge if response recieved
         if: github.event.action == 'response'
-        run: |
-          echo "Acknowledge and verifed message received from '${{ github.event.client_payload.repository }}'" && \
-          curl -X POST https://api.github.com/repos/RoadieHQ/plugins-verification/dispatches \
-          -H 'Accept: application/vnd.github.everest-preview+json' \
-          -u ${{ secrets.ACCESS_TOKEN }} \
-          --data '{"event_type": "ack", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+        uses: ridedott/merge-me-action@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PRESET: DEPENDABOT_MINOR
