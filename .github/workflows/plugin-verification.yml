@@ -1,4 +1,4 @@
-name: Remote Dispatch Action Initiator
+name: Check PR against plugins-verification repository
 
 on:
   pull_request:
