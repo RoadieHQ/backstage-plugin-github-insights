@@ -917,10 +917,10 @@
     "@backstage/errors" "^0.1.1"
     cross-fetch "^3.0.6"
 
-"@backstage/catalog-model@^0.8.0", "@backstage/catalog-model@^0.8.1":
-  version "0.8.1"
-  resolved "https://registry.yarnpkg.com/@backstage/catalog-model/-/catalog-model-0.8.1.tgz#d42071098cfd6d7ca10c1979e2407b321229deb2"
-  integrity sha512-kzG0O76Kvi1MINT+OXA0ekV7ZqRccHwj/VtjWU4bTylfBpHQPHwSSV/4pLx5s0hHHtwZczAhDgd9DQACXbH/fQ==
+"@backstage/catalog-model@^0.8.0", "@backstage/catalog-model@^0.8.1", "@backstage/catalog-model@^0.8.2":
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/@backstage/catalog-model/-/catalog-model-0.8.2.tgz#44ab8af8c53eca350745b8c128a8cce3db6c68dc"
+  integrity sha512-fI5YCeCw9Boi3WYzcyUBwkcjO12W4XFaah0aFYU4rSU14DWOCkKsMXdL/UhV3/bfR7eENNhNB0LC0nVCgHa4eQ==
   dependencies:
     "@backstage/config" "^0.1.5"
     "@backstage/errors" "^0.1.1"

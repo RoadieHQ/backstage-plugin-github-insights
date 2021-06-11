@@ -26,7 +26,7 @@
     "clean": "backstage-cli clean"
   },
   "dependencies": {
-    "@backstage/catalog-model": "^0.8.0",
+    "@backstage/catalog-model": "^0.8.2",
     "@backstage/core": "^0.7.11",
     "@backstage/plugin-catalog-react": "^0.2.0",
     "@backstage/theme": "^0.2.7",
