@@ -2,11 +2,17 @@
 
 ![a preview of the GitHub insights plugin](https://raw.githubusercontent.com/RoadieHQ/backstage-plugin-code-insights/main/docs/code-insights-plugin.png)
 
+## Repository migration notice (June/July 2021)
+
+In order to make testing and deployment of our plugins easier we are migrating all Roadie plugins to a monorepo at https://github.com/RoadieHQ/roadie-backstage-plugins.
+The plugins will still be published to the same place on NPM and will have the same package names so nothing should change for consumers of these plugins.
+
 ## Plugin Setup
 
-1. If you have standalone app (you didn't clone this repo), then do
+1. Install the plugin
 
 ```bash
+cd packages/app
 yarn add @roadiehq/backstage-plugin-github-insights
 ```
 
